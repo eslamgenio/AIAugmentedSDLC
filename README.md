@@ -14,18 +14,26 @@ The catalog and roadmap describe the wider proposed framework. Two reusable proj
 Example requests:
 
 ```text
-Use $create-test-cases with artifacts/requirements.md.
+Use $create-test-cases with artifacts/ITER-001/requirements.md.
 
-Use $review-test-coverage with artifacts/requirements.md and [A16 file].
+Use $review-test-coverage with artifacts/ITER-001/requirements.md and [A16 file].
 
 Use $create-test-cases to revise [A16 file] using [A17 file].
 ```
 
 The packages live in `.agents/skills/` for this project. If the current session has not picked them up, explicitly ask to read and use the linked `SKILL.md` file. Each package is self-contained and can be copied to another project's `.agents/skills/` folder.
 
-They default to readable Markdown bundles and adapt to a supplied template. They need no Python setup. Missing behavior becomes a question rather than an invented expected result. These skills design and review tests; they do not execute application tests or grant human approval.
+They default to readable Markdown bundles using the matching project template, and adapt to a supplied format. They need no Python setup. Missing behavior becomes a question rather than an invented expected result. These skills design and review tests; they do not execute application tests or grant human approval.
 
 The documents preserve the catalog's A16/A17 names and child IDs. The reviewer may recommend READY with disclosed nonblocking suggestions; unresolved blocking issues require correction or clarification.
+
+## Artifact templates
+
+The [templates index](templates/README.md) links to a template for every catalog artifact: **45 skill output bundles and 10 external input bundles**, including all **135 child deliverables** as sections. Each includes source references, required content, acceptance checks and revision history.
+
+Skills read the matching template, fill it with sourced content, and save the result under `artifacts/<iteration_id>/` using the canonical basename plus iteration and version. The two implemented skills use the A16 and A17 templates automatically in this project. For example, the A16 template becomes `artifacts/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md`.
+
+The templates use Markdown; the workbook's JSON exchange manifests remain proposed. Native deliverables such as code, datasets and build packages are linked from the document. Empty templates do not represent completed work or approvals.
 
 ## Read the workbook
 

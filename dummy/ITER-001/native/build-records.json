@@ -1,0 +1,30 @@
+[
+  {
+    "build_id": "B001",
+    "source_revision": "SRC-001",
+    "archive": "B001.zip",
+    "sha256": "3ac9e676a0a3d158c14b6335db55f7fd78c7353730acb8a6d98d9be57dcd2bad",
+    "source_file": "monitor_SRC-001.py",
+    "source_sha256": "825a0c4b76f8451b7c50c2c2f040156c7b88f8ae54293dfbe34fdb75540f6d6d",
+    "contents": [
+      "monitor.py"
+    ],
+    "dependencies": "Python standard library only",
+    "build_method": "ZIP archive of source snapshot",
+    "created_at": "2026-09-13T18:25:44.270151+00:00"
+  },
+  {
+    "build_id": "B002",
+    "source_revision": "SRC-002",
+    "archive": "B002.zip",
+    "sha256": "d1324b85e7ba2f7d90690ba23b22f1092dc9568d7417b31166668a1176bfe2c2",
+    "source_file": "monitor_SRC-002.py",
+    "source_sha256": "0532af3563a508a6dc1ed06b4d51434d36167c3dc35cbc8a08927f3637d58274",
+    "contents": [
+      "monitor.py"
+    ],
+    "dependencies": "Python standard library only",
+    "build_method": "ZIP archive of source snapshot",
+    "created_at": "2026-09-13T18:25:44.270151+00:00"
+  }
+]

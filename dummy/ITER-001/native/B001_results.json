@@ -1,0 +1,214 @@
+{
+  "code_revision": "SRC-001",
+  "build_id": "B001",
+  "env_id": "LOCAL-TEST",
+  "records": [
+    {
+      "test_id": "TC-001",
+      "status": "PASSED",
+      "checkpoints": [
+        {
+          "checkpoint": 1,
+          "event": "INITIAL",
+          "expected_status": "ONLINE",
+          "actual_status": "ONLINE",
+          "expected_notifications": 0,
+          "actual_notifications": 0,
+          "status": "PASSED"
+        },
+        {
+          "checkpoint": 2,
+          "event": "M",
+          "expected_status": "ONLINE",
+          "actual_status": "ONLINE",
+          "expected_notifications": 0,
+          "actual_notifications": 0,
+          "status": "PASSED"
+        },
+        {
+          "checkpoint": 3,
+          "event": "M",
+          "expected_status": "ONLINE",
+          "actual_status": "ONLINE",
+          "expected_notifications": 0,
+          "actual_notifications": 0,
+          "status": "PASSED"
+        },
+        {
+          "checkpoint": 4,
+          "event": "M",
+          "expected_status": "OFFLINE",
+          "actual_status": "OFFLINE",
+          "expected_notifications": 1,
+          "actual_notifications": 1,
+          "status": "PASSED"
+        },
+        {
+          "checkpoint": 5,
+          "event": "M",
+          "expected_status": "OFFLINE",
+          "actual_status": "OFFLINE",
+          "expected_notifications": 1,
+          "actual_notifications": 1,
+          "status": "PASSED"
+        },
+        {
+          "checkpoint": 6,
+          "event": "M",
+          "expected_status": "OFFLINE",
+          "actual_status": "OFFLINE",
+          "expected_notifications": 1,
+          "actual_notifications": 1,
+          "status": "PASSED"
+        }
+      ]
+    },
+    {
+      "test_id": "TC-002",
+      "status": "PASSED",
+      "checkpoints": [
+        {
+          "checkpoint": 1,
+          "event": "H",
+          "expected_status": "ONLINE",
+          "actual_status": "ONLINE",
+          "expected_notifications": 0,
+          "actual_notifications": 0,
+          "status": "PASSED"
+        },
+        {
+          "checkpoint": 2,
+          "event": "M",
+          "expected_status": "ONLINE",
+          "actual_status": "ONLINE",
+          "expected_notifications": 0,
+          "actual_notifications": 0,
+          "status": "PASSED"
+        },
+        {
+          "checkpoint": 3,
+          "event": "M",
+          "expected_status": "ONLINE",
+          "actual_status": "ONLINE",
+          "expected_notifications": 0,
+          "actual_notifications": 0,
+          "status": "PASSED"
+        },
+        {
+          "checkpoint": 4,
+          "event": "H",
+          "expected_status": "ONLINE",
+          "actual_status": "ONLINE",
+          "expected_notifications": 0,
+          "actual_notifications": 0,
+          "status": "PASSED"
+        },
+        {
+          "checkpoint": 5,
+          "event": "M",
+          "expected_status": "ONLINE",
+          "actual_status": "ONLINE",
+          "expected_notifications": 0,
+          "actual_notifications": 0,
+          "status": "PASSED"
+        },
+        {
+          "checkpoint": 6,
+          "event": "M",
+          "expected_status": "ONLINE",
+          "actual_status": "ONLINE",
+          "expected_notifications": 0,
+          "actual_notifications": 0,
+          "status": "PASSED"
+        },
+        {
+          "checkpoint": 7,
+          "event": "M",
+          "expected_status": "OFFLINE",
+          "actual_status": "OFFLINE",
+          "expected_notifications": 1,
+          "actual_notifications": 1,
+          "status": "PASSED"
+        }
+      ]
+    },
+    {
+      "test_id": "TC-003",
+      "status": "FAILED",
+      "checkpoints": [
+        {
+          "checkpoint": 1,
+          "event": "M",
+          "expected_status": "ONLINE",
+          "actual_status": "ONLINE",
+          "expected_notifications": 0,
+          "actual_notifications": 0,
+          "status": "PASSED"
+        },
+        {
+          "checkpoint": 2,
+          "event": "M",
+          "expected_status": "ONLINE",
+          "actual_status": "ONLINE",
+          "expected_notifications": 0,
+          "actual_notifications": 0,
+          "status": "PASSED"
+        },
+        {
+          "checkpoint": 3,
+          "event": "M",
+          "expected_status": "OFFLINE",
+          "actual_status": "OFFLINE",
+          "expected_notifications": 1,
+          "actual_notifications": 1,
+          "status": "PASSED"
+        },
+        {
+          "checkpoint": 4,
+          "event": "H",
+          "expected_status": "ONLINE",
+          "actual_status": "ONLINE",
+          "expected_notifications": 1,
+          "actual_notifications": 1,
+          "status": "PASSED"
+        },
+        {
+          "checkpoint": 5,
+          "event": "M",
+          "expected_status": "ONLINE",
+          "actual_status": "ONLINE",
+          "expected_notifications": 1,
+          "actual_notifications": 1,
+          "status": "PASSED"
+        },
+        {
+          "checkpoint": 6,
+          "event": "M",
+          "expected_status": "ONLINE",
+          "actual_status": "ONLINE",
+          "expected_notifications": 1,
+          "actual_notifications": 1,
+          "status": "PASSED"
+        },
+        {
+          "checkpoint": 7,
+          "event": "M",
+          "expected_status": "OFFLINE",
+          "actual_status": "OFFLINE",
+          "expected_notifications": 2,
+          "actual_notifications": 1,
+          "status": "FAILED"
+        },
+        {
+          "checkpoint": 8,
+          "event": "M",
+          "expected_status": "OFFLINE",
+          "actual_status": "OFFLINE",
+          "expected_notifications": 2,
+          "actual_notifications": 1,
+          "status": "FAILED"
+        }
+      ]
+    }
+  ]
+}

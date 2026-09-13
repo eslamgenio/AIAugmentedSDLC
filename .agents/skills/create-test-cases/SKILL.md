@@ -28,7 +28,9 @@ Before delivery, check that IDs are unique, references resolve, steps are execut
 
 ## Output: A16 — Test Case Creation Outputs
 
-Use the user's requested format and location. Otherwise write one readable Markdown document in the project `artifacts/` folder, named `A16_test-case-creation-outputs_ITER-001_v1.0.md` for a first standalone draft. Reuse supplied iteration/version conventions; increment the version for revisions and avoid replacing unrelated existing work. If file writing is unavailable, return the same content in the conversation.
+When working in this project, read and follow the [A16 template](../../../templates/A16_test-case-creation-outputs.md) before writing the output. Fill its applicable sections, replace placeholders, and retain stable child IDs. If the skill is copied elsewhere without the project templates, use the self-contained layout below. A user-supplied format takes precedence.
+
+Use the user's requested format and location. Otherwise write one readable Markdown document in the active `artifacts/<iteration_id>/` folder (use the source iteration; otherwise start with `ITER-001`), named `A16_test-case-creation-outputs_ITER-001_v1.0.md` for a first standalone draft. Reuse supplied iteration/version conventions; increment the version for revisions and avoid replacing unrelated existing work. If file writing is unavailable, return the same content in the conversation.
 
 Include a short header with the feature, A16 version, source filenames/versions or source-text mapping, scope and draft/review status. Then use these stable sections:
 

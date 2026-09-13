@@ -14,6 +14,8 @@ This project builds reusable LLM-agent skills for an end-to-end software develop
 - Write project deliverables in English.
 - Keep skill names, artifact IDs, canonical names and handoffs consistent with the Excel catalog and README.
 - Keep reusable skills self-contained under `.agents/skills/`.
+- Before producing an SDLC artifact, read its matching template in `templates/` and follow its required content and child IDs. Use `templates/README.md` to locate it. Keep reusable templates in `templates/` and completed artifacts in the active iteration folder.
+- Replace template placeholders with sourced content or explicit missing-information notes. Link native deliverables and evidence; never treat a filled template as proof of execution or human approval. A user-requested format takes precedence while retaining required content.
 - Preserve existing test and finding IDs during revisions; increment artifact versions when content changes.
 - Flag unclear requirements instead of inventing expected behavior. Distinguish test design, review recommendations, test execution and human approval.
 - Store all SDLC input and output artifacts in a separate folder per iteration, such as `artifacts/ITER-001/` and `artifacts/ITER-002/`, unless the user explicitly requests another location.
