@@ -14,8 +14,11 @@ Download [SDLC_Proposed_Skills_Catalog.xlsx](SDLC_Proposed_Skills_Catalog.xlsx) 
 | **Skills Catalog** | All 45 proposed skills, with descriptions, inputs and outputs. | Understand what each skill would do and what information it would need and produce. |
 | **Activity Mapping** | The 48 associations between lifecycle phases, activities or decision gates, and proposed skills. | Find where a skill would support the lifecycle. Some skills appear in more than one association. |
 | **Implementation Roadmap** | All 45 skills in a proposed implementation order, grouped into waves, with rationale, prerequisites and a first validation milestone. | Review priorities and dependencies when deciding what to implement first. |
+| **Artifact Handoff Mapping** | All 135 catalog input definitions mapped to their sources, plus 55 proposed artifact contracts covering skill outputs and external inputs. | Filter by consumer skill, look up source artifact IDs in the contract table, and review required fields, acceptance checks, approval gates and rework rules. |
 
 Use the table filters in Skills Catalog, Activity Mapping and Implementation Roadmap to focus on relevant entries. Each skill appears once in the catalog and once in the roadmap; the mapping sheet shows its use across activities and gates.
+
+Artifact Handoff Mapping defines a proposed flow of deliverables between skills. It includes external evidence and human decisions, with conditional paths for defects, rejected releases and the next iteration. These are design contracts; executable schemas, connectors and workflow orchestration have not been implemented.
 
 ## Lifecycle diagram
 
