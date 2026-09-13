@@ -2,11 +2,33 @@
 
 A proposed approach to using AI throughout the software development lifecycle. The main deliverable is an editable workbook describing **45 proposed skills** and their **48 activity or decision-gate associations**.
 
-The catalog and roadmap describe the wider proposed framework. The first two skills now have callable pilot adapters; they are not installed Codex skill packages. Human owners retain test-exit and release decisions.
+The catalog and roadmap describe the wider proposed framework. Two reusable project-local skills are available for creating test cases and reviewing coverage. Human owners retain test-exit and release decisions.
 
-## First connected pilot
+## Use the two skills
 
-The [test design pilot specification](docs/pilot/SPECIFICATION.md) defines a connected workflow: create test cases, review coverage, apply bounded corrections and request human approval. Local artifact storage, structural/semantic handoff validators, the [shipping correctness evaluator](docs/pilot/EVALUATION.md), and the [creator-to-reviewer adapters](docs/pilot/AGENT-HANDOFF.md) are implemented. The adapters can make two real model calls, pass the saved A16 to the reviewer, validate A17 and stop before human approval. See [setup and usage](docs/pilot/IMPLEMENTATION.md) and the [pilot file guide](docs/pilot/README.md). The durable controller for corrections, recovery and approval remains to be implemented.
+| Skill | Inputs | Deliverable |
+| --- | --- | --- |
+| [create-test-cases](.agents/skills/create-test-cases/SKILL.md) | Requirements, acceptance criteria and relevant context; prior cases and feedback for revisions | **A16:** test cases, setup/data summary, questions and automation candidates |
+| [review-test-coverage](.agents/skills/review-test-coverage/SKILL.md) | The same requirements and candidate cases; prior findings for re-review | **A17:** coverage matrix, gaps, duplicates and actionable findings |
+
+Example requests:
+
+```text
+Use $create-test-cases to create test cases from requirements.md.
+Save the A16 document under outputs/login-tests/.
+
+Use $review-test-coverage to review that A16 against requirements.md.
+Save the A17 document in the same folder.
+
+Use $create-test-cases to revise that A16 using the A17 findings.
+Preserve existing test IDs and save a new version.
+```
+
+The packages live in `.agents/skills/` for this project. If the current session has not picked them up, explicitly ask to read and use the linked `SKILL.md` file. Each package is self-contained and can be copied to another project's `.agents/skills/` folder.
+
+They default to readable Markdown bundles and adapt to a supplied template. They need no Python setup. Missing behavior becomes a question rather than an invented expected result. These skills design and review tests; they do not execute application tests or grant human approval.
+
+The documents preserve the catalog's A16/A17 names and child IDs. The reviewer may recommend READY with disclosed nonblocking suggestions; unresolved blocking issues require correction or clarification.
 
 ## Read the workbook
 
@@ -22,7 +44,7 @@ Download [SDLC_Proposed_Skills_Catalog.xlsx](SDLC_Proposed_Skills_Catalog.xlsx) 
 
 Use the table filters in Skills Catalog, Activity Mapping and Implementation Roadmap to focus on relevant entries. Each skill appears once in the catalog and once in the roadmap; the mapping sheet shows its use across activities and gates.
 
-Artifact Handoff Mapping defines a proposed flow of deliverables between skills. It includes external evidence and human decisions, with conditional paths for defects, rejected releases and the next iteration. The pilot adds JSON schema profiles for its input package, A16, A17 and run record. The remaining contracts, connectors and workflow orchestration are still design work.
+Artifact Handoff Mapping defines a proposed flow of deliverables between skills. It includes external evidence and human decisions, with conditional paths for defects, rejected releases and the next iteration. The two skills implement test creation and review using readable A16/A17 documents. Machine-readable contracts, connectors and workflow orchestration remain design work.
 
 ### How to use Artifact Handoff Mapping
 
@@ -45,7 +67,7 @@ IDs connect the tables: **H** identifies an input handoff, **A** identifies a sk
 
 **Consistent artifact names.** A16 is the **Test Case Creation Outputs** bundle. Its first child, **A16-01**, is **Requirement-linked test cases and scenarios**. Its filename pattern is `A16-01_requirement-linked-test-cases-and-scenarios_{iteration_id}_v{artifact_version}.json`, for example `A16-01_requirement-linked-test-cases-and-scenarios_ITER-001_v1.0.json`. Keep IDs and canonical names stable, increment the artifact version when content changes, and never renumber or reuse an ID. Track the payload's schema version separately.
 
-The JSON file is an exchange record or manifest: it can contain the deliverable or link to native code, documents and other files using an artifact URI and checksum. Child deliverables may be embedded in their parent bundle or stored separately. The parent manifest lists their IDs and versions, and consumers reference exact upstream versions. The pilot implements these conventions for A16 and A17; the remaining artifact implementations are still proposed. Checked-in examples are synthetic; generated model outputs are saved separately under ignored `outputs/`.
+The JSON file is an exchange record or manifest: it can contain the deliverable or link to native code, documents and other files using an artifact URI and checksum. Child deliverables may be embedded in their parent bundle or stored separately. The parent manifest lists their IDs and versions, and consumers reference exact upstream versions. The two skills use the same A16/A17 identities in Markdown documents, with a `.md` extension. JSON exchange manifests remain a proposed convention. Generated documents are saved under ignored `outputs/` by default.
 
 ## Lifecycle diagram
 

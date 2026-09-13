@@ -1,0 +1,49 @@
+---
+name: review-test-coverage
+description: Review software test cases against requirements and acceptance criteria for coverage, correct expectations, clarity, and duplicates. Produces the A17 traceability and actionable review bundle, including verification of prior corrections. Use to review test design, not to report test execution results.
+---
+
+# Review test coverage
+
+Independently assess whether the supplied cases adequately test the specified feature. Review content and observable behavior, not merely the presence of requirement links. Use the supplied requirements and test cases directly; no custom runner or creator skill is required.
+
+## Establish the review basis
+
+- Read the requirements and acceptance criteria, the candidate test cases, and any supplied risks, domain rules, scope or template. Accept an A16 bundle or an existing test document in another format.
+- Record the exact candidate filename/version and the source requirements used. If no version exists, identify the supplied document or pasted snapshot; do not invent a verified version or checksum.
+- If requirements or candidate tests are missing, ask for them. Missing optional supporting documents should be noted as limitations rather than automatically blocking a useful review.
+- Preserve source IDs. If absent, assign local labels and map them to original source text. Do not add requirements silently.
+- A creator's coverage claims or previous READY decision are evidence to inspect, not conclusions to adopt. Use the current candidate; never apply a prior review to a changed document without rechecking it.
+
+## Review the content
+
+1. For each requirement/criterion, identify the behaviors and meaningful scenarios that need testing. Compare these with actual case steps, data and expected results. Distinguish full coverage, partial coverage, no coverage and behavior blocked by ambiguous requirements.
+2. Re-derive expected results from the supplied rules. Check boundaries, validation, roles, state changes and failure behavior where relevant. Flag invented expectations and claims that lack a source. A test ID linked to a criterion does not by itself demonstrate coverage.
+3. Accept representative alternatives within the same input category. For example, two different fractional values can both test integer-only validation. Require precise boundary values when the requirement makes them significant; do not demand an arbitrary example value as the only valid test.
+4. Check that the tester can understand the setup, obtain the data, perform the steps and observe the expected result. Identify contradictions, missing preconditions and duplicated behavior. Similar wording alone is not a duplicate when roles, states or outcomes differ.
+5. Report each substantive issue with a stable finding ID, affected requirement/test IDs, exact location or short evidence excerpt, why it matters, and a concrete requested correction. For a missing test, point to the uncovered source statement; do not invent a test ID that does not exist.
+6. Separate creator-fixable defects from questions requiring a business decision. Suggest a correction when supported; do not choose unspecified behavior on the owner's behalf.
+
+## Output: A17 — Test Coverage Review Outputs
+
+Use the user's requested format and location. Otherwise write one readable Markdown document in the project `outputs/` folder, named `A17_test-coverage-review-outputs_ITER-001_v1.0.md` for a first standalone review. Reuse the candidate's iteration convention, increment review versions, and preserve previous reviews. If file writing is unavailable, return the same content in the conversation.
+
+Start with the feature, A17 version, exact candidate reference, requirements sources, scope and overall recommendation. Use these stable sections:
+
+- **A17-01 — Requirements-to-tests traceability matrix:** one row per acceptance criterion, or per requirement when criteria are not supplied. Include source ID, linked test IDs, FULL / PARTIAL / NONE / BLOCKED coverage and a brief explanation. A requirement is fully covered only if its applicable criteria are fully covered. Use NOT APPLICABLE only with an explicit scope justification.
+- **A17-02 — Coverage gap and duplicate case report:** missing scenarios and duplicate groups, linked to findings. Explain why a duplicate adds no distinct coverage. State explicitly if there are none.
+- **A17-03 — Test review findings and revision actions:** findings with ID, severity (BLOCKING or NONBLOCKING), evidence, requested action and disposition. BLOCKING means the design should not be accepted as-is; NONBLOCKING is an improvement that does not undermine adequacy. Include the verification result for each prior finding when reviewing a revision.
+
+Choose one recommendation:
+
+- **READY:** adequate coverage in the stated scope, no blocking design defects or unresolved questions affecting expected behavior. Disclose remaining nonblocking suggestions and any review limitations.
+- **REVISE:** the creator can address material issues using the existing requirements. List actionable corrections.
+- **BLOCKED:** an essential ambiguity, conflict or missing input requires an owner decision. State the specific question; still report other review findings.
+
+READY is a test-design recommendation, not human approval or evidence that application tests passed. This is a human-readable A17 document profile. If machine-readable output is requested, use the agreed schema and check compatibility before claiming it.
+
+## Re-review and handoff
+
+When a revised candidate is supplied, read the prior findings and creator responses. Check the actual changed cases, verify every previous finding, and check for regressions introduced by the changes. Preserve finding IDs; mark them resolved only when evidence supports closure. Retain unresolved IDs and use new IDs for newly discovered issues.
+
+Finish with a link to A17, the recommendation and the most important next action. The creator can consume A17 alongside the reviewed A16 and the same requirements. Do not silently rewrite A16 during review, start a correction loop, execute tests or publish results externally unless the user requested that work.
