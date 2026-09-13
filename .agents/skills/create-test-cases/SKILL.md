@@ -15,6 +15,21 @@ Turn the user's requirements into test cases another tester can carry out. Work 
 - Do not invent behavior, interface details, limits, messages or error codes. Record a targeted question when missing information changes the expected result; continue unaffected cases. Distinguish user requirements from suggested additional checks.
 - If source statements lack IDs, assign local REQ/AC labels and show the source-text mapping. These labels organize existing statements; they do not create new acceptance criteria.
 
+### Named input artifacts
+
+In the selected input/iteration folder, read `requirements.md` and the following named artifacts when they exist. Substitute the selected iteration and artifact version in each filename pattern; respect explicitly supplied versions and record the exact files used. These are the project Markdown names; also accept a supplied equivalent format. Missing optional supporting artifacts do not prevent a useful draft or review under the rules above.
+
+- `A05_requirements-review-outputs_{iteration_id}_v{artifact_version}.md`
+- `A04_acceptance-criteria-outputs_{iteration_id}_v{artifact_version}.md`
+- `E09_human-decisions_{iteration_id}_v{artifact_version}.md`
+- `A15_test-planning-outputs_{iteration_id}_v{artifact_version}.md`
+- `A06_feasibility-assessment-outputs_{iteration_id}_v{artifact_version}.md`
+- `A09_system-component-design-outputs_{iteration_id}_v{artifact_version}.md`
+- `E06_test-and-defect-baselines_{iteration_id}_v{artifact_version}.md`
+- `E01_business-context_{iteration_id}_v{artifact_version}.md`
+
+For revisions, also read the supplied prior `A16_test-case-creation-outputs_{iteration_id}_v{artifact_version}.md` and, when present, `A17_test-coverage-review-outputs_{iteration_id}_v{artifact_version}.md`.
+
 ## Design the cases
 
 1. Identify observable behavior, applicable constraints and the conditions that change an outcome. Cover normal flows, meaningful negative cases and boundaries. Include roles, states, transitions or integrations when relevant to the supplied feature; avoid an unrelated test-category checklist.
@@ -41,6 +56,8 @@ Include a short header with the feature, A16 version, source filenames/versions 
 This is a human-readable A16 document profile. If the user requests machine-readable output, use their agreed schema and check compatibility before claiming it.
 
 ## Revisions and handoff
+
+Preserve all source/input files and prior output versions. Save each revision as a new file with an incremented artifact version in its filename and document header; never overwrite an existing source or prior version.
 
 Preserve IDs for the same logical cases. Assign new IDs to new cases; record removed or superseded cases without reusing their IDs. Include a short response for each review finding: changed, retained with explanation, or blocked pending clarification. Cite the affected test IDs. Do not mark review findings independently verified; the reviewer does that.
 

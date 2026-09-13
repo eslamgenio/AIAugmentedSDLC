@@ -15,6 +15,18 @@ Independently assess whether the supplied cases adequately test the specified fe
 - Preserve source IDs. If absent, assign local labels and map them to original source text. Do not add requirements silently.
 - A creator's coverage claims or previous READY decision are evidence to inspect, not conclusions to adopt. Use the current candidate; never apply a prior review to a changed document without rechecking it.
 
+### Named input artifacts
+
+In the selected input/iteration folder, read `requirements.md` and the following named artifacts when they exist. Substitute the selected iteration and artifact version in each filename pattern; respect explicitly supplied versions and record the exact files used. These are the project Markdown names; also accept a supplied equivalent format. Missing optional supporting artifacts do not prevent a useful draft or review under the rules above.
+
+- `A16_test-case-creation-outputs_{iteration_id}_v{artifact_version}.md`
+- `A05_requirements-review-outputs_{iteration_id}_v{artifact_version}.md`
+- `A04_acceptance-criteria-outputs_{iteration_id}_v{artifact_version}.md`
+- `A06_feasibility-assessment-outputs_{iteration_id}_v{artifact_version}.md`
+- `E06_test-and-defect-baselines_{iteration_id}_v{artifact_version}.md`
+
+For re-review, also read the prior `A17_test-coverage-review-outputs_{iteration_id}_v{artifact_version}.md` when present, alongside the revised A16 candidate and its creator responses.
+
 ## Review the content
 
 1. For each requirement/criterion, identify the behaviors and meaningful scenarios that need testing. Compare these with actual case steps, data and expected results. Distinguish full coverage, partial coverage, no coverage and behavior blocked by ambiguous requirements.
@@ -45,6 +57,8 @@ Choose one recommendation:
 READY is a test-design recommendation, not human approval or evidence that application tests passed. This is a human-readable A17 document profile. If machine-readable output is requested, use the agreed schema and check compatibility before claiming it.
 
 ## Re-review and handoff
+
+Preserve all source/input files and prior output versions. Save each revision as a new file with an incremented artifact version in its filename and document header; never overwrite an existing source or prior version.
 
 When a revised candidate is supplied, read the prior findings and creator responses. Check the actual changed cases, verify every previous finding, and check for regressions introduced by the changes. Preserve finding IDs; mark them resolved only when evidence supports closure. Retain unresolved IDs and use new IDs for newly discovered issues.
 
