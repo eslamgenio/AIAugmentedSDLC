@@ -16,7 +16,9 @@ This project builds reusable LLM-agent skills for an end-to-end software develop
 - Keep reusable skills self-contained under `.agents/skills/`.
 - Preserve existing test and finding IDs during revisions; increment artifact versions when content changes.
 - Flag unclear requirements instead of inventing expected behavior. Distinguish test design, review recommendations, test execution and human approval.
-- Store all SDLC input and output artifacts under `artifacts/`, including requirements, supporting inputs, generated A16/A17 documents and revisions, unless the user explicitly requests another location.
+- Store all SDLC input and output artifacts in a separate folder per iteration, such as `artifacts/ITER-001/` and `artifacts/ITER-002/`, unless the user explicitly requests another location.
+- Keep each iteration's requirements, supporting inputs, generated A16/A17 documents and revisions together in its folder. Match artifact iteration IDs and filenames to that folder.
+- Save corrections as new artifact versions within the same iteration folder. Use a new iteration folder for the next iteration and preserve prior iterations.
 - Keep temporary files and local dependencies separate from deliverable artifacts and out of Git.
 
 ## Verify and deliver
