@@ -26,7 +26,7 @@ Independently assess whether the supplied cases adequately test the specified fe
 
 ## Output: A17 — Test Coverage Review Outputs
 
-Use the user's requested format and location. Otherwise write one readable Markdown document in the project `outputs/` folder, named `A17_test-coverage-review-outputs_ITER-001_v1.0.md` for a first standalone review. Reuse the candidate's iteration convention, increment review versions, and preserve previous reviews. If file writing is unavailable, return the same content in the conversation.
+Use the user's requested format and location. Otherwise write one readable Markdown document in the project `artifacts/` folder, named `A17_test-coverage-review-outputs_ITER-001_v1.0.md` for a first standalone review. Reuse the candidate's iteration convention, increment review versions, and preserve previous reviews. If file writing is unavailable, return the same content in the conversation.
 
 Start with the feature, A17 version, exact candidate reference, requirements sources, scope and overall recommendation. Use these stable sections:
 

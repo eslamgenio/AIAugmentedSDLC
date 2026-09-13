@@ -1,8 +1,8 @@
-# Example requirements: IoT device connection monitoring
+# Requirements: IoT device connection monitoring
 
 **Feature ID:** DEVICE-CONNECTION
 **Version:** 1.0
-**Status:** Synthetic example for testing the test-case creation and coverage-review skills. No real product approval is implied.
+**Status:** Draft; stakeholder approval pending.
 
 ## Goal
 
@@ -60,4 +60,4 @@ Out of scope: device registration, unknown devices, malformed or duplicate event
 
 ## Input completeness
 
-There are no intentionally unresolved behavior questions within this example's scope. If you identify a conflict or a missing rule needed for an expected result, record a question rather than inventing a rule. Do not treat an explicitly excluded feature as a mandatory coverage gap.
+There are no known unresolved behavior questions within the stated scope. If you identify a conflict or a missing rule needed for an expected result, record a question rather than inventing a rule. Do not treat an explicitly excluded feature as a mandatory coverage gap.

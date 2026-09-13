@@ -14,9 +14,9 @@ The catalog and roadmap describe the wider proposed framework. Two reusable proj
 Example requests:
 
 ```text
-Use $create-test-cases with requirements.md.
+Use $create-test-cases with artifacts/requirements.md.
 
-Use $review-test-coverage with requirements.md and [A16 file].
+Use $review-test-coverage with artifacts/requirements.md and [A16 file].
 
 Use $create-test-cases to revise [A16 file] using [A17 file].
 ```
@@ -64,7 +64,7 @@ IDs connect the tables: **H** identifies an input handoff, **A** identifies a sk
 
 **Consistent artifact names.** A16 is the **Test Case Creation Outputs** bundle. Its first child, **A16-01**, is **Requirement-linked test cases and scenarios**. Its filename pattern is `A16-01_requirement-linked-test-cases-and-scenarios_{iteration_id}_v{artifact_version}.json`, for example `A16-01_requirement-linked-test-cases-and-scenarios_ITER-001_v1.0.json`. Keep IDs and canonical names stable, increment the artifact version when content changes, and never renumber or reuse an ID. Track the payload's schema version separately.
 
-The JSON file is an exchange record or manifest: it can contain the deliverable or link to native code, documents and other files using an artifact URI and checksum. Child deliverables may be embedded in their parent bundle or stored separately. The parent manifest lists their IDs and versions, and consumers reference exact upstream versions. The two skills use the same A16/A17 identities in Markdown documents, with a `.md` extension. JSON exchange manifests remain a proposed convention. Generated documents are saved under ignored `outputs/` by default.
+The JSON file is an exchange record or manifest: it can contain the deliverable or link to native code, documents and other files using an artifact URI and checksum. Child deliverables may be embedded in their parent bundle or stored separately. The parent manifest lists their IDs and versions, and consumers reference exact upstream versions. The two skills use the same A16/A17 identities in Markdown documents, with a `.md` extension. JSON exchange manifests remain a proposed convention. Generated documents are saved under `artifacts/` by default.
 
 ## Lifecycle diagram
 

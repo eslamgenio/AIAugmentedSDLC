@@ -28,7 +28,7 @@ Before delivery, check that IDs are unique, references resolve, steps are execut
 
 ## Output: A16 — Test Case Creation Outputs
 
-Use the user's requested format and location. Otherwise write one readable Markdown document in the project `outputs/` folder, named `A16_test-case-creation-outputs_ITER-001_v1.0.md` for a first standalone draft. Reuse supplied iteration/version conventions; increment the version for revisions and avoid replacing unrelated existing work. If file writing is unavailable, return the same content in the conversation.
+Use the user's requested format and location. Otherwise write one readable Markdown document in the project `artifacts/` folder, named `A16_test-case-creation-outputs_ITER-001_v1.0.md` for a first standalone draft. Reuse supplied iteration/version conventions; increment the version for revisions and avoid replacing unrelated existing work. If file writing is unavailable, return the same content in the conversation.
 
 Include a short header with the feature, A16 version, source filenames/versions or source-text mapping, scope and draft/review status. Then use these stable sections:
 

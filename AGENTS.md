@@ -16,7 +16,8 @@ This project builds reusable LLM-agent skills for an end-to-end software develop
 - Keep reusable skills self-contained under `.agents/skills/`.
 - Preserve existing test and finding IDs during revisions; increment artifact versions when content changes.
 - Flag unclear requirements instead of inventing expected behavior. Distinguish test design, review recommendations, test execution and human approval.
-- Save generated working outputs under `outputs/` unless the user specifies another location. Keep temporary files and dependencies out of Git.
+- Store all SDLC input and output artifacts under `artifacts/`, including requirements, supporting inputs, generated A16/A17 documents and revisions, unless the user explicitly requests another location.
+- Keep temporary files and local dependencies separate from deliverable artifacts and out of Git.
 
 ## Verify and deliver
 
