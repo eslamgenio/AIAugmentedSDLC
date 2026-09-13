@@ -2,7 +2,11 @@
 
 A proposed approach to using AI throughout the software development lifecycle. The main deliverable is an editable workbook describing **45 proposed skills** and their **48 activity or decision-gate associations**.
 
-The catalog and roadmap are proposals. No actual AI skills have been implemented or installed in this project. Human owners retain test-exit and release decisions.
+The catalog and roadmap describe the wider proposed framework. The first two skills now have callable pilot adapters; they are not installed Codex skill packages. Human owners retain test-exit and release decisions.
+
+## First connected pilot
+
+The [test design pilot specification](docs/pilot/SPECIFICATION.md) defines a connected workflow: create test cases, review coverage, apply bounded corrections and request human approval. Local artifact storage, structural/semantic handoff validators, the [shipping correctness evaluator](docs/pilot/EVALUATION.md), and the [creator-to-reviewer adapters](docs/pilot/AGENT-HANDOFF.md) are implemented. The adapters can make two real model calls, pass the saved A16 to the reviewer, validate A17 and stop before human approval. See [setup and usage](docs/pilot/IMPLEMENTATION.md) and the [pilot file guide](docs/pilot/README.md). The durable controller for corrections, recovery and approval remains to be implemented.
 
 ## Read the workbook
 
@@ -18,7 +22,7 @@ Download [SDLC_Proposed_Skills_Catalog.xlsx](SDLC_Proposed_Skills_Catalog.xlsx) 
 
 Use the table filters in Skills Catalog, Activity Mapping and Implementation Roadmap to focus on relevant entries. Each skill appears once in the catalog and once in the roadmap; the mapping sheet shows its use across activities and gates.
 
-Artifact Handoff Mapping defines a proposed flow of deliverables between skills. It includes external evidence and human decisions, with conditional paths for defects, rejected releases and the next iteration. These are design contracts; executable schemas, connectors and workflow orchestration have not been implemented.
+Artifact Handoff Mapping defines a proposed flow of deliverables between skills. It includes external evidence and human decisions, with conditional paths for defects, rejected releases and the next iteration. The pilot adds JSON schema profiles for its input package, A16, A17 and run record. The remaining contracts, connectors and workflow orchestration are still design work.
 
 ### How to use Artifact Handoff Mapping
 
@@ -41,7 +45,7 @@ IDs connect the tables: **H** identifies an input handoff, **A** identifies a sk
 
 **Consistent artifact names.** A16 is the **Test Case Creation Outputs** bundle. Its first child, **A16-01**, is **Requirement-linked test cases and scenarios**. Its filename pattern is `A16-01_requirement-linked-test-cases-and-scenarios_{iteration_id}_v{artifact_version}.json`, for example `A16-01_requirement-linked-test-cases-and-scenarios_ITER-001_v1.0.json`. Keep IDs and canonical names stable, increment the artifact version when content changes, and never renumber or reuse an ID. Track the payload's schema version separately.
 
-The JSON file is an exchange record or manifest: it can contain the deliverable or link to native code, documents and other files using an artifact URI and checksum. Child deliverables may be embedded in their parent bundle or stored separately. The parent manifest lists their IDs and versions, and consumers reference exact upstream versions. These are proposed naming conventions; the files and skills have not been generated or implemented.
+The JSON file is an exchange record or manifest: it can contain the deliverable or link to native code, documents and other files using an artifact URI and checksum. Child deliverables may be embedded in their parent bundle or stored separately. The parent manifest lists their IDs and versions, and consumers reference exact upstream versions. The pilot implements these conventions for A16 and A17; the remaining artifact implementations are still proposed. Checked-in examples are synthetic; generated model outputs are saved separately under ignored `outputs/`.
 
 ## Lifecycle diagram
 
