@@ -14,12 +14,14 @@ The catalog and roadmap describe the wider proposed framework. Two reusable proj
 Example requests:
 
 ```text
-Use $create-test-cases with artifacts/ITER-001/requirements.md.
+Use $create-test-cases with artifacts/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md.
 
-Use $review-test-coverage with artifacts/ITER-001/requirements.md and [A16 file].
+Use $review-test-coverage with artifacts/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md and [A16 file].
 
 Use $create-test-cases to revise [A16 file] using [A17 file].
 ```
+
+The sample A05 v1.1 embeds the complete requirements baseline. Use the v1.1 supporting inputs in the same iteration; a separate requirements file is unnecessary. Both skills also accept requirements supplied under any other filename or as text. Earlier sample versions remain available for historical reference.
 
 The packages live in `.agents/skills/` for this project. If the current session has not picked them up, explicitly ask to read and use the linked `SKILL.md` file. Each package is self-contained and can be copied to another project's `.agents/skills/` folder.
 

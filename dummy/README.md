@@ -15,6 +15,16 @@ The feature monitors an IoT device, changes it to OFFLINE after three misses and
 
 The [native assets guide](ITER-001/native/README.md) explains the source snapshots, local runner, recorded results and package hashes. Existing requirements/supporting inputs retain their earlier snapshot statements; later artifacts add engineering evidence without pretending it existed at the earlier stage. E09 remains PENDING.
 
+## Self-contained test-creation inputs
+
+Use **A04, A05, A06, A09, A15, E01, E06 and E09 at v1.1** for a fresh creation test. A05-02 contains all four requirements and thirteen acceptance criteria, including the context and exclusions. These eight files have no dependency on a separately named requirements document. Keep the creator skill and A16 template alongside them.
+
+```text
+Use $create-test-cases with dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md.
+```
+
+Earlier v1.0 inputs are preserved. The prepared A16/A17 v1.0 snapshots still record their historical sources; the baseline behavior and IDs are unchanged, so identify A05 v1.1 explicitly when using it for a new review. A05's artifact version changed to 1.1 while its baseline behavior version remains 1.0.
+
 ## Test a skill
 
 1. Select the skill and its output in the index below. Read the catalog's **Skill Artifact Flow** and **Artifact Handoff Mapping** for its inputs and conditional paths.
@@ -27,36 +37,36 @@ The pack supplies useful drafting, failure, correction and blocked-gate cases. I
 Example prompts:
 
 ```text
-Use $review-test-coverage with dummy/ITER-001/requirements.md and dummy/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md. Save the review under dummy/runs/review-test-coverage/ITER-001/. Do not read the prepared A17.
+Use $review-test-coverage with dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md and dummy/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md. Save the review under dummy/runs/review-test-coverage/ITER-001/. Do not read the prepared A17.
 
 Use $create-test-cases to revise dummy/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md using dummy/ITER-001/A17_test-coverage-review-outputs_ITER-001_v1.0.md. Save v1.1 under dummy/runs/create-test-cases/ITER-001/.
 
-Read the implemented triage-defects skill and use the A29, E06 and requirements files in dummy/ITER-001/. Save the defect report under dummy/runs/triage-defects/ITER-001/. Do not read the prepared A34.
+Read the implemented triage-defects skill and use the A29, E06 and A05 baseline files in dummy/ITER-001/. Save the defect report under dummy/runs/triage-defects/ITER-001/. Do not read the prepared A34.
 ```
 
 The third prompt is for after that skill is implemented; creating these files does not implement additional skills.
 
 ## Artifact index
 
-All listed files are in ITER-001 and version 1.0. External E artifacts represent supplied records rather than skill outputs.
+All listed files are in ITER-001. The eight creator inputs use version 1.1; the other prepared artifacts remain at version 1.0. External E artifacts represent supplied records rather than skill outputs.
 
 | ID | Skill / owner | Artifact |
 | --- | --- | --- |
 | A01 | elicit-requirements | [Requirements Elicitation Outputs](ITER-001/A01_requirements-elicitation-outputs_ITER-001_v1.0.md) |
 | A02 | define-scope | [Scope Definition Outputs](ITER-001/A02_scope-definition-outputs_ITER-001_v1.0.md) |
 | A03 | analyze-requirements | [Requirements Analysis Outputs](ITER-001/A03_requirements-analysis-outputs_ITER-001_v1.0.md) |
-| A04 | define-acceptance-criteria | [Acceptance Criteria Outputs](ITER-001/A04_acceptance-criteria-outputs_ITER-001_v1.0.md) |
-| A05 | review-requirements | [Requirements Review Outputs](ITER-001/A05_requirements-review-outputs_ITER-001_v1.0.md) |
-| A06 | assess-feasibility | [Feasibility Assessment Outputs](ITER-001/A06_feasibility-assessment-outputs_ITER-001_v1.0.md) |
+| A04 | define-acceptance-criteria | [Acceptance Criteria Outputs](ITER-001/A04_acceptance-criteria-outputs_ITER-001_v1.1.md) |
+| A05 | review-requirements | [Requirements Review Outputs](ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md) |
+| A06 | assess-feasibility | [Feasibility Assessment Outputs](ITER-001/A06_feasibility-assessment-outputs_ITER-001_v1.1.md) |
 | A07 | design-solution-architecture | [Solution Architecture Outputs](ITER-001/A07_solution-architecture-outputs_ITER-001_v1.0.md) |
 | A08 | design-user-experience | [User Experience Design Outputs](ITER-001/A08_user-experience-design-outputs_ITER-001_v1.0.md) |
-| A09 | design-system-components | [System Component Design Outputs](ITER-001/A09_system-component-design-outputs_ITER-001_v1.0.md) |
+| A09 | design-system-components | [System Component Design Outputs](ITER-001/A09_system-component-design-outputs_ITER-001_v1.1.md) |
 | A10 | review-solution-design | [Solution Design Review Outputs](ITER-001/A10_solution-design-review-outputs_ITER-001_v1.0.md) |
 | A11 | decompose-work | [Work Breakdown Outputs](ITER-001/A11_work-breakdown-outputs_ITER-001_v1.0.md) |
 | A12 | estimate-delivery | [Delivery Estimation Outputs](ITER-001/A12_delivery-estimation-outputs_ITER-001_v1.0.md) |
 | A13 | map-dependencies | [Dependency Mapping Outputs](ITER-001/A13_dependency-mapping-outputs_ITER-001_v1.0.md) |
 | A14 | plan-iterations | [Iteration Planning Outputs](ITER-001/A14_iteration-planning-outputs_ITER-001_v1.0.md) |
-| A15 | plan-testing | [Test Planning Outputs](ITER-001/A15_test-planning-outputs_ITER-001_v1.0.md) |
+| A15 | plan-testing | [Test Planning Outputs](ITER-001/A15_test-planning-outputs_ITER-001_v1.1.md) |
 | A16 | create-test-cases | [Test Case Creation Outputs](ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md) |
 | A17 | review-test-coverage | [Test Coverage Review Outputs](ITER-001/A17_test-coverage-review-outputs_ITER-001_v1.0.md) |
 | A18 | prepare-test-resources | [Test Resources Outputs](ITER-001/A18_test-resources-outputs_ITER-001_v1.0.md) |
@@ -87,15 +97,15 @@ All listed files are in ITER-001 and version 1.0. External E artifacts represent
 | A43 | monitor-and-support | [Monitoring and Support Outputs](ITER-001/A43_monitoring-and-support-outputs_ITER-001_v1.0.md) |
 | A44 | analyze-product-feedback | [Product Feedback Outputs](ITER-001/A44_product-feedback-outputs_ITER-001_v1.0.md) |
 | A45 | resolve-release-blockers | [Release Blocker Resolution Outputs](ITER-001/A45_release-blocker-resolution-outputs_ITER-001_v1.0.md) |
-| E01 | Business and product owners | [Business Context](ITER-001/E01_business-context_ITER-001_v1.0.md) |
+| E01 | Business and product owners | [Business Context](ITER-001/E01_business-context_ITER-001_v1.1.md) |
 | E02 | Architecture and product owners | [Product and Architecture Context](ITER-001/E02_product-and-architecture-context_ITER-001_v1.0.md) |
 | E03 | Engineering and governance owners | [Engineering and Governance Policies](ITER-001/E03_engineering-and-governance-policies_ITER-001_v1.0.md) |
 | E04 | Delivery lead and team | [Delivery Planning Records](ITER-001/E04_delivery-planning-records_ITER-001_v1.0.md) |
 | E05 | Repository and CI/tool owners | [Repository and CI Evidence](ITER-001/E05_repository-and-ci-evidence_ITER-001_v1.0.md) |
-| E06 | Test lead and defect system | [Test and Defect Baselines](ITER-001/E06_test-and-defect-baselines_ITER-001_v1.0.md) |
+| E06 | Test lead and defect system | [Test and Defect Baselines](ITER-001/E06_test-and-defect-baselines_ITER-001_v1.1.md) |
 | E07 | Environment and access owners | [Environment and Access Records](ITER-001/E07_environment-and-access-records_ITER-001_v1.0.md) |
 | E08 | Observability, support and research systems | [Operational and Product Evidence](ITER-001/E08_operational-and-product-evidence_ITER-001_v1.0.md) |
-| E09 | Named decision owners and reviewers | [Human Decisions](ITER-001/E09_human-decisions_ITER-001_v1.0.md) |
+| E09 | Named decision owners and reviewers | [Human Decisions](ITER-001/E09_human-decisions_ITER-001_v1.1.md) |
 | E10 | Operations and service owners | [Operational Readiness](ITER-001/E10_operational-readiness_ITER-001_v1.0.md) |
 
-[Feature requirements](ITER-001/requirements.md) define the common behavior and scope.
+[A05 v1.1](ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md) embeds the complete common behavior and scope. The original standalone file remains only for older artifact snapshots.

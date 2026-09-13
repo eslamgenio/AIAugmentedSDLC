@@ -41,7 +41,7 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 
 ## A05-02 — Proposed baseline with revision history
 
-[Provide the following: Proposed baseline with revision history. Use the required fields above; link their detailed values here instead of duplicating them.]
+Include the complete requirements baseline here (goal, terminology, initial state, requirement IDs and behavior, acceptance criteria, scope and exclusions), or reference an accessible versioned baseline supplied for the task. A separate file with a particular name is not required. Preserve the baseline behavior version separately from this artifact version and record any changes.
 
 | Deliverable item | Content or native file reference | Supporting source / revision | Open issue / limitation |
 | --- | --- | --- | --- |
