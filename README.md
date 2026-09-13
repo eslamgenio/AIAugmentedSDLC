@@ -14,14 +14,11 @@ The catalog and roadmap describe the wider proposed framework. Two reusable proj
 Example requests:
 
 ```text
-Use $create-test-cases to create test cases from requirements.md.
-Save the A16 document under outputs/login-tests/.
+Use $create-test-cases with requirements.md.
 
-Use $review-test-coverage to review that A16 against requirements.md.
-Save the A17 document in the same folder.
+Use $review-test-coverage with requirements.md and [A16 file].
 
-Use $create-test-cases to revise that A16 using the A17 findings.
-Preserve existing test IDs and save a new version.
+Use $create-test-cases to revise [A16 file] using [A17 file].
 ```
 
 The packages live in `.agents/skills/` for this project. If the current session has not picked them up, explicitly ask to read and use the linked `SKILL.md` file. Each package is self-contained and can be copied to another project's `.agents/skills/` folder.
