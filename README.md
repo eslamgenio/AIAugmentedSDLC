@@ -11,6 +11,8 @@ The catalog and roadmap describe the wider proposed framework. Two reusable proj
 | [create-test-cases](.agents/skills/create-test-cases/SKILL.md) | Requirements, acceptance criteria and relevant context; prior cases and feedback for revisions | **A16:** test cases, setup/data summary, questions and automation candidates |
 | [review-test-coverage](.agents/skills/review-test-coverage/SKILL.md) | The same requirements and candidate cases; prior findings for re-review | **A17:** coverage matrix, gaps, duplicates and actionable findings |
 
+User guides: [Create test cases](.agents/skills/create-test-cases/README.md) · [Review test coverage](.agents/skills/review-test-coverage/README.md). Each guide explains inputs, prompts, outputs, statuses and revision handling.
+
 Example requests:
 
 ```text
