@@ -1,0 +1,227 @@
+{
+  "elicit-requirements": {
+    "description": "Would turn stakeholder interviews and existing process evidence into structured needs, clarifying user problems, desired outcomes and unanswered questions.",
+    "inputs": ["Stakeholder list and interview notes", "Current workflows and user feedback", "Business problem brief and known constraints"],
+    "outputs": ["Stakeholder needs register with source links", "Draft requirements and user scenarios", "Open questions and assumptions log"]
+  },
+  "define-scope": {
+    "description": "Would establish the delivery boundary and measurable business goals, distinguishing included capabilities, exclusions and assumptions for stakeholder agreement.",
+    "inputs": ["Stakeholder needs and business case", "Budget, schedule and policy constraints", "Existing product capabilities and boundaries"],
+    "outputs": ["Scope statement with inclusions and exclusions", "Business goals and success measures", "Constraints, assumptions and agreement checklist"]
+  },
+  "analyze-requirements": {
+    "description": "Would detect ambiguity, duplication and conflicts in requirements, then propose priorities using business value, risk, dependencies and delivery constraints.",
+    "inputs": ["Draft requirements and agreed scope", "Prioritization criteria and stakeholder value", "Known risks, dependencies and constraints"],
+    "outputs": ["Analyzed and prioritized requirements backlog", "Conflict and clarification register", "Priority rationale and dependency links"]
+  },
+  "define-acceptance-criteria": {
+    "description": "Would translate requirements into observable pass and fail conditions, including normal behavior, boundaries and error cases that product and test teams can review.",
+    "inputs": ["Prioritized requirements and user stories", "Business rules and user scenarios", "Quality targets and interface constraints"],
+    "outputs": ["Requirement-linked acceptance criteria", "Given/When/Then scenarios where useful", "Unresolved examples and boundary questions"]
+  },
+  "review-requirements": {
+    "description": "Would assemble a requirements review, check completeness and testability, and capture stakeholder comments and agreement evidence without granting approval itself.",
+    "inputs": ["Requirements, scope and acceptance criteria", "Review checklist and stakeholder feedback", "Decision owners and approval process"],
+    "outputs": ["Requirements review findings and actions", "Proposed baseline with revision history", "Agreement record with pending decisions"]
+  },
+  "assess-feasibility": {
+    "description": "Would compare solution options against technical, operational, cost and schedule constraints, identifying uncertain assumptions that need experiments or specialist review.",
+    "inputs": ["Requirements and quality targets", "Technology landscape and team capabilities", "Cost, schedule and operational constraints"],
+    "outputs": ["Feasibility assessment and option comparison", "Risk register with mitigations and owners", "Prototype or investigation recommendations"]
+  },
+  "design-solution-architecture": {
+    "description": "Would propose system boundaries, major components and deployment structure, explaining how the architecture meets requirements and where tradeoffs remain.",
+    "inputs": ["Reviewed requirements and feasibility findings", "Quality attributes and platform constraints", "Existing architecture and integration context"],
+    "outputs": ["Architecture diagrams and component responsibilities", "Architecture decision records", "Deployment view and requirement traceability"]
+  },
+  "design-user-experience": {
+    "description": "Would draft user journeys, interaction flows and interface concepts that address user goals, accessibility needs and expected error or recovery states.",
+    "inputs": ["User profiles, research and key scenarios", "Requirements and acceptance criteria", "Design system and accessibility requirements"],
+    "outputs": ["User journeys and interaction flows", "Wireframes or prototype specifications", "Usability review questions and UI state definitions"]
+  },
+  "design-system-components": {
+    "description": "Would specify APIs, data structures and integration behavior in enough detail for implementation and testing, including validation, errors, compatibility and data ownership.",
+    "inputs": ["Solution architecture and functional requirements", "External interface contracts and data rules", "Security, privacy and performance constraints"],
+    "outputs": ["API and integration contract drafts", "Data model and migration considerations", "Component behavior and failure-handling specifications"]
+  },
+  "review-solution-design": {
+    "description": "Would review the proposed design for requirement coverage, security, privacy, operability and testability, recording evidence and unresolved concerns for accountable reviewers.",
+    "inputs": ["Architecture, UI and component designs", "Requirements and applicable security standards", "Threat scenarios and design review checklist"],
+    "outputs": ["Design review findings with severity and rationale", "Threat assessment and mitigation actions", "Design decision log and unresolved risks"]
+  },
+  "decompose-work": {
+    "description": "Would split the agreed scope into deliverable backlog items and implementation tasks, keeping acceptance criteria, test work and design dependencies visible.",
+    "inputs": ["Prioritized requirements and acceptance criteria", "Reviewed architecture and component designs", "Team backlog conventions and delivery constraints"],
+    "outputs": ["Epics, stories and actionable task breakdown", "Requirement-to-work-item links", "Dependencies and completion criteria per item"]
+  },
+  "estimate-delivery": {
+    "description": "Would propose effort ranges and compare planned work with available team capacity, exposing assumptions and uncertainty for the team to validate.",
+    "inputs": ["Backlog items and task breakdown", "Historical delivery data or expert estimates", "Team availability, skills and working calendar"],
+    "outputs": ["Effort estimates with ranges and rationale", "Capacity assessment and workload gaps", "Estimation assumptions and team review questions"]
+  },
+  "map-dependencies": {
+    "description": "Would map technical, delivery and external dependencies, identify sequencing constraints and highlight unresolved commitments that could delay planned work.",
+    "inputs": ["Backlog and solution component relationships", "External team commitments and supplier dates", "Environment, approval and integration prerequisites"],
+    "outputs": ["Dependency register with owners and needed dates", "Dependency diagram and sequencing constraints", "Blocker list and coordination actions"]
+  },
+  "plan-iterations": {
+    "description": "Would organize prioritized work into feasible iterations and milestones using capacity, dependencies and release objectives, with explicit assumptions for team review.",
+    "inputs": ["Prioritized backlog and effort estimates", "Capacity plan and dependency register", "Milestone targets and delivery calendar"],
+    "outputs": ["Proposed iteration plan and milestone schedule", "Capacity allocation and dependency sequencing", "Planning risks and unresolved commitments"]
+  },
+  "plan-testing": {
+    "description": "Would define a risk-based testing approach, coverage goals, environments and entry and exit criteria, allowing test preparation to begin during requirements work.",
+    "inputs": ["Requirements, acceptance criteria and architecture", "Product risks and delivery milestones", "Test policies, resources and environment constraints"],
+    "outputs": ["Test strategy and scoped test plan", "Test levels, responsibilities and schedule", "Entry, exit and suspension criteria"]
+  },
+  "create-test-cases": {
+    "description": "Would derive reviewable test cases from requirements and risks, including prerequisites, data, execution steps and expected results for positive, negative and boundary behavior.",
+    "inputs": ["Requirements and acceptance criteria", "Test strategy, risks and design specifications", "Test case template and domain rules"],
+    "outputs": ["Requirement-linked test cases and scenarios", "Preconditions, data needs and expected results", "Coverage questions and automation candidates"]
+  },
+  "review-test-coverage": {
+    "description": "Would review test quality and traceability, identify missing or duplicate scenarios, and show whether requirements and priority risks have meaningful test coverage.",
+    "inputs": ["Test cases and requirement identifiers", "Acceptance criteria and risk register", "Coverage rules and review checklist"],
+    "outputs": ["Requirements-to-tests traceability matrix", "Coverage gap and duplicate case report", "Test review findings and revision actions"]
+  },
+  "prepare-test-resources": {
+    "description": "Would prepare or specify representative test data and a reproducible test environment, checking access, configuration and cleanup needs before execution.",
+    "inputs": ["Test cases and data requirements", "Environment topology and access authorization", "Configuration baselines and data handling rules"],
+    "outputs": ["Synthetic or masked test datasets", "Environment setup scripts or configuration checklist", "Resource readiness record and cleanup procedure"]
+  },
+  "build-test-automation": {
+    "description": "Would turn selected test cases into maintainable automated checks, integrating fixtures, assertions and reporting with the agreed test framework and delivery pipeline.",
+    "inputs": ["Reviewed automation candidate test cases", "Application interfaces and test framework", "Test data, environments and pipeline conventions"],
+    "outputs": ["Automated test code and reusable fixtures", "Execution configuration and reporting integration", "Setup guide and automation validation results"]
+  },
+  "implement-feature": {
+    "description": "Would implement a scoped feature and its unit tests from approved requirements and design, documenting assumptions and behavior that still needs review.",
+    "inputs": ["Assigned work item and acceptance criteria", "Reviewed design and existing source code", "Coding standards and development setup"],
+    "outputs": ["Feature code and associated unit tests", "Change summary and implementation notes", "Known limitations and review questions"]
+  },
+  "validate-code": {
+    "description": "Would run unit tests and agreed static checks against a specific code revision, distinguishing code defects from tooling or environment failures.",
+    "inputs": ["Code revision and unit test suite", "Lint, type-check and static analysis configuration", "Build dependencies and validation thresholds"],
+    "outputs": ["Unit test results and coverage report", "Static analysis findings with affected locations", "Validation summary and remediation actions"]
+  },
+  "review-code": {
+    "description": "Would examine a proposed change for correctness, maintainability, security and test coverage, then help resolve review feedback with traceable revisions.",
+    "inputs": ["Code diff and linked requirement or defect", "Test results and code review standards", "Reviewer feedback and relevant design decisions"],
+    "outputs": ["Prioritized code review findings", "Suggested corrections or reviewed revisions", "Feedback resolution log and remaining concerns"]
+  },
+  "integrate-changes": {
+    "description": "Would help merge changes after recorded approvals and required checks, checking branch state and surfacing conflicts that require developer judgment.",
+    "inputs": ["Approved change request and source/target branches", "Required check results for the change revision", "Merge policy and repository write authorization"],
+    "outputs": ["Merge or integration result with commit reference", "Conflict resolutions or unresolved conflict report", "Integration validation and audit record"]
+  },
+  "build-application": {
+    "description": "Would build and package a defined code revision using the agreed toolchain, capturing artifact identity and build evidence for later deployment and traceability.",
+    "inputs": ["Integrated code revision and version identifier", "Build scripts, dependency locks and toolchain", "Packaging rules and target platform configuration"],
+    "outputs": ["Versioned application package or container image", "Build log and artifact checksums", "Dependency manifest and build provenance"]
+  },
+  "validate-ci-checks": {
+    "description": "Would assess the required continuous integration checks for a specific revision, identify missing or failed jobs and summarize whether pipeline requirements are satisfied.",
+    "inputs": ["Pipeline definition and required check policy", "Pipeline run, code revision and artifact references", "Test, analysis and security scan results"],
+    "outputs": ["CI check status summary with evidence links", "Missing, failed or skipped job analysis", "Remediation or rerun recommendations"]
+  },
+  "deploy-test-build": {
+    "description": "Would deploy a traceable build to the test environment. During defect resolution, it would also coordinate the corrected-code rebuild and redeployment, preserving version and configuration evidence.",
+    "inputs": ["Validated build artifact or corrected source revision", "Build/deploy pipeline and environment configuration", "Test deployment authorization and rollback procedure"],
+    "outputs": ["Rebuild evidence when needed and deployed build ID", "Deployment log and environment version record", "Post-deployment status or recovery actions"]
+  },
+  "execute-smoke-tests": {
+    "description": "Would check critical service paths after test or production deployment. Production checks would use the approved scope, data and permissions appropriate to the live service.",
+    "inputs": ["Environment-specific smoke test suite", "Deployed version, endpoints and configuration", "Approved test accounts, data and execution scope"],
+    "outputs": ["Smoke test results with build and environment IDs", "Evidence for critical path failures", "Escalation or deeper-testing recommendation"]
+  },
+  "execute-integration-tests": {
+    "description": "Would execute tests across component and external-system boundaries, checking contracts, data exchange, error handling and interactions in the integrated environment.",
+    "inputs": ["Integration test suite and interface contracts", "Integrated build and dependent service configuration", "Test datasets, stubs and service access"],
+    "outputs": ["Integration test results with environment details", "Request, response and event evidence", "Defect candidates linked to failing interactions"]
+  },
+  "execute-functional-tests": {
+    "description": "Would execute system and functional scenarios against acceptance criteria, recording actual behavior and evidence for user workflows, business rules and error paths.",
+    "inputs": ["Reviewed system and functional test cases", "Deployed test build and acceptance criteria", "Test data, user roles and execution access"],
+    "outputs": ["Test execution records with actual results", "Requirement-linked evidence and failure details", "Defect candidates and blocked-test reasons"]
+  },
+  "execute-nonfunctional-tests": {
+    "description": "Would execute the relevant performance, security, reliability, accessibility or other quality checks, comparing measured behavior with agreed targets and documenting test limitations.",
+    "inputs": ["Risk-based non-functional test scope and targets", "Representative environment, workloads and tools", "Authorized execution window and monitoring setup"],
+    "outputs": ["Measurements and comparison with quality targets", "Run configuration, observations and limitations", "Quality risks, findings and tuning recommendations"]
+  },
+  "execute-regression-tests": {
+    "description": "Would run the agreed regression suite during test execution and select affected regression checks after defect fixes, recording the selection rationale and any residual coverage risk.",
+    "inputs": ["Regression suite and requirement coverage map", "Change or defect impact analysis", "Target build, environment and test data"],
+    "outputs": ["Selected regression scope and selection rationale", "Regression results with evidence and build ID", "New failures, excluded coverage and residual risks"]
+  },
+  "report-test-progress": {
+    "description": "Would consolidate execution and defect evidence into an accurate progress view, separating passed, failed, blocked and unexecuted tests and highlighting risks to the test plan.",
+    "inputs": ["Execution records and evidence links", "Defect register and planned test scope", "Coverage baseline and reporting period"],
+    "outputs": ["Test progress report with defined status counts", "Coverage, defect and blocker summary", "Forecast risks and recommended next actions"]
+  },
+  "assess-test-readiness": {
+    "description": "Would compare current test evidence with agreed exit criteria and present gaps and residual risks so a human test owner can decide whether testing may exit.",
+    "inputs": ["Agreed test exit criteria", "Latest execution, coverage and defect evidence", "Known risks and documented exception requests"],
+    "outputs": ["Criterion-by-criterion exit assessment", "Unmet criteria and residual risk summary", "Recommendation and evidence for the human gate"]
+  },
+  "triage-defects": {
+    "description": "Would turn failure evidence into reproducible defect reports, identify likely duplicates and propose severity, priority and ownership for the triage team to confirm.",
+    "inputs": ["Failure evidence and reproduction steps", "Build, environment and impacted requirement", "Defect taxonomy and existing defect register"],
+    "outputs": ["Structured defect report drafts", "Duplicate analysis and proposed classification", "Triage notes, owner suggestions and next actions"]
+  },
+  "fix-defects": {
+    "description": "Would investigate a reproduced defect, implement a focused correction and regression protection, and prepare the change for review with evidence that the root cause is addressed.",
+    "inputs": ["Triaged defect and reproduction evidence", "Affected code, logs and system design", "Expected behavior and code review standards"],
+    "outputs": ["Proposed fix and root cause explanation", "Unit or regression tests for the defect", "Validation evidence and change review package"]
+  },
+  "retest-defects": {
+    "description": "Would repeat defect reproduction steps on the corrected build, compare results with expected behavior and recommend closure or reopening with explicit evidence.",
+    "inputs": ["Defect report and original failure evidence", "Corrected build and fix deployment record", "Retest steps, expected results and test data"],
+    "outputs": ["Retest execution result and evidence", "Fix verification linked to defect and build", "Closure or reopening recommendation"]
+  },
+  "support-uat": {
+    "description": "Would prepare and coordinate user acceptance testing with business representatives, capture their observations and support an acceptance decision grounded in agreed business scenarios.",
+    "inputs": ["Business scenarios and acceptance criteria", "UAT build, user accounts and representative data", "Business participants, schedule and acceptance process"],
+    "outputs": ["UAT scenario pack and participant guidance", "User results, feedback and issue log", "Acceptance evidence and pending business decisions"]
+  },
+  "summarize-test-results": {
+    "description": "Would produce a test summary for the release candidate, reconciling planned scope, executed coverage, defects, deviations and residual risks into a reviewable evidence record.",
+    "inputs": ["Test plan and release candidate identifier", "Execution, coverage, defect and UAT records", "Exit assessment and accepted test deviations"],
+    "outputs": ["Release candidate test summary report", "Scope, result and defect reconciliation", "Evidence index and residual quality risks"]
+  },
+  "assess-release-readiness": {
+    "description": "Would evaluate the release candidate against agreed quality, security and operational criteria, identifying blockers and evidence gaps for accountable release reviewers.",
+    "inputs": ["Release readiness criteria and candidate identity", "Test summary, UAT and security review evidence", "Operational readiness, support and dependency checks"],
+    "outputs": ["Evidence-linked release readiness assessment", "Blockers, exceptions and unresolved risks", "Readiness recommendation for human review"]
+  },
+  "plan-release": {
+    "description": "Would draft an executable deployment and rollback plan with prerequisites, responsibilities, validation steps and recovery triggers appropriate to the release and production environment.",
+    "inputs": ["Release scope, artifacts and target environment", "Deployment dependencies and readiness findings", "Change window, owners and recovery requirements"],
+    "outputs": ["Deployment runbook with sequence and checkpoints", "Rollback plan, triggers and recovery validation", "Release checklist and communication plan"]
+  },
+  "prepare-release-decision": {
+    "description": "Would assemble a concise approval package with readiness evidence, deployment risks and open exceptions. It would support the human release approver and record their decision only when supplied.",
+    "inputs": ["Release readiness assessment and test summary", "Deployment/rollback plan and exception requests", "Approval criteria, named approvers and decision process"],
+    "outputs": ["Release decision brief with linked evidence", "Approval record template with pending questions", "Human decision and conditions record, when provided"]
+  },
+  "deploy-release": {
+    "description": "Would carry out the approved production deployment plan within its authorized scope, capturing checkpoints and invoking approved recovery steps when specified conditions are met.",
+    "inputs": ["Recorded human release approval and conditions", "Versioned release artifacts and approved runbook", "Production authorization, configuration and rollback assets"],
+    "outputs": ["Production deployment record and active version", "Checkpoint results and deployment evidence", "Completion, failure or rollback outcome report"]
+  },
+  "monitor-and-support": {
+    "description": "Would analyze operational telemetry and support cases, identify incidents or degrading service behavior, and propose or execute authorized runbook steps with traceable outcomes.",
+    "inputs": ["Production metrics, logs, alerts and service targets", "Support tickets and current deployment context", "Runbooks, escalation rules and action authorization"],
+    "outputs": ["Service health and incident assessment", "Support responses or runbook action records", "Maintenance recommendations and escalation evidence"]
+  },
+  "analyze-product-feedback": {
+    "description": "Would combine user feedback, support themes and product usage evidence into validated problem statements and improvement proposals for the next requirements iteration.",
+    "inputs": ["User feedback, support cases and research notes", "Usage metrics and business success measures", "Current backlog and product strategy"],
+    "outputs": ["Feedback themes linked to supporting evidence", "Improvement proposals and value/risk rationale", "Draft next-iteration requirements and open questions"]
+  },
+  "resolve-release-blockers": {
+    "description": "Would translate a rejected or conditional release decision into owned remediation work, track corrective evidence and prepare the release for reassessment by its human reviewers.",
+    "inputs": ["Human release decision and stated blockers", "Readiness findings, defects and exception conditions", "Responsible owners and remediation constraints"],
+    "outputs": ["Blocker remediation plan with owners and due dates", "Corrective change and verification evidence", "Updated readiness package for reassessment"]
+  }
+}

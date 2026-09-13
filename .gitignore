@@ -1,0 +1,13 @@
+# Generated workbooks, previews, reports and temporary build evidence
+/outputs/
+
+# Local dependency directories and junctions; never commit the bundled runtime
+node_modules/
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Excel temporary and lock files
+~$*.xls*
+*.tmp

@@ -1,0 +1,149 @@
+flowchart LR
+subgraph REQ["01  REQUIREMENTS"]
+direction TB
+R1["Gather stakeholder needs
+Skill: elicit-requirements"] --> R2["Define scope and business goals
+Skill: define-scope"]
+R2 --> R3["Analyze and prioritize requirements
+Skill: analyze-requirements"]
+R3 --> R4["Define acceptance criteria
+Skill: define-acceptance-criteria"]
+R4 --> R5["Review and agree requirements
+Skill: review-requirements"]
+end
+subgraph DES["02  SOLUTION DESIGN"]
+direction TB
+S1["Assess feasibility and risks
+Skill: assess-feasibility"] --> S2["Define solution architecture
+Skill: design-solution-architecture"]
+S2 --> S3["Design UI and user journeys
+Skill: design-user-experience"]
+S3 --> S4["Design APIs, data and integrations
+Skill: design-system-components"]
+S4 --> S5["Review security and design
+Skill: review-solution-design"]
+end
+subgraph PLAN["03  DELIVERY PLANNING"]
+direction TB
+P1["Break down backlog and tasks
+Skill: decompose-work"] --> P2["Estimate effort and capacity
+Skill: estimate-delivery"]
+P2 --> P3["Identify dependencies
+Skill: map-dependencies"]
+P3 --> P4["Plan iterations and milestones
+Skill: plan-iterations"]
+end
+subgraph PREP["04  TEST PREPARATION"]
+direction TB
+T1["Define test strategy and plan
+Skill: plan-testing"] --> T2["Create test cases
+Skill: create-test-cases"]
+T2 --> T3["Review cases and map to requirements
+Skill: review-test-coverage"]
+T3 --> T4["Prepare test data and environments
+Skill: prepare-test-resources"]
+T4 --> T5["Prepare test automation
+Skill: build-test-automation"]
+end
+subgraph DEV["05  DEVELOPMENT"]
+direction TB
+C1["Implement code and unit tests
+Skill: implement-feature"] --> C2["Run unit tests and static analysis
+Skill: validate-code"]
+C2 --> C3["Review code and resolve feedback
+Skill: review-code"]
+C3 --> C4["Merge approved changes
+Skill: integrate-changes"]
+end
+subgraph BUILD["06  BUILD AND INTEGRATION"]
+direction TB
+B1["Build and package application
+Skill: build-application"] --> B2["Run CI checks
+Skill: validate-ci-checks"]
+B2 --> B3["Deploy to test environment
+Skill: deploy-test-build"]
+B3 --> B4["Run smoke tests
+Skill: execute-smoke-tests"]
+end
+subgraph TEST["07  TEST EXECUTION"]
+direction TB
+E1["Run integration tests
+Skill: execute-integration-tests"] --> E2["Run system and functional tests
+Skill: execute-functional-tests"]
+E2 --> E3["Run relevant non-functional tests
+Skill: execute-nonfunctional-tests"]
+E3 --> E4["Run regression tests
+Skill: execute-regression-tests"]
+E4 --> E5["Record results and report progress
+Skill: report-test-progress"]
+end
+G{"Test exit criteria met?
+Skill: assess-test-readiness"}
+subgraph DEFECT["08  DEFECT RESOLUTION"]
+direction TB
+D1["Report and triage defects
+Skill: triage-defects"] --> D2["Fix and review code
+Skill: fix-defects"]
+D2 --> D3["Rebuild and redeploy
+Skill: deploy-test-build"]
+D3 --> D4["Retest fixes
+Skill: retest-defects"]
+D4 --> D5["Run affected regression tests
+Skill: execute-regression-tests"]
+end
+subgraph REL["09  ACCEPTANCE AND RELEASE"]
+direction TB
+A1["Run user acceptance testing
+Skill: support-uat"] --> A2["Prepare test summary report
+Skill: summarize-test-results"]
+A2 --> A3["Assess release readiness
+Skill: assess-release-readiness"]
+A3 --> A4["Prepare deployment and rollback plan
+Skill: plan-release"]
+end
+H{"Human release approval
+Skill: prepare-release-decision"}
+subgraph OPS["10  PRODUCTION AND FEEDBACK"]
+direction TB
+O1["Deploy release to production
+Skill: deploy-release"] --> O2["Run production smoke checks
+Skill: execute-smoke-tests"]
+O2 --> O3["Monitor, support and maintain
+Skill: monitor-and-support"]
+O3 --> O4["Gather feedback and improvements
+Skill: analyze-product-feedback"]
+end
+REQ --> DES --> PLAN --> PREP --> DEV --> BUILD --> TEST --> G
+G -->|Yes| REL --> H
+G -->|No| DEFECT
+DEFECT -->|Retest and update results| TEST
+H -->|Yes| OPS
+H -->|No| X["Resolve release blockers
+Skill: resolve-release-blockers"]
+X -->|Reassess| REL
+REQ -.->|Test preparation starts early| PREP
+OPS -.-> NEXT(["Next iteration: Requirements"])
+classDef req fill:#d0ebff,stroke:#1971c2,color:#1e1e1e;
+classDef des fill:#e5dbff,stroke:#6741d9,color:#1e1e1e;
+classDef plan fill:#d3f9d8,stroke:#2b8a3e,color:#1e1e1e;
+classDef prep fill:#c5f6fa,stroke:#0b7285,color:#1e1e1e;
+classDef dev fill:#fff3bf,stroke:#e67700,color:#1e1e1e;
+classDef build fill:#ffec99,stroke:#e67700,color:#1e1e1e;
+classDef test fill:#d0ebff,stroke:#1864ab,color:#1e1e1e;
+classDef defect fill:#ffe3e3,stroke:#c92a2a,color:#1e1e1e;
+classDef rel fill:#eebefa,stroke:#9c36b5,color:#1e1e1e;
+classDef ops fill:#c3fae8,stroke:#087f5b,color:#1e1e1e;
+classDef gate fill:#fff9db,stroke:#e67700,color:#1e1e1e;
+class R1,R2,R3,R4,R5 req;
+class S1,S2,S3,S4,S5 des;
+class P1,P2,P3,P4 plan;
+class T1,T2,T3,T4,T5 prep;
+class C1,C2,C3,C4 dev;
+class B1,B2,B3,B4 build;
+class E1,E2,E3,E4,E5 test;
+class D1,D2,D3,D4,D5 defect;
+class A1,A2,A3,A4 rel;
+class O1,O2,O3,O4 ops;
+class G,H gate;
+class X rel;
+class NEXT req;
