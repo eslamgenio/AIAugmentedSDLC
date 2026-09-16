@@ -23,24 +23,24 @@ Append `_{iteration_id}_v{artifact_version}.md` to each prefix. Use the same com
 Open the project in Codex. For an independent review, start a fresh task and supply the generated candidate rather than a prepared sample answer. Run from the project root, replacing `[A16 file]` with its path:
 
 ```text
-Use $review-test-coverage with dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md and [A16 file].
+Use $review-test-coverage with AIAugmentation/dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md and [A16 file].
 ```
 
 For a practice run, append:
 
 ```text
-Save the review under dummy/runs/review-test-coverage/ITER-001/.
+Save the review under AIAugmentation/dummy/runs/review-test-coverage/ITER-001/.
 ```
 
 No Python or running application is required. If the skill is not recognized, use:
 
 ```text
-Read and follow .agents/skills/review-test-coverage/SKILL.md with dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md and [A16 file].
+Read and follow .agents/skills/review-test-coverage/SKILL.md with AIAugmentation/dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md and [A16 file].
 ```
 
 ## What you receive
 
-By default, the first review is `artifacts/ITER-001/A17_test-coverage-review-outputs_ITER-001_v1.0.md`, using the candidate's iteration. A requested location takes precedence. Previous files are preserved, and subsequent review revisions receive new versions. A17 versions do not need to equal the input artifact versions.
+By default, the first review is `AIAugmentation/artifacts/ITER-001/A17_test-coverage-review-outputs_ITER-001_v1.0.md`, using the candidate's iteration. A requested location takes precedence. Previous files are preserved, and subsequent review revisions receive new versions. A17 versions do not need to equal the input artifact versions.
 
 | Section | Contents |
 | --- | --- |
@@ -48,7 +48,7 @@ By default, the first review is `artifacts/ITER-001/A17_test-coverage-review-out
 | A17-02 | Coverage gaps and unnecessary duplicate cases |
 | A17-03 | Findings with evidence and requested corrections; verification of prior findings on re-review |
 
-The project uses the [A17 template](../../../templates/A17_test-coverage-review-outputs.md). When copied without project templates, the skill uses its built-in [SKILL.md](SKILL.md) layout.
+The project uses the [A17 template](../../../AIAugmentation/templates/A17_test-coverage-review-outputs.md). When copied without project templates, the skill uses its built-in [SKILL.md](SKILL.md) layout.
 
 ## Understand the recommendation
 

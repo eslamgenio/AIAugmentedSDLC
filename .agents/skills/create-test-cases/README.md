@@ -26,24 +26,24 @@ Append `_{iteration_id}_v{artifact_version}.md` to each prefix. For example, `A0
 Open the project in Codex and start a task. Example prompts use paths relative to the project root:
 
 ```text
-Use $create-test-cases with dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md.
+Use $create-test-cases with AIAugmentation/dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md.
 ```
 
 The skill should discover the supporting inputs without listing them again in your prompt. For an isolated practice run, append:
 
 ```text
-Save the output under dummy/runs/create-test-cases/ITER-001/.
+Save the output under AIAugmentation/dummy/runs/create-test-cases/ITER-001/.
 ```
 
 No Python or application runtime is required. If the skill is not recognized, use:
 
 ```text
-Read and follow .agents/skills/create-test-cases/SKILL.md with dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md.
+Read and follow .agents/skills/create-test-cases/SKILL.md with AIAugmentation/dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md.
 ```
 
 ## What you receive
 
-By default, the first output is `artifacts/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md`, using the selected iteration. A supplied output location takes precedence. Existing files are preserved; revisions receive new versions. Output versions are independent of input versions.
+By default, the first output is `AIAugmentation/artifacts/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md`, using the selected iteration. A supplied output location takes precedence. Existing files are preserved; revisions receive new versions. Output versions are independent of input versions.
 
 | Section | Contents |
 | --- | --- |
@@ -53,7 +53,7 @@ By default, the first output is `artifacts/ITER-001/A16_test-case-creation-outpu
 
 A case marked **READY FOR REVIEW** has defined expectations; **BLOCKED** means a linked question prevents completing its expectations. Neither means a test passed. The number of cases depends on the required behavior, not a fixed target.
 
-The project uses the [A16 template](../../../templates/A16_test-case-creation-outputs.md). When the skill is copied without project templates, it uses the built-in layout in [SKILL.md](SKILL.md).
+The project uses the [A16 template](../../../AIAugmentation/templates/A16_test-case-creation-outputs.md). When the skill is copied without project templates, it uses the built-in layout in [SKILL.md](SKILL.md).
 
 ## Revise and hand off
 

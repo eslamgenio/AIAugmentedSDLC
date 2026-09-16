@@ -8,17 +8,17 @@ The catalog and roadmap describe the wider proposed framework. Two reusable proj
 
 | Skill | Inputs | Deliverable |
 | --- | --- | --- |
-| [create-test-cases](.agents/skills/create-test-cases/SKILL.md) | Requirements, acceptance criteria and relevant context; prior cases and feedback for revisions | **A16:** test cases, setup/data summary, questions and automation candidates |
-| [review-test-coverage](.agents/skills/review-test-coverage/SKILL.md) | The same requirements and candidate cases; prior findings for re-review | **A17:** coverage matrix, gaps, duplicates and actionable findings |
+| [create-test-cases](../.agents/skills/create-test-cases/SKILL.md) | Requirements, acceptance criteria and relevant context; prior cases and feedback for revisions | **A16:** test cases, setup/data summary, questions and automation candidates |
+| [review-test-coverage](../.agents/skills/review-test-coverage/SKILL.md) | The same requirements and candidate cases; prior findings for re-review | **A17:** coverage matrix, gaps, duplicates and actionable findings |
 
-User guides: [Create test cases](.agents/skills/create-test-cases/README.md) · [Review test coverage](.agents/skills/review-test-coverage/README.md). Each guide explains inputs, prompts, outputs, statuses and revision handling.
+User guides: [Create test cases](../.agents/skills/create-test-cases/README.md) · [Review test coverage](../.agents/skills/review-test-coverage/README.md). Each guide explains inputs, prompts, outputs, statuses and revision handling.
 
-Example requests:
+Example requests (run from the repository root):
 
 ```text
-Use $create-test-cases with artifacts/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md.
+Use $create-test-cases with AIAugmentation/artifacts/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md.
 
-Use $review-test-coverage with artifacts/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md and [A16 file].
+Use $review-test-coverage with AIAugmentation/artifacts/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md and [A16 file].
 
 Use $create-test-cases to revise [A16 file] using [A17 file].
 ```
@@ -35,13 +35,13 @@ The documents preserve the catalog's A16/A17 names and child IDs. The reviewer m
 
 The [templates index](templates/README.md) links to a template for every catalog artifact: **45 skill output bundles and 10 external input bundles**, including all **135 child deliverables** as sections. Each includes source references, required content, acceptance checks and revision history.
 
-Skills read the matching template, fill it with sourced content, and save the result under `artifacts/<iteration_id>/` using the canonical basename plus iteration and version. The two implemented skills use the A16 and A17 templates automatically in this project. For example, the A16 template becomes `artifacts/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md`.
+Skills read the matching template, fill it with sourced content, and save the result under `AIAugmentation/artifacts/<iteration_id>/` using the canonical basename plus iteration and version. The two implemented skills use the A16 and A17 templates automatically in this project. For example, the A16 template becomes `AIAugmentation/artifacts/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md`.
 
 The templates use Markdown; the workbook's JSON exchange manifests remain proposed. Native deliverables such as code, datasets and build packages are linked from the document. Empty templates do not represent completed work or approvals.
 
 ## Read the workbook
 
-Download [SDLC_Proposed_Skills_Catalog.xlsx](SDLC_Proposed_Skills_Catalog.xlsx) and open it in Microsoft Excel. Start with **Overview**, then explore the other sheets:
+Download [SDLC_Proposed_Skills_Catalog.xlsx](../SDLC_Proposed_Skills_Catalog.xlsx) and open it in Microsoft Excel. Start with **Overview**, then explore the other sheets:
 
 | Sheet | What it contains | How to use it |
 | --- | --- | --- |
@@ -76,9 +76,9 @@ IDs connect the tables: **H** identifies an input handoff, **A** identifies a sk
 
 **Consistent artifact names.** A16 is the **Test Case Creation Outputs** bundle. Its first child, **A16-01**, is **Requirement-linked test cases and scenarios**. Its filename pattern is `A16-01_requirement-linked-test-cases-and-scenarios_{iteration_id}_v{artifact_version}.json`, for example `A16-01_requirement-linked-test-cases-and-scenarios_ITER-001_v1.0.json`. Keep IDs and canonical names stable, increment the artifact version when content changes, and never renumber or reuse an ID. Track the payload's schema version separately.
 
-The JSON file is an exchange record or manifest: it can contain the deliverable or link to native code, documents and other files using an artifact URI and checksum. Child deliverables may be embedded in their parent bundle or stored separately. The parent manifest lists their IDs and versions, and consumers reference exact upstream versions. The two skills use the same A16/A17 identities in Markdown documents, with a `.md` extension. JSON exchange manifests remain a proposed convention. Generated documents are saved under `artifacts/` by default.
+The JSON file is an exchange record or manifest: it can contain the deliverable or link to native code, documents and other files using an artifact URI and checksum. Child deliverables may be embedded in their parent bundle or stored separately. The parent manifest lists their IDs and versions, and consumers reference exact upstream versions. The two skills use the same A16/A17 identities in Markdown documents, with a `.md` extension. JSON exchange manifests remain a proposed convention. Generated documents are saved under `AIAugmentation/artifacts/` by default.
 
 ## Lifecycle diagram
 
-- [SDLC.png](SDLC.png): the lifecycle diagram for visual reference alongside the workbook.
+- [SDLC.png](../SDLC.png): the lifecycle diagram for visual reference alongside the workbook.
 - [docs/sdlc-source.mmd](docs/sdlc-source.mmd): the Mermaid source for the diagram.

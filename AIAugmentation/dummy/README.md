@@ -20,7 +20,7 @@ The [native assets guide](ITER-001/native/README.md) explains the source snapsho
 Use **A04, A05, A06, A09, A15, E01, E06 and E09 at v1.1** for a fresh creation test. A05-02 contains all four requirements and thirteen acceptance criteria, including the context and exclusions. These eight files have no dependency on a separately named requirements document. Keep the creator skill and A16 template alongside them.
 
 ```text
-Use $create-test-cases with dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md.
+Use $create-test-cases with AIAugmentation/dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md.
 ```
 
 Earlier v1.0 inputs are preserved. The prepared A16/A17 v1.0 snapshots still record their historical sources; the baseline behavior and IDs are unchanged, so identify A05 v1.1 explicitly when using it for a new review. A05's artifact version changed to 1.1 while its baseline behavior version remains 1.0.
@@ -29,7 +29,7 @@ Earlier v1.0 inputs are preserved. The prepared A16/A17 v1.0 snapshots still rec
 
 1. Select the skill and its output in the index below. Read the catalog's **Skill Artifact Flow** and **Artifact Handoff Mapping** for its inputs and conditional paths.
 2. Supply only the relevant upstream artifacts. Keep the prepared output out of the skill's inputs when evaluating a fresh result. For revision/re-review, explicitly include the prior candidate and findings.
-3. Ask for outputs under `dummy/runs/<skill-name>/ITER-001/` so the reference files remain unchanged. Increment versions for revisions and link the exact input versions.
+3. Ask for outputs under `AIAugmentation/dummy/runs/<skill-name>/ITER-001/` so the reference files remain unchanged. Increment versions for revisions and link the exact input versions.
 4. Compare the generated artifact with its template and evidence. Check reasoning and traceability, not identical wording. Passing three cases must not become full coverage or release approval.
 
 The pack supplies useful drafting, failure, correction and blocked-gate cases. It does not provide successful real deployments, external account access, every branch of every skill, or a complete approved workflow. For future execution/deployment skills, these files support input assessment and planning; a real execution still needs the appropriate environment and authorization.
@@ -37,11 +37,11 @@ The pack supplies useful drafting, failure, correction and blocked-gate cases. I
 Example prompts:
 
 ```text
-Use $review-test-coverage with dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md and dummy/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md. Save the review under dummy/runs/review-test-coverage/ITER-001/. Do not read the prepared A17.
+Use $review-test-coverage with AIAugmentation/dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md and AIAugmentation/dummy/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md. Save the review under AIAugmentation/dummy/runs/review-test-coverage/ITER-001/. Do not read the prepared A17.
 
-Use $create-test-cases to revise dummy/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md using dummy/ITER-001/A17_test-coverage-review-outputs_ITER-001_v1.0.md. Save v1.1 under dummy/runs/create-test-cases/ITER-001/.
+Use $create-test-cases to revise AIAugmentation/dummy/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md using AIAugmentation/dummy/ITER-001/A17_test-coverage-review-outputs_ITER-001_v1.0.md. Save v1.1 under AIAugmentation/dummy/runs/create-test-cases/ITER-001/.
 
-Read the implemented triage-defects skill and use the A29, E06 and A05 baseline files in dummy/ITER-001/. Save the defect report under dummy/runs/triage-defects/ITER-001/. Do not read the prepared A34.
+Read the implemented triage-defects skill and use the A29, E06 and A05 baseline files in AIAugmentation/dummy/ITER-001/. Save the defect report under AIAugmentation/dummy/runs/triage-defects/ITER-001/. Do not read the prepared A34.
 ```
 
 The third prompt is for after that skill is implemented; creating these files does not implement additional skills.

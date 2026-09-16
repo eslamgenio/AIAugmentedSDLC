@@ -1,5 +1,6 @@
 # Generated workbooks, previews, reports and temporary build evidence
 /outputs/
+/AIAugmentation/outputs/
 
 # Local dependency directories and junctions; never commit the bundled runtime
 node_modules/
@@ -15,3 +16,7 @@ __pycache__/
 # Excel temporary and lock files
 ~$*.xls*
 *.tmp
+
+# Local SDLC catalog and diagram
+/SDLC_Proposed_Skills_Catalog.xlsx
+/SDLC.png
