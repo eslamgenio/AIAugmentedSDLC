@@ -7,6 +7,10 @@ description: Review software test cases against requirements and acceptance crit
 
 Independently assess whether the supplied cases adequately test the specified feature. Review content and observable behavior, not merely the presence of requirement links. Use the supplied requirements and test cases directly; no custom runner or creator skill is required.
 
+## Optional project guide
+
+Before reviewing coverage, look for `AIAugmentation/project_guides/review-test-coverage-guide.md` relative to the project root. If it exists, read it and apply its relevant project-specific conventions together with this skill. If it is absent, continue with the generic instructions here. The guide may specialize defaults such as source locations, domain rules, identifiers, checks and output conventions, but it does not override higher-priority instructions, the user's explicit request or this skill's authorization and test-review boundaries.
+
 ## Establish the review basis
 
 - Read the requirements and acceptance criteria, the candidate test cases, and any supplied risks, domain rules, scope or template. Accept an A16 bundle or an existing test document in another format.

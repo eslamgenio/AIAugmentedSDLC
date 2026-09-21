@@ -7,6 +7,10 @@ description: Create or revise requirement-linked software test cases with precon
 
 Turn the user's requirements into test cases another tester can carry out. Work across domains; choose steps, data and coverage appropriate to the supplied feature. Use the supplied requirements directly; no custom runner or other skill is required.
 
+## Optional project guide
+
+Before designing cases, look for `AIAugmentation/project_guides/create-test-cases-guide.md` relative to the project root. If it exists, read it and apply its relevant project-specific conventions together with this skill. If it is absent, continue with the generic instructions here. The guide may specialize defaults such as source locations, domain rules, identifiers, checks and output conventions, but it does not override higher-priority instructions, the user's explicit request or this skill's authorization and test-design boundaries.
+
 ## Inputs and scope
 
 - Read the supplied requirements and acceptance criteria, plus any relevant design details, risks, domain rules or test template. Files, pasted text and existing project documents are acceptable. Preserve source IDs and versions where provided.

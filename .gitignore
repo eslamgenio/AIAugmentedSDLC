@@ -20,6 +20,3 @@ __pycache__/
 # Local SDLC catalog and diagram
 /SDLC_Proposed_Skills_Catalog.xlsx
 /SDLC.png
-
-# Local agent instructions
-/AGENTS.md

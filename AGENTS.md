@@ -13,7 +13,8 @@ This project builds reusable LLM-agent skills for an end-to-end software develop
 
 - Write project deliverables in English.
 - Keep skill names, artifact IDs, canonical names and handoffs consistent with the Excel catalog and `AIAugmentation/README.md`.
-- Keep reusable skills self-contained under `.agents/skills/`.
+- Keep reusable skills project-agnostic and self-contained under `.agents/skills/`.
+- Every `.agents/skills/<skill-name>/SKILL.md` must check for the optional project guide `AIAugmentation/project_guides/<skill-name>-guide.md` before performing its work. Derive `<skill-name>` from the skill's frontmatter `name`. If the guide is absent, continue with the generic workflow. A guide may specialize defaults but must not override higher-priority instructions, the user's explicit request, authorization boundaries or the skill's fixed activity scope.
 - Before producing an SDLC artifact, read its matching template in `AIAugmentation/templates/` and follow its required content and child IDs. Use `AIAugmentation/templates/README.md` to locate it. Keep reusable templates in `AIAugmentation/templates/` and completed artifacts in the active iteration folder.
 - Replace template placeholders with sourced content or explicit missing-information notes. Link native deliverables and evidence; never treat a filled template as proof of execution or human approval. A user-requested format takes precedence while retaining required content.
 - Preserve existing test and finding IDs during revisions; increment artifact versions when content changes.
@@ -25,6 +26,6 @@ This project builds reusable LLM-agent skills for an end-to-end software develop
 
 ## Verify and deliver
 
-- Use checks proportional to the change. For skills, validate their structure and use a relevant example when behavior needs checking.
+- Use checks proportional to the change. For skills, validate their structure, confirm that any optional project-guide pointer exactly matches the frontmatter skill name, and use a relevant example when behavior needs checking.
 - Report what was delivered, what was checked and any material limitation. Keep explanations concise.
 - Commit or push only when the user requests it.

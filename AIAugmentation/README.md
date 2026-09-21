@@ -33,6 +33,10 @@ They default to readable Markdown bundles using the matching project template, a
 
 The documents preserve the catalog's A16/A17 names and child IDs. The reviewer may recommend READY with disclosed nonblocking suggestions; unresolved blocking issues require correction or clarification.
 
+### Optional project-specific guides
+
+The skills are project-agnostic. A project may add supplemental instructions under [project_guides](project_guides/README.md) using `<skill-name>-guide.md`. For example, `AIAugmentation/project_guides/create-test-cases-guide.md` is loaded by `create-test-cases` when present. No guide is required for the generic workflow.
+
 ## Artifact templates
 
 The [templates index](templates/README.md) links to a template for every catalog artifact: **45 skill output bundles and 10 external input bundles**, including all **135 child deliverables** as sections. Each includes source references, required content, acceptance checks and revision history.
