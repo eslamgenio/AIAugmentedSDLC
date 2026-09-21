@@ -40,7 +40,7 @@ For re-review, also read the prior `A17_test-coverage-review-outputs_{iteration_
 
 When working in this project, read and follow the [A17 template](../../../AIAugmentation/templates/A17_test-coverage-review-outputs.md) before writing the output. Fill its applicable sections, replace placeholders, and retain stable child IDs. If the skill is copied elsewhere without the project templates, use the self-contained layout below. A user-supplied format takes precedence.
 
-Use the user's requested format and location. Otherwise write one readable Markdown document in the active `AIAugmentation/artifacts/<iteration_id>/` folder (use the source iteration; otherwise start with `ITER-001`), named `A17_test-coverage-review-outputs_ITER-001_v1.0.md` for a first standalone review. Reuse the candidate's iteration convention, increment review versions, and preserve previous reviews. If file writing is unavailable, return the same content in the conversation.
+Use the user's requested format and location. Otherwise write one readable Markdown document in the active `AIAugmentation/artifacts/<iteration_id>/` folder, named `A17_test-coverage-review-outputs_{iteration_id}_v1.0.md` for a first standalone review. Substitute the candidate's iteration ID; if none is available, start with `ITER-001`. Reuse the candidate's iteration convention, increment review versions, and preserve previous reviews. If file writing is unavailable, return the same content in the conversation.
 
 Start with the feature, A17 version, exact candidate reference, requirements sources, scope and overall recommendation. Use these stable sections:
 

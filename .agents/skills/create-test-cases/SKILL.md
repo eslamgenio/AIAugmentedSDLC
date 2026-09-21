@@ -45,7 +45,7 @@ Before delivery, check that IDs are unique, references resolve, steps are execut
 
 When working in this project, read and follow the [A16 template](../../../AIAugmentation/templates/A16_test-case-creation-outputs.md) before writing the output. Fill its applicable sections, replace placeholders, and retain stable child IDs. If the skill is copied elsewhere without the project templates, use the self-contained layout below. A user-supplied format takes precedence.
 
-Use the user's requested format and location. Otherwise write one readable Markdown document in the active `AIAugmentation/artifacts/<iteration_id>/` folder (use the source iteration; otherwise start with `ITER-001`), named `A16_test-case-creation-outputs_ITER-001_v1.0.md` for a first standalone draft. Reuse supplied iteration/version conventions; increment the version for revisions and avoid replacing unrelated existing work. If file writing is unavailable, return the same content in the conversation.
+Use the user's requested format and location. Otherwise write one readable Markdown document in the active `AIAugmentation/artifacts/<iteration_id>/` folder, named `A16_test-case-creation-outputs_{iteration_id}_v1.0.md` for a first standalone draft. Substitute the source iteration ID; if none is available, start with `ITER-001`. Reuse supplied iteration/version conventions; increment the version for revisions and avoid replacing unrelated existing work. If file writing is unavailable, return the same content in the conversation.
 
 Include a short header with the feature, A16 version, source filenames/versions or source-text mapping, scope and draft/review status. Then use these stable sections:
 

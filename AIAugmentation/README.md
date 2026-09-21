@@ -16,12 +16,14 @@ User guides: [Create test cases](../.agents/skills/create-test-cases/README.md) 
 Example requests (run from the repository root):
 
 ```text
-Use $create-test-cases with AIAugmentation/artifacts/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md.
+Use $create-test-cases with AIAugmentation/dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md.
 
-Use $review-test-coverage with AIAugmentation/artifacts/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md and [A16 file].
+Use $review-test-coverage with AIAugmentation/dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md and [A16 file].
 
 Use $create-test-cases to revise [A16 file] using [A17 file].
 ```
+
+`AIAugmentation/dummy/` is the canonical practice and reference area; treat its sample baselines as read-only. Use `AIAugmentation/dummy/ITER-001/` for the examples above and isolated practice runs. Use `AIAugmentation/artifacts/<iteration_id>/` for active iteration inputs and outputs.
 
 The sample A05 v1.1 embeds the complete requirements baseline. Use the v1.1 supporting inputs in the same iteration; a separate requirements file is unnecessary. Both skills also accept requirements supplied under any other filename or as text. Earlier sample versions remain available for historical reference.
 
