@@ -4,6 +4,66 @@ A proposed approach to using AI throughout the software development lifecycle. T
 
 The catalog and roadmap describe the wider proposed framework. Two reusable project-local skills are available for creating test cases and reviewing coverage. Human owners retain test-exit and release decisions.
 
+## Set up the kit in an existing project
+
+Keep your project's existing root `README.md`. This file,
+`AIAugmentation/README.md`, contains the kit's setup and usage guidance.
+You may optionally link to it from your project README.
+
+1. Copy the kit's skill folders into your project's `.agents/skills/` and
+   its reusable resources into `AIAugmentation/`, retaining the relative
+   paths. Include this README, `templates/` and `project_guides/`. Merge
+   with existing directories and review file conflicts rather than
+   replacing existing project files.
+2. Copy the kit's root `AGENTS.team.md` into the project root and complete
+   its **Project context** section using the guidance below.
+3. Rename that file to `AGENTS.md`. If the project already has an
+   `AGENTS.md`, merge the relevant team instructions and project context
+   into it instead of overwriting it. Resolve conflicting conventions
+   explicitly.
+4. Add optional activity-specific customization under
+   `AIAugmentation/project_guides/<skill-name>-guide.md`, using the skill's
+   frontmatter `name`. See the [project-guide instructions](project_guides/README.md).
+
+The resulting project layout is:
+
+```text
+your-project/
+├── README.md                  # Existing project documentation
+├── AGENTS.md                  # Team instructions and project context
+├── .agents/skills/            # Reusable skill packages
+└── AIAugmentation/
+    ├── README.md              # Kit setup and usage guidance
+    ├── templates/             # Reusable artifact templates
+    └── project_guides/        # Optional activity-specific conventions
+```
+
+### Complete the project context
+
+Replace placeholders with verified project information, remove optional
+sections that do not apply, and do not include secrets. Keep the completed
+context in the project's `AGENTS.md` so it is available during skill use.
+
+- **Project identity:** supply the project name, purpose, intended users
+  and components or features in scope.
+- **Project directory map:** add a concise tree of relevant directories
+  with their purposes. Use paths relative to the project root; omit
+  dependencies and generated files.
+- **Sources and working locations:** identify requirements, architecture
+  documentation, source code and existing tests. Keep
+  `AIAugmentation/artifacts/` as the artifact location or specify the
+  project's chosen location. Set the active iteration or supply it in
+  each task.
+- **Project-specific instructions:** record terminology, domain rules,
+  supported technologies and environments, naming conventions, relevant
+  checks and commands, and access or data-handling constraints.
+
+Keep shared project context in `AGENTS.md` and activity-specific details
+in the corresponding project guide. Link to existing product and
+architecture documentation rather than duplicating it. Unfilled fields
+are missing information; they need not block work that can proceed using
+the supplied inputs.
+
 ## Use the two skills
 
 | Skill | Inputs | Deliverable |

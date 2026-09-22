@@ -2,21 +2,7 @@
 
 Use the provided skills to produce and review SDLC artifacts.
 
-## Project setup
-
-After placing the kit in your project root, complete the project context
-below and rename `AGENTS.team.md` to `AGENTS.md`. If your project already
-has an `AGENTS.md`, merge the relevant sections into it instead of
-overwriting it.
-
-Keep shared project context in this file. Put activity-specific
-customization in `AIAugmentation/project_guides/<skill-name>-guide.md`,
-using the selected skill's frontmatter `name`.
-
-## Project context — complete during setup
-
-Replace the placeholders with verified project information. Remove
-optional sections that do not apply. Do not include secrets.
+## Project context
 
 Treat unfilled placeholders as missing information, not facts or literal
 paths. Continue with available inputs and ask only when missing information
@@ -32,10 +18,6 @@ requests, authorization boundaries or the selected skill's fixed scope.
 
 ### Project directory map
 
-Show the relevant directories and briefly explain their purpose.
-Use paths relative to the project root; omit dependencies and generated
-files. Replace the placeholder below with a concise directory tree.
-
 ```text
 <Insert the project's relevant directory tree and directory descriptions here>
 ```
@@ -46,7 +28,7 @@ files. Replace the placeholder below with a concise directory tree.
 - Architecture and domain documentation: <paths or links>
 - Application source code: <paths>
 - Existing tests: <paths>
-- SDLC artifacts: `AIAugmentation/artifacts/` (default; update if needed)
+- SDLC artifacts: `AIAugmentation/artifacts/`
 - Active iteration: <iteration ID, or specify it in each task>
 
 ### Project-specific instructions
