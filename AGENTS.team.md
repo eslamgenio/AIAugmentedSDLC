@@ -1,8 +1,61 @@
 ﻿# SDLC skill usage instructions
 
 Use the provided skills to produce and review SDLC artifacts.
-When distributing this file to a team project, name it `AGENTS.md`
-and place it in the project root.
+
+## Project setup
+
+After placing the kit in your project root, complete the project context
+below and rename `AGENTS.team.md` to `AGENTS.md`. If your project already
+has an `AGENTS.md`, merge the relevant sections into it instead of
+overwriting it.
+
+Keep shared project context in this file. Put activity-specific
+customization in `AIAugmentation/project_guides/<skill-name>-guide.md`,
+using the selected skill's frontmatter `name`.
+
+## Project context — complete during setup
+
+Replace the placeholders with verified project information. Remove
+optional sections that do not apply. Do not include secrets.
+
+Treat unfilled placeholders as missing information, not facts or literal
+paths. Continue with available inputs and ask only when missing information
+is necessary to perform the requested work. Project context may specialize
+defaults but must not override higher-priority instructions, explicit user
+requests, authorization boundaries or the selected skill's fixed scope.
+
+### Project identity
+
+- Project name: <name>
+- Purpose: <what the product does and who uses it>
+- Scope: <components or features covered by these skills>
+
+### Project directory map
+
+Show the relevant directories and briefly explain their purpose.
+Use paths relative to the project root; omit dependencies and generated
+files. Replace the placeholder below with a concise directory tree.
+
+```text
+<Insert the project's relevant directory tree and directory descriptions here>
+```
+
+### Sources and working locations
+
+- Requirements and acceptance criteria: <paths or links>
+- Architecture and domain documentation: <paths or links>
+- Application source code: <paths>
+- Existing tests: <paths>
+- SDLC artifacts: `AIAugmentation/artifacts/` (default; update if needed)
+- Active iteration: <iteration ID, or specify it in each task>
+
+### Project-specific instructions
+
+- Terminology and domain rules: <details or references>
+- Relevant technologies and supported environments: <details>
+- Naming and identifier conventions: <details>
+- Required checks or commands: <commands and when they apply>
+- Access, data-handling or authorization constraints: <details>
 
 ## Scope and working approach
 
@@ -42,8 +95,9 @@ and place it in the project root.
 ## Artifact storage and revisions
 
 - Store SDLC inputs and outputs in a separate folder per iteration,
-  such as `AIAugmentation/artifacts/ITER-001/`, unless the user requests
-  another location.
+  such as `AIAugmentation/artifacts/ITER-001/`. Use the artifact location
+  specified in the project context when configured; an explicitly
+  requested location takes precedence.
 - Keep each iteration's requirements, supporting inputs, generated
   documents and revisions together.
 - Match artifact iteration IDs and filenames to the iteration folder.
