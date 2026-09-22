@@ -77,6 +77,10 @@ requests, authorization boundaries or the selected skill's fixed scope.
 
 ## Artifact storage and revisions
 
+- Use relative Markdown links for artifacts within the project. Resolve
+  links from the containing document's folder and verify that targets
+  exist before delivery. When moving artifacts, update affected incoming
+  and outgoing links. Avoid machine-specific absolute paths for project files.
 - Store SDLC inputs and outputs in a separate folder per iteration,
   such as `AIAugmentation/artifacts/ITER-001/`. Use the artifact location
   specified in the project context when configured; an explicitly

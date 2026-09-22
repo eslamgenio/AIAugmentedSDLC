@@ -67,6 +67,8 @@ This is a human-readable A16 document profile. If the user requests machine-read
 
 ## Revisions and handoff
 
+Before delivery, verify that Markdown links within the output to project artifacts are relative and resolve from the output document's folder. Avoid machine-specific absolute paths for project files; disclose missing targets rather than inventing replacements.
+
 Preserve all source/input files and prior output versions. Save each revision as a new file with an incremented artifact version in its filename and document header; never overwrite an existing source or prior version.
 
 Preserve IDs for the same logical cases. Assign new IDs to new cases; record removed or superseded cases without reusing their IDs. Include a short response for each review finding: changed, retained with explanation, or blocked pending clarification. Cite the affected test IDs. Do not mark review findings independently verified; the reviewer does that.

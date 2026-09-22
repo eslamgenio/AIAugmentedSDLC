@@ -68,6 +68,8 @@ READY is a test-design recommendation, not human approval or evidence that appli
 
 ## Re-review and handoff
 
+Before delivery, verify that Markdown links within the output to project artifacts are relative and resolve from the output document's folder. Avoid machine-specific absolute paths for project files; disclose missing targets rather than inventing replacements.
+
 Preserve all source/input files and prior output versions. Save each revision as a new file with an incremented artifact version in its filename and document header; never overwrite an existing source or prior version.
 
 When a revised candidate is supplied, read the prior findings and creator responses. Check the actual changed cases, verify every previous finding, and check for regressions introduced by the changes. Preserve finding IDs; mark them resolved only when evidence supports closure. Retain unresolved IDs and use new IDs for newly discovered issues.
