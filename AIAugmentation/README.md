@@ -97,11 +97,79 @@ The documents preserve the catalog's A16/A17 names and child IDs. The reviewer m
 
 The skills are project-agnostic. A project may add supplemental instructions under [project_guides](project_guides/README.md) using `<skill-name>-guide.md`. For example, `AIAugmentation/project_guides/create-test-cases-guide.md` is loaded by `create-test-cases` when present. No guide is required for the generic workflow.
 
+## Artifact folders and handoffs
+
+For new iterations using phase layout, organize artifacts by iteration,
+then by the producer's phase from the workbook's **Skill Artifact Flow**
+sheet. The table below records that mapping so using the kit does not
+require a local copy of the workbook.
+
+| Phase folder | Skill output bundles |
+| --- | --- |
+| Requirements | A01–A05 |
+| Solution Design | A06–A10 |
+| Delivery Planning | A11–A14 |
+| Test Preparation | A15–A19 |
+| Development | A20–A23 |
+| Build And Integration | A24–A27 |
+| Test Execution | A28–A33 |
+| Defect Resolution | A34–A36 |
+| Acceptance And Release | A37–A41, A45 |
+| Production And Feedback | A42–A44 |
+
+For skills with an `Also:` phase in the sheet, use the first-listed phase
+as the default storage location and reference that artifact from other
+phases. A project may explicitly configure another location. Folder order
+does not authorize skill execution or imply that a phase is complete.
+
+```text
+AIAugmentation/artifacts/ITER-001/
+├── Requirements/
+│   ├── A04_acceptance-criteria-outputs_ITER-001_v1.0.md
+│   └── A05_requirements-review-outputs_ITER-001_v1.0.md
+├── Solution Design/
+│   └── A06_feasibility-assessment-outputs_ITER-001_v1.0.md
+├── Delivery Planning/
+├── Test Preparation/
+│   ├── A16_test-case-creation-outputs_ITER-001_v1.0.md
+│   └── A17_test-coverage-review-outputs_ITER-001_v1.0.md
+└── External Inputs/
+    └── E06_test-and-defect-baselines_ITER-001_v1.0.md
+```
+
+Create folders only when needed. `External Inputs/` is the kit's convention
+for E01–E10 external/human input bundles, not an additional lifecycle phase
+from the sheet. Explicit source links outside that folder remain valid.
+
+Use the sheet's **Input artifacts** to identify a skill's dependencies and
+**Output artifacts** to identify its result. Locate inputs across the active
+iteration's root and subfolders by artifact ID and compatible version, and
+record exact paths. Reference original files instead of copying them into
+each consuming phase. Honor conditional inputs for revisions and re-review;
+do not make optional evidence mandatory merely because it appears in the sheet.
+Flag duplicate artifact/version candidates and conflicting baselines rather
+than choosing silently. Use another iteration only through an explicit input
+or baseline reference.
+
+For example, `create-test-cases` reads A04/A05 from `Requirements/`, available
+A06/A09 from `Solution Design/`, A15 from `Test Preparation/`, and relevant
+external inputs; it writes A16 under `Test Preparation/`. `review-test-coverage`
+reads that A16 with the same source baseline and writes A17 in the same phase.
+Their required and optional input rules remain unchanged.
+
+Set the layout in the project's instruction file. Existing flat iteration
+folders remain supported; standalone skills default to the flat layout if
+no layout is configured. Explicit output paths take precedence, followed
+by the prior artifact's folder for revisions, then the configured layout.
+Do not move existing artifacts automatically. Preserve `.md` filenames,
+IDs and version conventions; no JSON conversion is needed. Only A16/A17
+skills are currently implemented; the phase map also covers proposed skills.
+
 ## Artifact templates
 
 The [templates index](templates/README.md) links to a template for every catalog artifact: **45 skill output bundles and 10 external input bundles**, including all **135 child deliverables** as sections. Each includes source references, required content, acceptance checks and revision history.
 
-Skills read the matching template, fill it with sourced content, and save the result under `AIAugmentation/artifacts/<iteration_id>/` using the canonical basename plus iteration and version. The two implemented skills use the A16 and A17 templates automatically in this project. For example, the A16 template becomes `AIAugmentation/artifacts/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md`.
+Skills read the matching template, fill it with sourced content, and save the result under `AIAugmentation/artifacts/<iteration_id>/` using the canonical basename plus iteration and version, with a phase subfolder when configured. The two implemented skills use the A16 and A17 templates automatically in this project. For example, with phase layout the A16 template becomes `AIAugmentation/artifacts/ITER-001/Test Preparation/A16_test-case-creation-outputs_ITER-001_v1.0.md`; without a configured layout, it remains directly in `ITER-001/`.
 
 The templates use Markdown; the workbook's JSON exchange manifests remain proposed. Native deliverables such as code, datasets and build packages are linked from the document. Empty templates do not represent completed work or approvals.
 

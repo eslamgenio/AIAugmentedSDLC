@@ -21,6 +21,9 @@ Before designing cases, look for `AIAugmentation/project_guides/create-test-case
 
 ### Named input artifacts
 
+
+Resolve explicit input paths first. For folder-based discovery, establish the active iteration root (not just a supplied phase subfolder), then search that root and its subfolders for the named inputs, including other phases and `External Inputs/`. Match artifact IDs and compatible versions, and record exact source paths. Do not select files from other iterations unless explicitly supplied or referenced by the baseline. If multiple candidates claim the same artifact/version or sources conflict, flag the ambiguity and resolve it before using the affected input; continue unaffected work. Reference original inputs instead of copying them between phases. Existing flat iteration folders remain supported.
+
 In the selected input/iteration folder, read the following named artifacts when they exist. Obtain the requirements baseline from A05 and its embedded content or referenced baseline, together with A04 acceptance criteria. Also accept supplied requirements documents or text regardless of filename; no particular requirements filename is mandatory. If A05 embeds the complete behavior, context and scope, a separate requirements file is unnecessary. Follow an external baseline reference when needed to obtain missing content; ask only when essential behavior or scope is still missing or conflicting. Substitute the selected iteration and artifact version in each filename pattern; respect explicitly supplied versions and record the exact files used. When no version is specified, use the latest compatible artifact versions within the selected iteration, checking their baseline references rather than mixing snapshots silently. These are the project Markdown names; also accept a supplied equivalent format. Missing optional supporting artifacts do not prevent a useful draft or review under the rules above.
 
 - `A05_requirements-review-outputs_{iteration_id}_v{artifact_version}.md`
@@ -49,7 +52,10 @@ Before delivery, check that IDs are unique, references resolve, steps are execut
 
 When working in this project, read and follow the [A16 template](../../../AIAugmentation/templates/A16_test-case-creation-outputs.md) before writing the output. Fill its applicable sections, replace placeholders, and retain stable child IDs. If the skill is copied elsewhere without the project templates, use the self-contained layout below. A user-supplied format takes precedence.
 
-Use the user's requested format and location. Otherwise write one readable Markdown document in the active `AIAugmentation/artifacts/<iteration_id>/` folder, named `A16_test-case-creation-outputs_{iteration_id}_v1.0.md` for a first standalone draft. Substitute the source iteration ID; if none is available, start with `ITER-001`. Reuse supplied iteration/version conventions; increment the version for revisions and avoid replacing unrelated existing work. If file writing is unavailable, return the same content in the conversation.
+Use the user's requested format. Otherwise write one readable Markdown document, named `A16_test-case-creation-outputs_{iteration_id}_v1.0.md` for a first standalone draft. Substitute the source iteration ID; if none is available, start with `ITER-001`. Reuse supplied iteration/version conventions; increment the version for revisions and avoid replacing unrelated existing work. If file writing is unavailable, return the same content in the conversation.
+
+
+Resolve the output folder in this order: an explicitly requested location; the prior version's folder when revising this artifact; a location configured by project instructions or the optional guide; otherwise the active `AIAugmentation/artifacts/<iteration_id>/` folder. When phase layout is configured without a specific output override, use `Test Preparation/` beneath the active iteration root for this artifact. Respect a configured artifact root, create only the needed output folder, and do not relocate earlier files. Preserve the Markdown filename pattern and extension; phase organization does not require JSON conversion.
 
 Include a short header with the feature, A16 version, source filenames/versions or source-text mapping, scope and draft/review status. Then use these stable sections:
 

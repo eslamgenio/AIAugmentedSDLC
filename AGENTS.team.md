@@ -29,6 +29,7 @@ requests, authorization boundaries or the selected skill's fixed scope.
 - Application source code: <paths>
 - Existing tests: <paths>
 - SDLC artifacts: `AIAugmentation/artifacts/`
+- Artifact layout: phase folders within each iteration (flat iteration folders remain supported)
 - Active iteration: <iteration ID, or specify it in each task>
 
 ### Project-specific instructions
@@ -81,7 +82,25 @@ requests, authorization boundaries or the selected skill's fixed scope.
   specified in the project context when configured; an explicitly
   requested location takes precedence.
 - Keep each iteration's requirements, supporting inputs, generated
-  documents and revisions together.
+  documents and revisions together under its iteration folder.
+- For phase layout, use the phase-to-artifact mapping in
+  `AIAugmentation/README.md`, derived from the catalog's Skill Artifact Flow
+  sheet. Save outputs in their producer's phase folder; A16 and A17 belong
+  in `Test Preparation/`. Create folders only when needed.
+- Keep external/human input bundles (E01–E10) in `External Inputs/` within
+  the iteration, or reference their explicitly supplied source locations.
+- Find required inputs in the active iteration root and its subfolders,
+  including other phases and `External Inputs/`. Record exact source paths
+  and versions; reference originals rather than duplicating them per phase.
+- Respect explicit input paths and version choices. Do not search other
+  iterations for replacements unless explicitly supplied or referenced.
+  Flag duplicate candidates for the same artifact/version or conflicting
+  baselines; resolve essential ambiguity before choosing.
+- Keep existing flat iteration folders working and do not relocate prior
+  artifacts automatically. For revisions, keep the prior artifact's folder
+  unless another output location is explicitly requested.
+- Preserve Markdown (`.md`) artifact filenames, IDs and versions. The
+  catalog's JSON exchange patterns do not require format conversion.
 - Match artifact iteration IDs and filenames to the iteration folder.
 - Preserve source files and previous artifact versions.
 - Save corrections as new versions in the same iteration folder.

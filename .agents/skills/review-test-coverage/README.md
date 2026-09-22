@@ -40,7 +40,9 @@ Read and follow .agents/skills/review-test-coverage/SKILL.md with AIAugmentation
 
 ## What you receive
 
-By default, the first review is `AIAugmentation/artifacts/ITER-001/A17_test-coverage-review-outputs_ITER-001_v1.0.md`, using the candidate's iteration. A requested location takes precedence. Previous files are preserved, and subsequent review revisions receive new versions. A17 versions do not need to equal the input artifact versions.
+Without a configured layout, the first review is `AIAugmentation/artifacts/ITER-001/A17_test-coverage-review-outputs_ITER-001_v1.0.md`, using the candidate's iteration. With phase layout, it goes under that iteration's `Test Preparation/` folder. A requested location takes precedence; re-reviews otherwise stay in the prior A17 folder. Previous files are preserved, and subsequent review revisions receive new versions. A17 versions do not need to equal the input artifact versions.
+
+Input discovery includes the active iteration root and its subfolders, including other phases and `External Inputs/`. Explicit paths and versions take precedence. Duplicate artifact/version candidates or conflicting baselines need clarification before the affected input is used; files from other iterations are used only when explicitly supplied or referenced. Outputs remain Markdown.
 
 | Section | Contents |
 | --- | --- |

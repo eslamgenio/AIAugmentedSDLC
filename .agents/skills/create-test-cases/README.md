@@ -43,7 +43,9 @@ Read and follow .agents/skills/create-test-cases/SKILL.md with AIAugmentation/du
 
 ## What you receive
 
-By default, the first output is `AIAugmentation/artifacts/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md`, using the selected iteration. A supplied output location takes precedence. Existing files are preserved; revisions receive new versions. Output versions are independent of input versions.
+Without a configured layout, the first output is `AIAugmentation/artifacts/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md`, using the selected iteration. With phase layout, it goes under that iteration's `Test Preparation/` folder. A supplied output location takes precedence; revisions otherwise stay in the prior A16 folder. Existing files are preserved; revisions receive new versions. Output versions are independent of input versions.
+
+Input discovery includes the active iteration root and its subfolders, including other phases and `External Inputs/`. Explicit paths and versions take precedence. Duplicate artifact/version candidates or conflicting baselines need clarification before the affected input is used; files from other iterations are used only when explicitly supplied or referenced. Outputs remain Markdown.
 
 | Section | Contents |
 | --- | --- |
