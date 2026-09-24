@@ -38,6 +38,52 @@ your-project/
     └── project_guides/        # Optional activity-specific conventions
 ```
 
+### Update an installed kit
+
+Prerequisites: Windows PowerShell 5.1 or PowerShell 7, Git, and read access
+to the team's [GitLab repository](https://gitlabce.tools.aws.vodafone.com/central-vois-framework/devskillkit.git).
+This is the updater's default source. Authenticate Git using your corporate
+GitLab credentials and connect to the corporate network or VPN if required.
+Never put a token in the script or repository URL. Use `-Repository` only
+when intentionally selecting a different source.
+
+Copy the kit's root `update-skill-kit.ps1` into your project's root once.
+From that project root, preview and install an available release tag:
+
+```powershell
+.\update-skill-kit.ps1 -Version v1.2.0 -WhatIf
+.\update-skill-kit.ps1 -Version v1.2.0
+```
+
+`v1.2.0` is an example; replace it with a published version. The updater
+fetches the exact Git tag, not the latest branch. `-WhatIf` downloads and
+validates the tag but does not change project files. Use `-ProjectPath`
+to select a different existing project directory.
+
+The updater copies all released skill packages under `.agents/skills/`,
+the reusable `AIAugmentation/templates/`, `AIAugmentation/README.md`, and
+the root `AGENTS.team.md` instruction template. It records the installed
+tag in `AIAugmentation/skill-kit-version.txt` after copying succeeds.
+
+Project guides, artifacts, root `AGENTS.md`, root `README.md`, application
+code, and skills whose folder names are absent from the release remain
+untouched. Review changes to `AGENTS.team.md` and manually merge any relevant
+updates into your project's `AGENTS.md`. Keep customizations in project
+guides: files with matching names in the shared kit areas are overwritten.
+
+Commit or back up local shared-file edits before upgrading. Review the diff,
+run a representative creation-and-review example, then commit the update.
+The updater never commits, pushes, or executes downloaded scripts. It does
+not delete retired files or replace itself; follow release notes for removals
+or a newer updater. If a copy fails, some shared files may already be updated;
+fix the error and rerun. The version file is written only after all copies succeed.
+
+For kit maintainers: commit the intended kit files and publish a version tag
+(for example, `v1.2.0`) with release notes describing changes and any removals.
+The tag must include `.agents/skills/`, `AIAugmentation/templates/`,
+`AIAugmentation/README.md` and `AGENTS.team.md`. No separate ZIP asset is needed.
+Treat published tags as fixed; publish a new version for subsequent changes.
+
 ### Complete the project context
 
 Replace placeholders with verified project information, remove optional

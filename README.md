@@ -5,3 +5,6 @@ This repository proposes a set of AI agent skills for the software development l
 To use the kit in a project, start with the [quick start](min_user_guide.md). The [detailed kit guide](AIAugmentation/README.md) covers setup, skill inputs and outputs, artifact folders, templates, and the catalog. Keep your project's own root README when copying the kit.
 
 The reusable skills are in [`.agents/skills/`](.agents/skills/), and the artifact templates are listed in the [templates index](AIAugmentation/templates/README.md). Human owners retain test-exit and release decisions.
+
+To upgrade an embedded kit, copy [update-skill-kit.ps1](update-skill-kit.ps1)
+into the target project and follow [the update instructions](AIAugmentation/README.md#update-an-installed-kit).

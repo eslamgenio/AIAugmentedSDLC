@@ -15,6 +15,19 @@ plus requirements and acceptance criteria. No Python setup is needed.
    directory tree, input locations and project-specific rules. Use
    `ITER-001` for your first iteration; leave unknown details explicit.
 
+## Update later
+
+With Git installed and access to the team's [GitLab repository](https://gitlabce.tools.aws.vodafone.com/central-vois-framework/devskillkit.git), copy `update-skill-kit.ps1`
+into your project root. Run it with an available version tag:
+
+```powershell
+.\update-skill-kit.ps1 -Version v1.2.0
+```
+
+Replace the example version with a published tag. Project guides, artifacts,
+and your `AGENTS.md` are preserved. Review and commit the shared-file changes.
+See [update details and prerequisites](AIAugmentation/README.md#update-an-installed-kit).
+
 ## Create and review test cases
 
 Put your requirements and acceptance criteria in
