@@ -67,7 +67,7 @@ try {
     Invoke-Git -Arguments @('-C', $stage, 'checkout', '--quiet', '--detach', 'FETCH_HEAD') | Out-Null
     $commit = (Invoke-Git -Arguments @('-C', $stage, 'rev-parse', 'HEAD') | Select-Object -Last 1).ToString().Trim()
 
-    $required = @('AGENTS.team.md', 'AIAugmentation/README.md', 'AIAugmentation/templates/README.md')
+    $required = @('AGENTS.team.md', 'README.md', 'min_user_guide.md', 'AIAugmentation/README.md', 'AIAugmentation/templates/README.md')
     foreach ($relative in $required) {
         if (-not (Test-Path -LiteralPath (Join-Path $stage $relative) -PathType Leaf)) {
             throw "Release is missing required file: $relative"
@@ -93,6 +93,16 @@ try {
     $files += Get-Item -LiteralPath (Join-Path $stage 'AIAugmentation/README.md')
     # Keep the team instruction template separate from the project's AGENTS.md.
     $files += Get-Item -LiteralPath (Join-Path $stage 'AGENTS.team.md')
+    $files += Get-Item -LiteralPath (Join-Path $stage 'README.md')
+    $files += Get-Item -LiteralPath (Join-Path $stage 'min_user_guide.md')
+
+    # Seed project guides without overwriting team-owned customizations.
+    # Older releases without guides remain installable.
+    $guidesRoot = Join-Path $stage 'AIAugmentation/project_guides'
+    if (Test-Path -LiteralPath $guidesRoot -PathType Container) {
+        Assert-RegularPath -Path $guidesRoot -Root $stage
+        $files += @(Get-ChildItem -LiteralPath $guidesRoot -Recurse -File -Force)
+    }
 
     $plan = @()
     foreach ($file in $files) {
@@ -102,6 +112,10 @@ try {
         Assert-RegularPath -Path $destination -Root $project
         if (Test-Path -LiteralPath $destination -PathType Container) {
             throw "Expected a file but found a directory: $destination"
+        }
+        if ($relative.Replace('\', '/').StartsWith('AIAugmentation/project_guides/') -and
+            (Test-Path -LiteralPath $destination -PathType Leaf)) {
+            continue
         }
         $plan += [pscustomobject]@{ Source = $file.FullName; Destination = $destination }
     }
@@ -120,7 +134,7 @@ try {
         # Write last: a failed copy must never claim the new version is installed.
         [IO.File]::WriteAllText($versionFile, "$Version`n", [Text.UTF8Encoding]::new($false))
         Write-Output "Installed skill-kit $Version (commit $commit). Review the changes and commit them in your project."
-        Write-Output 'Project guides, artifacts, AGENTS.md, root README and unrelated skills were preserved. No files were deleted.'
+        Write-Output 'Existing project guides, artifacts, AGENTS.md and unrelated skills were preserved. Root README.md and min_user_guide.md were updated. No files were deleted.'
     }
 }
 finally {

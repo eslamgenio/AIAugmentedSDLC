@@ -6,9 +6,10 @@ The catalog and roadmap describe the wider proposed framework. Two reusable proj
 
 ## Set up the kit in an existing project
 
-Keep your project's existing root `README.md`. This file,
-`AIAugmentation/README.md`, contains the kit's setup and usage guidance.
-You may optionally link to it from your project README.
+This file, `AIAugmentation/README.md`, contains the kit's setup and usage
+guidance. Manual setup can retain your project's existing root README.
+The updater installs the kit's root `README.md` and `min_user_guide.md`,
+replacing existing files at those paths.
 
 1. Copy the kit's skill folders into your project's `.agents/skills/` and
    its reusable resources into `AIAugmentation/`, retaining the relative
@@ -62,10 +63,18 @@ to select a different existing project directory.
 
 The updater copies all released skill packages under `.agents/skills/`,
 the reusable `AIAugmentation/templates/`, `AIAugmentation/README.md`, and
-the root `AGENTS.team.md` instruction template. It records the installed
+the root `AGENTS.team.md` instruction template, `README.md` and
+`min_user_guide.md`. Both root guides are overwritten on updates; save any
+application-specific README content elsewhere before using the updater.
+It records the installed
 tag in `AIAugmentation/skill-kit-version.txt` after copying succeeds.
 
-Project guides, artifacts, root `AGENTS.md`, root `README.md`, application
+It also installs `AIAugmentation/project_guides/` from the release, including
+its README and any starter guides. Only missing files are added: existing
+guide files are never overwritten, including on later upgrades. Older
+releases without this folder remain supported.
+
+Project guides, artifacts, root `AGENTS.md`, application
 code, and skills whose folder names are absent from the release remain
 untouched. Review changes to `AGENTS.team.md` and manually merge any relevant
 updates into your project's `AGENTS.md`. Keep customizations in project
@@ -81,7 +90,8 @@ fix the error and rerun. The version file is written only after all copies succe
 For kit maintainers: commit the intended kit files and publish a version tag
 (for example, `v1.2.0`) with release notes describing changes and any removals.
 The tag must include `.agents/skills/`, `AIAugmentation/templates/`,
-`AIAugmentation/README.md` and `AGENTS.team.md`. No separate ZIP asset is needed.
+`AIAugmentation/README.md`, `AGENTS.team.md`, root `README.md` and
+`min_user_guide.md`. No separate ZIP asset is needed.
 Treat published tags as fixed; publish a new version for subsequent changes.
 
 ### Complete the project context

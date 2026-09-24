@@ -24,7 +24,10 @@ into your project root. Run it with an available version tag:
 .\update-skill-kit.ps1 -Version v1.2.0
 ```
 
-Replace the example version with a published tag. Project guides, artifacts,
+Replace the example version with a published tag. Missing project-guide files
+are installed from the release. Root `README.md` and `min_user_guide.md`
+are installed or replaced with the release copies. Save any project-specific
+README content elsewhere first. Existing project guides, artifacts,
 and your `AGENTS.md` are preserved. Review and commit the shared-file changes.
 See [update details and prerequisites](AIAugmentation/README.md#update-an-installed-kit).
 

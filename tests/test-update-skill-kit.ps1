@@ -29,22 +29,36 @@ Write-File $source '.agents/skills/review-test-coverage/SKILL.md' 'reviewer v1'
 Write-File $source 'AIAugmentation/templates/README.md' 'templates v1'
 Write-File $source 'AIAugmentation/README.md' 'guide v1'
 Write-File $source 'AGENTS.team.md' 'shared instructions v1'
+Write-File $source 'README.md' 'kit README v1'
+Write-File $source 'min_user_guide.md' 'quick start v1'
 Write-File $source 'AGENTS.md' 'must not copy'
 Write-File $source 'AIAugmentation/project_guides/create-test-cases-guide.md' 'must not copy'
+Write-File $source 'AIAugmentation/project_guides/README.md' 'guide instructions v1'
+Write-File $source 'AIAugmentation/project_guides/review-test-coverage-guide.md' 'starter guide v1'
 Write-File $source 'AIAugmentation/artifacts/sample.md' 'must not copy'
 Invoke-FixtureGit @('init', '--quiet')
 Invoke-FixtureGit @('add', '.')
 Invoke-FixtureGit @('-c', 'user.name=Updater Test', '-c', 'user.email=updater@example.invalid', 'commit', '--quiet', '-m', 'fixture v1')
 Invoke-FixtureGit @('tag', 'v1.0.0')
-$protected = @('AGENTS.md', 'README.md', 'AIAugmentation/project_guides/create-test-cases-guide.md',
+$protected = @('AGENTS.md', 'AIAugmentation/project_guides/create-test-cases-guide.md',
     'AIAugmentation/artifacts/ITER-001/test.md', '.agents/skills/unrelated/SKILL.md', 'src/app.py')
 foreach ($path in $protected) { Write-File $target $path 'project-owned content' }
+Write-File $target 'README.md' 'previous README'
 $updater = Join-Path $kitRoot 'update-skill-kit.ps1'
 $before = Snapshot
 & $updater -Version v1.0.0 -Repository $source -ProjectPath $target -WhatIf
 Assert ((Snapshot) -eq $before) 'WhatIf changed project files'
 & $updater -Version v1.0.0 -Repository $source -ProjectPath $target
 Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/skill-kit-version.txt') -Raw).Trim() -eq 'v1.0.0') 'initial version'
+Assert ((Get-Content -LiteralPath (Join-Path $target 'README.md') -Raw) -eq 'kit README v1') 'root README not replaced'
+Assert ((Get-Content -LiteralPath (Join-Path $target 'min_user_guide.md') -Raw) -eq 'quick start v1') 'quick start not installed'
+Write-File $source 'README.md' 'kit README v2'
+Write-File $source 'min_user_guide.md' 'quick start v2'
+Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/project_guides/README.md') -Raw) -eq 'guide instructions v1') 'guide README missing'
+Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/project_guides/review-test-coverage-guide.md') -Raw) -eq 'starter guide v1') 'starter guide missing'
+Write-File $target 'AIAugmentation/project_guides/review-test-coverage-guide.md' 'team customized guide'
+Write-File $source 'AIAugmentation/project_guides/review-test-coverage-guide.md' 'starter guide v2'
+Write-File $source 'AIAugmentation/project_guides/new-feature-guide.md' 'new guide'
 Write-File $source '.agents/skills/create-test-cases/SKILL.md' 'creator v2'
 Write-File $source '.agents/skills/new-feature/SKILL.md' 'new feature'
 Invoke-FixtureGit @('add', '.')
@@ -54,6 +68,10 @@ Invoke-FixtureGit @('-c', 'user.name=Updater Test', '-c', 'user.email=updater@ex
 Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/skill-kit-version.txt') -Raw).Trim() -eq 'v1.1.0') 'upgrade version'
 Assert ((Get-Content -LiteralPath (Join-Path $target '.agents/skills/create-test-cases/SKILL.md') -Raw) -eq 'creator v2') 'skill was not updated'
 Assert (Test-Path -LiteralPath (Join-Path $target '.agents/skills/new-feature/SKILL.md')) 'new skill missing'
+Assert ((Get-Content -LiteralPath (Join-Path $target 'README.md') -Raw) -eq 'kit README v2') 'root README not upgraded'
+Assert ((Get-Content -LiteralPath (Join-Path $target 'min_user_guide.md') -Raw) -eq 'quick start v2') 'quick start not upgraded'
+Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/project_guides/review-test-coverage-guide.md') -Raw) -eq 'team customized guide') 'customized guide overwritten'
+Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/project_guides/new-feature-guide.md') -Raw) -eq 'new guide') 'new guide missing on upgrade'
 foreach ($path in $protected) {
     Assert ((Get-Content -LiteralPath (Join-Path $target $path) -Raw) -eq 'project-owned content') "modified $path"
 }
