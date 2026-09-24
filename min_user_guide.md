@@ -1,55 +1,24 @@
-# Quick start
+# Dev Skill Kit — Quick start
 
-You need your project open in an agent that can read the skill instructions,
-plus requirements and acceptance criteria. No Python setup is needed.
+You need an AI agent that can read the skill instructions and your project's
+requirements and acceptance criteria. The skills themselves need no Python setup.
 
-## Set up once
+1. **Install the kit.** Follow [installation and prerequisites](AIAugmentation/README.md#install-or-update-the-kit).
+   The updater supports first-time setup and later upgrades. It replaces the
+   root README and this quick start, so preserve application-specific content first.
+2. **Configure your project.** Follow [project-context setup](AIAugmentation/README.md#complete-the-project-context)
+   to create or merge `AGENTS.md`. Add [optional project guides](AIAugmentation/project_guides/README.md)
+   only when activity-specific conventions are needed.
+3. **Supply your inputs.** Identify your requirements, acceptance criteria, and
+   active iteration. Existing filenames are fine; follow your configured
+   [artifact layout](AIAugmentation/README.md#artifact-folders-and-handoffs).
+4. **Create test cases.** Use the [creation guide](.agents/skills/create-test-cases/README.md)
+   for the prompt, required inputs, and expected output.
+5. **Review and refine.** Follow the [coverage review guide](.agents/skills/review-test-coverage/README.md)
+   with the same requirements and generated cases. Request revisions when needed.
 
-1. Copy `.agents/skills/`, `AIAugmentation/README.md`,
-   `AIAugmentation/templates/` and `AIAugmentation/project_guides/` into
-   the same locations in your project. Merge existing folders; keep your
-   project's README and other files.
-2. Copy `AGENTS.team.md` to your project root as `AGENTS.md`. If one
-   already exists, merge the instructions instead of replacing it.
-3. Fill in its **Project context**: project name and purpose, relevant
-   directory tree, input locations and project-specific rules. Use
-   `ITER-001` for your first iteration; leave unknown details explicit.
+Expect a test-case document and a coverage review. These skills do not execute
+tests or grant approval. Review the results before using them.
 
-## Update later
-
-With Git installed and access to the team's [GitLab repository](https://gitlabce.tools.aws.vodafone.com/central-vois-framework/devskillkit.git), copy `update-skill-kit.ps1`
-into your project root. Run it with an available version tag:
-
-```powershell
-.\update-skill-kit.ps1 -Version v1.2.0
-```
-
-Replace the example version with a published tag. Missing project-guide files
-are installed from the release. Root `README.md` and `min_user_guide.md`
-are installed or replaced with the release copies. Save any project-specific
-README content elsewhere first. Existing project guides, artifacts,
-and your `AGENTS.md` are preserved. Review and commit the shared-file changes.
-See [update details and prerequisites](AIAugmentation/README.md#install-or-update-the-kit).
-
-## Create and review test cases
-
-Put your requirements and acceptance criteria in
-`AIAugmentation/artifacts/ITER-001/Requirements/` (existing filenames are fine).
-Then send these prompts, one at a time, from your project root:
-
-```text
-Use $create-test-cases for ITER-001 with the requirements and acceptance
-criteria in AIAugmentation/artifacts/ITER-001/Requirements/.
-```
-
-```text
-Use $review-test-coverage for ITER-001 with the same requirements and
-the A16 file just created.
-```
-
-You receive **A16: test cases** and **A17: coverage review** as `.md` files.
-These skills do not execute tests or grant approval. If a skill is not
-discovered, ask the agent to read and follow
-`.agents/skills/<skill-name>/SKILL.md` directly.
-
-More detail: [Kit setup and usage](AIAugmentation/README.md).
+For later releases, return to [install or update](AIAugmentation/README.md#install-or-update-the-kit),
+then review and commit the changes in your project.
