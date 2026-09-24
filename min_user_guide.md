@@ -29,7 +29,7 @@ are installed from the release. Root `README.md` and `min_user_guide.md`
 are installed or replaced with the release copies. Save any project-specific
 README content elsewhere first. Existing project guides, artifacts,
 and your `AGENTS.md` are preserved. Review and commit the shared-file changes.
-See [update details and prerequisites](AIAugmentation/README.md#update-an-installed-kit).
+See [update details and prerequisites](AIAugmentation/README.md#install-or-update-the-kit).
 
 ## Create and review test cases
 

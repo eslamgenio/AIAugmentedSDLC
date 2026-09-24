@@ -4,7 +4,7 @@ Use this skill to turn requirements into reviewable test cases, or revise existi
 
 ## What you need
 
-The minimum input is requirements that describe the intended behavior and scope. Supply them as a document or text. In this project, **A05 v1.1 embeds the complete sample baseline**; no separate requirements file is necessary.
+The minimum input is requirements that describe the intended behavior and scope. Supply them as a document or text. An A05 bundle may embed the baseline or reference an accessible source; no particular requirements filename is mandatory.
 
 Keep relevant supporting inputs together in the selected iteration folder. The skill reads these when present:
 
@@ -26,20 +26,33 @@ Append `_{iteration_id}_v{artifact_version}.md` to each prefix. For example, `A0
 Open the project in Codex and start a task. Example prompts use paths relative to the project root:
 
 ```text
-Use $create-test-cases with AIAugmentation/dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md.
+Use $create-test-cases with [requirements file or folder].
 ```
 
-The skill should discover the supporting inputs without listing them again in your prompt. For an isolated practice run, append:
+The skill should discover the supporting inputs without listing them again in your prompt. To choose a different output location, append:
 
 ```text
-Save the output under AIAugmentation/dummy/runs/create-test-cases/ITER-001/.
+Save the output under [output folder].
 ```
 
 No Python or application runtime is required. If the skill is not recognized, use:
 
 ```text
-Read and follow .agents/skills/create-test-cases/SKILL.md with AIAugmentation/dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md.
+Read and follow .agents/skills/create-test-cases/SKILL.md with [requirements file or folder].
 ```
+
+Replace bracketed placeholders with your actual project paths. Sample artifacts
+are not installation requirements.
+
+## Project-specific conventions
+
+Keep shared project context in the project's `AGENTS.md`. For activity-specific
+source locations, terminology, rules and output conventions, use the optional
+`AIAugmentation/project_guides/create-test-cases-guide.md`.
+The skill checks this guide before working and continues with its generic
+workflow when it is absent. Guides cannot override higher-priority instructions,
+explicit user requests, authorization boundaries or the skill's fixed scope.
+Keep reusable procedures in `SKILL.md` rather than modifying them for each project.
 
 ## What you receive
 

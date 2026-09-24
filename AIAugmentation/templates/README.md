@@ -5,7 +5,7 @@ These 55 Markdown templates cover all 45 skill output bundles (A01–A45) and 10
 ## Use a template
 
 1. Find the bundle below and read its template before producing the artifact. External templates are completed from attributable owner or system records.
-2. Copy it into `AIAugmentation/artifacts/<iteration_id>/`. Replace filename placeholders with the active iteration and version, for example `AIAugmentation/artifacts/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md`.
+2. Follow an explicitly requested output location; otherwise preserve the prior artifact folder for revisions, then use the project's configured layout. With phase layout, A16 and A17 belong in `Test Preparation/` under the active iteration. Without a configured layout, use `AIAugmentation/artifacts/<iteration_id>/`. Replace filename placeholders with the iteration and version. See the [phase mapping and storage rules](../README.md#artifact-folders-and-handoffs).
 3. Fill the metadata and relevant content. Repeat tables or record blocks as needed. Replace placeholders and remove template instructions. State **None**, **Not applicable — reason**, or **Missing — impact / owner** explicitly; never fill gaps with invented evidence or approval.
 4. Reference exact input filenames and versions. Preserve child, test and finding IDs; save changed content as a new version within the same iteration.
 5. Check the acceptance criteria at the end. Record unresolved limitations and the next handoff. Use the catalog's conditional handoff rules; a draft alone does not satisfy a gate.

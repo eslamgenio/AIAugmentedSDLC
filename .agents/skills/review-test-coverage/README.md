@@ -23,20 +23,33 @@ Append `_{iteration_id}_v{artifact_version}.md` to each prefix. Use the same com
 Open the project in Codex. For an independent review, start a fresh task and supply the generated candidate rather than a prepared sample answer. Run from the project root, replacing `[A16 file]` with its path:
 
 ```text
-Use $review-test-coverage with AIAugmentation/dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md and [A16 file].
+Use $review-test-coverage with [requirements file or folder] and [A16 file].
 ```
 
-For a practice run, append:
+To choose a different output location, append:
 
 ```text
-Save the review under AIAugmentation/dummy/runs/review-test-coverage/ITER-001/.
+Save the review under [output folder].
 ```
 
 No Python or running application is required. If the skill is not recognized, use:
 
 ```text
-Read and follow .agents/skills/review-test-coverage/SKILL.md with AIAugmentation/dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md and [A16 file].
+Read and follow .agents/skills/review-test-coverage/SKILL.md with [requirements file or folder] and [A16 file].
 ```
+
+Replace bracketed placeholders with your actual project paths. Sample artifacts
+are not installation requirements.
+
+## Project-specific conventions
+
+Keep shared project context in the project's `AGENTS.md`. For activity-specific
+source locations, terminology, rules and output conventions, use the optional
+`AIAugmentation/project_guides/review-test-coverage-guide.md`.
+The skill checks this guide before working and continues with its generic
+workflow when it is absent. Guides cannot override higher-priority instructions,
+explicit user requests, authorization boundaries or the skill's fixed scope.
+Keep reusable procedures in `SKILL.md` rather than modifying them for each project.
 
 ## What you receive
 

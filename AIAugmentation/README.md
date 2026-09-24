@@ -1,6 +1,6 @@
 # AI Augmented SDLC
 
-A proposed approach to using AI throughout the software development lifecycle. The main deliverable is an editable workbook describing **45 proposed skills** and their **48 activity or decision-gate associations**.
+A proposed approach to using AI throughout the software development lifecycle. An optional, separately supplied workbook describes **45 proposed skills** and their **48 activity or decision-gate associations**.
 
 The catalog and roadmap describe the wider proposed framework. Two reusable project-local skills are available for creating test cases and reviewing coverage. Human owners retain test-exit and release decisions.
 
@@ -10,6 +10,8 @@ This file, `AIAugmentation/README.md`, contains the kit's setup and usage
 guidance. Manual setup can retain your project's existing root README.
 The updater installs the kit's root `README.md` and `min_user_guide.md`,
 replacing existing files at those paths.
+
+For manual installation:
 
 1. Copy the kit's skill folders into your project's `.agents/skills/` and
    its reusable resources into `AIAugmentation/`, retaining the relative
@@ -26,20 +28,24 @@ replacing existing files at those paths.
    `AIAugmentation/project_guides/<skill-name>-guide.md`, using the skill's
    frontmatter `name`. See the [project-guide instructions](project_guides/README.md).
 
-The resulting project layout is:
+After updater installation and project-context setup, the layout is:
 
 ```text
 your-project/
-├── README.md                  # Existing project documentation
+├── README.md                  # Kit overview (replaced by updater)
+├── min_user_guide.md           # Kit quick start (replaced by updater)
+├── AGENTS.team.md             # Shared instruction template
+├── update-skill-kit.ps1       # Copied separately by the team
 ├── AGENTS.md                  # Team instructions and project context
 ├── .agents/skills/            # Reusable skill packages
 └── AIAugmentation/
     ├── README.md              # Kit setup and usage guidance
     ├── templates/             # Reusable artifact templates
-    └── project_guides/        # Optional activity-specific conventions
+    ├── project_guides/        # Missing released guides added; existing files kept
+    └── skill-kit-version.txt  # Installed release tag
 ```
 
-### Update an installed kit
+### Install or update the kit
 
 Prerequisites: Windows PowerShell 5.1 or PowerShell 7, Git, and read access
 to the team's [GitLab repository](https://gitlabce.tools.aws.vodafone.com/central-vois-framework/devskillkit.git).
@@ -49,6 +55,8 @@ Never put a token in the script or repository URL. Use `-Repository` only
 when intentionally selecting a different source.
 
 Copy the kit's root `update-skill-kit.ps1` into your project's root once.
+The same command supports first-time installation and later upgrades. The
+project directory must exist; kit folders do not need to exist yet.
 From that project root, preview and install an available release tag:
 
 ```powershell
@@ -94,6 +102,12 @@ The tag must include `.agents/skills/`, `AIAugmentation/templates/`,
 `min_user_guide.md`. No separate ZIP asset is needed.
 Treat published tags as fixed; publish a new version for subsequent changes.
 
+For a first installation, copy the installed `AGENTS.team.md` to `AGENTS.md`
+if none exists; otherwise merge the relevant instructions into the existing
+file. Complete the project context below. Supply your own input artifacts
+and optional project guides. The updater does not generate them or install
+samples, the workbook, diagram, or supporting framework documents.
+
 ### Complete the project context
 
 Replace placeholders with verified project information, remove optional
@@ -129,19 +143,24 @@ the supplied inputs.
 
 User guides: [Create test cases](../.agents/skills/create-test-cases/README.md) · [Review test coverage](../.agents/skills/review-test-coverage/README.md). Each guide explains inputs, prompts, outputs, statuses and revision handling.
 
-Example requests (run from the repository root):
+Example requests (run from your project root; replace bracketed placeholders):
 
 ```text
-Use $create-test-cases with AIAugmentation/dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md.
+Use $create-test-cases with [requirements file or folder].
 
-Use $review-test-coverage with AIAugmentation/dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md and [A16 file].
+Use $review-test-coverage with [requirements file or folder] and [A16 file].
 
 Use $create-test-cases to revise [A16 file] using [A17 file].
 ```
 
-`AIAugmentation/dummy/` is the canonical practice and reference area; treat its sample baselines as read-only. Use `AIAugmentation/dummy/ITER-001/` for the examples above and isolated practice runs. Use `AIAugmentation/artifacts/<iteration_id>/` for active iteration inputs and outputs.
+Supply your own requirements and acceptance criteria using existing filenames
+or text. A05 can embed the baseline or reference an accessible source. Use the
+configured artifact location; the default is `AIAugmentation/artifacts/<iteration_id>/`.
 
-The sample A05 v1.1 embeds the complete requirements baseline. Use the v1.1 supporting inputs in the same iteration; a separate requirements file is unnecessary. Both skills also accept requirements supplied under any other filename or as text. Earlier sample versions remain available for historical reference.
+Optional practice materials live under `AIAugmentation/dummy/` in the full library
+repository, with instructions in its README. The updater does not install this
+folder. Samples are not required for normal skill use. Keep sample baselines
+unchanged if you download them separately.
 
 The packages live in `.agents/skills/` for this project. If the current session has not picked them up, explicitly ask to read and use the linked `SKILL.md` file. Each package is self-contained and can be copied to another project's `.agents/skills/` folder.
 
@@ -231,7 +250,7 @@ The templates use Markdown; the workbook's JSON exchange manifests remain propos
 
 ## Read the workbook
 
-Download [SDLC_Proposed_Skills_Catalog.xlsx](../SDLC_Proposed_Skills_Catalog.xlsx) and open it in Microsoft Excel. Start with **Overview**, then explore the other sheets:
+If the maintainer supplies `SDLC_Proposed_Skills_Catalog.xlsx` separately, open it in Microsoft Excel. The workbook is optional and excluded from Git and updater installations. Start with **Overview**, then explore the other sheets:
 
 | Sheet | What it contains | How to use it |
 | --- | --- | --- |
@@ -270,5 +289,4 @@ The JSON file is an exchange record or manifest: it can contain the deliverable 
 
 ## Lifecycle diagram
 
-- [SDLC.png](../SDLC.png): the lifecycle diagram for visual reference alongside the workbook.
-- [docs/sdlc-source.mmd](docs/sdlc-source.mmd): the Mermaid source for the diagram.
+The optional `SDLC.png` is supplied separately and excluded from Git and updater installations. Its Mermaid source, `AIAugmentation/docs/sdlc-source.mmd`, is available in the full library repository but is not installed by the updater. Neither is required for skill use.
