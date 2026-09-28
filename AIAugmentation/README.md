@@ -1,21 +1,73 @@
-# Dev Skill Kit — Setup and usage
+# Dev Skill Kit
 
-A proposed approach to using AI throughout the software development lifecycle. An optional, separately supplied workbook describes **45 proposed skills** and their **48 activity or decision-gate associations**.
+**Reusable, project-agnostic AI-agent skills for the software development lifecycle.**
 
-The catalog and roadmap describe the wider proposed framework. Two reusable project-local skills are available for creating test cases and reviewing coverage. Human owners retain test-exit and release decisions.
+Dev Skill Kit helps teams turn development activities into repeatable workflows
+that an AI agent can perform or assist with inside an existing project.
+
+## Our target
+
+Support an end-to-end, increasingly autonomous SDLC from requirements and
+solution design through development, testing, release, and maintenance.
+Each skill focuses on one activity and produces artifacts that can become
+inputs to subsequent activities, with human decisions and approvals where required.
+
+The intended flow is:
+
+**Requirements → Design → Development → Testing → Release → Maintenance**
+
+This is the target, not a fully implemented or automatically orchestrated workflow.
+
+## Why use Dev Skill Kit?
+
+- **Reduce repetitive work:** give agents reusable procedures for common activities.
+- **Keep outputs consistent:** use shared artifact structures and review criteria.
+- **Maintain traceability:** connect outputs to their requirements, sources, and revisions.
+- **Adapt to your project:** keep domain rules and local conventions in project
+  instructions and optional guides, while shared skills remain reusable.
+
+## Available today
+
+The current MVP provides two skills: **create-test-cases** (A16) and
+**review-test-coverage** (A17). See [inputs, outputs and example requests](#use-the-two-skills).
+
+**Working flow:** Requirements → Create test cases → Review coverage → Revise as needed.
+
+These skills design and review tests; they do not execute tests or grant approval.
+Engineering review remains essential. Skills for other lifecycle activities and
+automated orchestration are not yet implemented. Human owners retain test-exit
+and release decisions.
+
+An optional, separately supplied workbook describes **45 proposed skills** and
+**48 activity or decision-gate associations** in the wider framework.
+
+## Get started
+
+Follow the [quick start](min_user_guide.md), configure your project context,
+and supply your own requirements and acceptance criteria. Sample data and the
+broader framework catalog are not required. The skills flag missing information
+rather than inventing expected behavior.
+
+## Documentation
+
+- [Install or update the kit](#install-or-update-the-kit)
+- [Configure project context](#complete-the-project-context)
+- [Use the two skills](#use-the-two-skills)
+- [Customize individual skills with project guides](project_guides/README.md)
+- [Artifact templates](templates/README.md)
+- [Artifact storage and handoffs](#artifact-folders-and-handoffs)
 
 ## Set up the kit in an existing project
 
-This file, `AIAugmentation/README.md`, contains the kit's setup and usage
-guidance. Manual setup can retain your project's existing root README.
-The updater installs the kit's root `README.md` and `min_user_guide.md`,
-replacing existing files at those paths.
+This file, `AIAugmentation/README.md`, contains the kit overview, setup and usage
+guidance. The updater installs this guide and `AIAugmentation/min_user_guide.md`
+while preserving your project's existing root README.
 
 For manual installation:
 
 1. Copy the kit's skill folders into your project's `.agents/skills/` and
    its reusable resources into `AIAugmentation/`, retaining the relative
-   paths. Include this README, `templates/` and `project_guides/`. Merge
+   paths. Include this README, `min_user_guide.md`, `templates/` and `project_guides/`. Merge
    with existing directories and review file conflicts rather than
    replacing existing project files.
 2. Copy the kit's root `AGENTS.team.md` into the project root and complete
@@ -32,14 +84,14 @@ After updater installation and project-context setup, the layout is:
 
 ```text
 your-project/
-├── README.md                  # Kit overview (replaced by updater)
-├── min_user_guide.md           # Kit quick start (replaced by updater)
+├── README.md                  # Your project README (preserved)
 ├── AGENTS.team.md             # Shared instruction template
 ├── update-skill-kit.ps1       # Copied separately by the team
 ├── AGENTS.md                  # Team instructions and project context
 ├── .agents/skills/            # Reusable skill packages
 └── AIAugmentation/
-    ├── README.md              # Kit setup and usage guidance
+    ├── README.md              # Kit overview, setup and usage
+    ├── min_user_guide.md       # Kit quick start
     ├── templates/             # Reusable artifact templates
     ├── project_guides/        # Missing released guides added; existing files kept
     └── skill-kit-version.txt  # Installed release tag
@@ -70,12 +122,15 @@ validates the tag but does not change project files. Use `-ProjectPath`
 to select a different existing project directory.
 
 The updater copies all released skill packages under `.agents/skills/`,
-the reusable `AIAugmentation/templates/`, `AIAugmentation/README.md`, and
-the root `AGENTS.team.md` instruction template, `README.md` and
-`min_user_guide.md`. Both root guides are overwritten on updates; save any
-application-specific README content elsewhere before using the updater.
-It records the installed
-tag in `AIAugmentation/skill-kit-version.txt` after copying succeeds.
+the reusable `AIAugmentation/templates/`, `AIAugmentation/README.md`,
+`AIAugmentation/min_user_guide.md`, and the root `AGENTS.team.md` instruction
+template. Both kit guides are overwritten on updates. The project root
+`README.md` is preserved, including when installing older releases.
+Older tags with a root `min_user_guide.md` install that file at its original
+location. Existing root guides from earlier installations are not deleted.
+Use this updated updater script for the new layout.
+
+It records the installed tag in `AIAugmentation/skill-kit-version.txt` after copying succeeds.
 
 It also installs `AIAugmentation/project_guides/` from the release, including
 its README and any starter guides. Only missing files are added: existing
@@ -98,8 +153,8 @@ fix the error and rerun. The version file is written only after all copies succe
 For kit maintainers: commit the intended kit files and publish a version tag
 (for example, `v1.2.0`) with release notes describing changes and any removals.
 The tag must include `.agents/skills/`, `AIAugmentation/templates/`,
-`AIAugmentation/README.md`, `AGENTS.team.md`, root `README.md` and
-`min_user_guide.md`. No separate ZIP asset is needed.
+`AIAugmentation/README.md`, `AGENTS.team.md` and
+`AIAugmentation/min_user_guide.md`. No separate ZIP asset is needed.
 Treat published tags as fixed; publish a new version for subsequent changes.
 
 For a first installation, copy the installed `AGENTS.team.md` to `AGENTS.md`

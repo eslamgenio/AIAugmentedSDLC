@@ -4,7 +4,7 @@ Feature: DEVICE-CONNECTION | Iteration: ITER-001 | Artifact version: 1.1
 
 **Status:** Draft supporting input, based on the embedded A05-02 baseline version 1.0.
 
-Source: [A05-02 baseline](A05_requirements-review-outputs_ITER-001_v1.1.md#a05-02-proposed-baseline-with-revision-history), feature version 1.0.
+Source: [A05-02 baseline](../Requirements/A05_requirements-review-outputs_ITER-001_v1.1.md#a05-02--proposed-baseline-with-revision-history), feature version 1.0.
 
 ## A15-01 - Test strategy and scoped test plan
 

@@ -30,4 +30,4 @@ The baseline consists of the linked requirements.md version 1.0, all four requir
 
 ## A05-03 - Agreement record with pending decisions
 
-Agreement status is recorded in [E09](E09_human-decisions_ITER-001_v1.0.md), decision DEC-001. Approval is pending. No unresolved in-scope behavior questions have been identified. Any newly discovered ambiguity should be recorded as a question.
+Agreement status is recorded in [E09](../External%20Inputs/E09_human-decisions_ITER-001_v1.0.md), decision DEC-001. Approval is pending. No unresolved in-scope behavior questions have been identified. Any newly discovered ambiguity should be recorded as a question.

@@ -67,11 +67,19 @@ try {
     Invoke-Git -Arguments @('-C', $stage, 'checkout', '--quiet', '--detach', 'FETCH_HEAD') | Out-Null
     $commit = (Invoke-Git -Arguments @('-C', $stage, 'rev-parse', 'HEAD') | Select-Object -Last 1).ToString().Trim()
 
-    $required = @('AGENTS.team.md', 'README.md', 'min_user_guide.md', 'AIAugmentation/README.md', 'AIAugmentation/templates/README.md')
+    $required = @('AGENTS.team.md', 'AIAugmentation/README.md', 'AIAugmentation/templates/README.md')
     foreach ($relative in $required) {
         if (-not (Test-Path -LiteralPath (Join-Path $stage $relative) -PathType Leaf)) {
             throw "Release is missing required file: $relative"
         }
+    }
+    # Accept older tags with a root quick start at their original location.
+    $quickStart = Join-Path $stage 'AIAugmentation/min_user_guide.md'
+    if (-not (Test-Path -LiteralPath $quickStart -PathType Leaf)) {
+        $quickStart = Join-Path $stage 'min_user_guide.md'
+    }
+    if (-not (Test-Path -LiteralPath $quickStart -PathType Leaf)) {
+        throw 'Release is missing required file: AIAugmentation/min_user_guide.md'
     }
     $skillsRoot = Join-Path $stage '.agents/skills'
     if (-not (Test-Path -LiteralPath $skillsRoot -PathType Container)) {
@@ -93,8 +101,7 @@ try {
     $files += Get-Item -LiteralPath (Join-Path $stage 'AIAugmentation/README.md')
     # Keep the team instruction template separate from the project's AGENTS.md.
     $files += Get-Item -LiteralPath (Join-Path $stage 'AGENTS.team.md')
-    $files += Get-Item -LiteralPath (Join-Path $stage 'README.md')
-    $files += Get-Item -LiteralPath (Join-Path $stage 'min_user_guide.md')
+    $files += Get-Item -LiteralPath $quickStart
 
     # Seed project guides without overwriting team-owned customizations.
     # Older releases without guides remain installable.
@@ -134,7 +141,7 @@ try {
         # Write last: a failed copy must never claim the new version is installed.
         [IO.File]::WriteAllText($versionFile, "$Version`n", [Text.UTF8Encoding]::new($false))
         Write-Output "Installed skill-kit $Version (commit $commit). Review the changes and commit them in your project."
-        Write-Output 'Existing project guides, artifacts, AGENTS.md and unrelated skills were preserved. Root README.md and min_user_guide.md were updated. No files were deleted.'
+        Write-Output 'Existing project guides, artifacts, AGENTS.md and unrelated skills were preserved. The project root README.md was preserved; shared kit guides were updated. No files were deleted.'
     }
 }
 finally {

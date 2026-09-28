@@ -4,7 +4,7 @@ Feature: DEVICE-CONNECTION | Iteration: ITER-001 | Artifact version: 1.1
 
 **Status:** Pending baseline approval.
 
-Source: [A05-02 baseline](A05_requirements-review-outputs_ITER-001_v1.1.md#a05-02-proposed-baseline-with-revision-history), feature version 1.0.
+Source: [A05-02 baseline](../Requirements/A05_requirements-review-outputs_ITER-001_v1.1.md#a05-02--proposed-baseline-with-revision-history), feature version 1.0.
 
 ## Decision record
 

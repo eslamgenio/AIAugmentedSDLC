@@ -4,7 +4,7 @@ Feature: DEVICE-CONNECTION | Iteration: ITER-001 | Artifact version: 1.0
 
 **Status:** Draft supporting input, based on requirements.md version 1.0.
 
-Source: [requirements.md](requirements.md), feature version 1.0.
+Source: [requirements.md](../Requirements/requirements.md), feature version 1.0.
 
 ## Test baseline
 

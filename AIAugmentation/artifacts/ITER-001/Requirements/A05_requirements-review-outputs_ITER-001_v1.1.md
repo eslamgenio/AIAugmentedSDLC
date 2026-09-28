@@ -100,7 +100,7 @@ There are no known unresolved behavior questions within the stated scope. If you
 
 ## A05-03 — Agreement record with pending decisions
 
-[E09 v1.1](E09_human-decisions_ITER-001_v1.1.md) records DEC-001 as PENDING against this artifact revision. No stakeholder approval is claimed. Consolidation changes packaging only; new decisions must still identify their exact artifact revision.
+[E09 v1.1](../External%20Inputs/E09_human-decisions_ITER-001_v1.1.md) records DEC-001 as PENDING against this artifact revision. No stakeholder approval is claimed. Consolidation changes packaging only; new decisions must still identify their exact artifact revision.
 
 ## Acceptance and handoff
 

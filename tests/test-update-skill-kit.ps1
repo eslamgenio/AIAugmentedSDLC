@@ -29,8 +29,7 @@ Write-File $source '.agents/skills/review-test-coverage/SKILL.md' 'reviewer v1'
 Write-File $source 'AIAugmentation/templates/README.md' 'templates v1'
 Write-File $source 'AIAugmentation/README.md' 'guide v1'
 Write-File $source 'AGENTS.team.md' 'shared instructions v1'
-Write-File $source 'README.md' 'kit README v1'
-Write-File $source 'min_user_guide.md' 'quick start v1'
+Write-File $source 'AIAugmentation/min_user_guide.md' 'quick start v1'
 Write-File $source 'AGENTS.md' 'must not copy'
 Write-File $source 'AIAugmentation/project_guides/create-test-cases-guide.md' 'must not copy'
 Write-File $source 'AIAugmentation/project_guides/README.md' 'guide instructions v1'
@@ -50,10 +49,10 @@ $before = Snapshot
 Assert ((Snapshot) -eq $before) 'WhatIf changed project files'
 & $updater -Version v1.0.0 -Repository $source -ProjectPath $target
 Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/skill-kit-version.txt') -Raw).Trim() -eq 'v1.0.0') 'initial version'
-Assert ((Get-Content -LiteralPath (Join-Path $target 'README.md') -Raw) -eq 'kit README v1') 'root README not replaced'
-Assert ((Get-Content -LiteralPath (Join-Path $target 'min_user_guide.md') -Raw) -eq 'quick start v1') 'quick start not installed'
-Write-File $source 'README.md' 'kit README v2'
-Write-File $source 'min_user_guide.md' 'quick start v2'
+Assert ((Get-Content -LiteralPath (Join-Path $target 'README.md') -Raw) -eq 'previous README') 'root README was overwritten'
+Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/min_user_guide.md') -Raw) -eq 'quick start v1') 'quick start not installed'
+Write-File $source 'AIAugmentation/README.md' 'guide v2'
+Write-File $source 'AIAugmentation/min_user_guide.md' 'quick start v2'
 Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/project_guides/README.md') -Raw) -eq 'guide instructions v1') 'guide README missing'
 Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/project_guides/review-test-coverage-guide.md') -Raw) -eq 'starter guide v1') 'starter guide missing'
 Write-File $target 'AIAugmentation/project_guides/review-test-coverage-guide.md' 'team customized guide'
@@ -68,8 +67,9 @@ Invoke-FixtureGit @('-c', 'user.name=Updater Test', '-c', 'user.email=updater@ex
 Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/skill-kit-version.txt') -Raw).Trim() -eq 'v1.1.0') 'upgrade version'
 Assert ((Get-Content -LiteralPath (Join-Path $target '.agents/skills/create-test-cases/SKILL.md') -Raw) -eq 'creator v2') 'skill was not updated'
 Assert (Test-Path -LiteralPath (Join-Path $target '.agents/skills/new-feature/SKILL.md')) 'new skill missing'
-Assert ((Get-Content -LiteralPath (Join-Path $target 'README.md') -Raw) -eq 'kit README v2') 'root README not upgraded'
-Assert ((Get-Content -LiteralPath (Join-Path $target 'min_user_guide.md') -Raw) -eq 'quick start v2') 'quick start not upgraded'
+Assert ((Get-Content -LiteralPath (Join-Path $target 'README.md') -Raw) -eq 'previous README') 'root README was overwritten on upgrade'
+Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/README.md') -Raw) -eq 'guide v2') 'merged guide not upgraded'
+Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/min_user_guide.md') -Raw) -eq 'quick start v2') 'quick start not upgraded'
 Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/project_guides/review-test-coverage-guide.md') -Raw) -eq 'team customized guide') 'customized guide overwritten'
 Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/project_guides/new-feature-guide.md') -Raw) -eq 'new guide') 'new guide missing on upgrade'
 foreach ($path in $protected) {
@@ -79,6 +79,16 @@ Assert (-not (Test-Path -LiteralPath (Join-Path $target 'AIAugmentation/artifact
 $before = Snapshot
 & $updater -Version v1.1.0 -Repository $source -ProjectPath $target
 Assert ((Snapshot) -eq $before) 'reinstall changed contents'
+# Legacy releases may still contain both guides at the repository root.
+Invoke-FixtureGit @('mv', 'AIAugmentation/min_user_guide.md', 'min_user_guide.md')
+Write-File $source 'README.md' 'legacy kit overview'
+Invoke-FixtureGit @('add', '.')
+Invoke-FixtureGit @('-c', 'user.name=Updater Test', '-c', 'user.email=updater@example.invalid', 'commit', '--quiet', '-m', 'legacy layout fixture')
+Invoke-FixtureGit @('tag', 'v1.2.0')
+& $updater -Version v1.2.0 -Repository $source -ProjectPath $target
+Assert ((Get-Content -LiteralPath (Join-Path $target 'README.md') -Raw) -eq 'previous README') 'legacy root README was copied'
+Assert ((Get-Content -LiteralPath (Join-Path $target 'min_user_guide.md') -Raw) -eq 'quick start v2') 'legacy quick start not installed'
+$before = Snapshot
 $failed = $false
 try { & $updater -Version v9.9.9 -Repository $source -ProjectPath $target } catch { $failed = $true }
 Assert $failed 'missing tag did not fail'
@@ -90,4 +100,4 @@ $failed = $false
 try { & $updater -Version v2.0.0 -Repository $source -ProjectPath $target } catch { $failed = $true }
 Assert $failed 'incomplete release did not fail'
 Assert ((Snapshot) -eq $before) 'incomplete release changed project'
-Write-Output "PASS: preview, install, upgrade, new skill, preservation, reinstall, missing tag and incomplete release. Fixtures: $sandbox"
+Write-Output "PASS: preview, install, upgrade, new skill, preservation, reinstall, legacy layout, missing tag and incomplete release. Fixtures: $sandbox"
