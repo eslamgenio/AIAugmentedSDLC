@@ -6,6 +6,10 @@ requirements and acceptance criteria. The skills themselves need no Python setup
 1. **Install the kit.** Follow [installation and prerequisites](README.md#install-or-update-the-kit).
    The updater supports first-time setup and later upgrades. It updates the
    kit guides inside `AIAugmentation/` and preserves your project root README.
+   It creates missing `Requirements`, `Solution Design`, `Test Preparation`,
+   and `External Inputs` folders under `AIAugmentation/artifacts/ITER-001/`,
+   preserving existing content. Use `-IterationId ITER-002` to select another
+   iteration; add `-WhatIf` to preview without changing files or folders.
 2. **Configure your project.** Follow [project-context setup](README.md#complete-the-project-context)
    to create or merge `AGENTS.md`. Add [optional project guides](project_guides/README.md)
    only when activity-specific conventions are needed.

@@ -118,7 +118,7 @@ From that project root, preview and install an available release tag:
 
 `v1.2.0` is an example; replace it with a published version. The updater
 fetches the exact Git tag, not the latest branch. `-WhatIf` downloads and
-validates the tag but does not change project files. Use `-ProjectPath`
+validates the tag but does not change project files or directories. Use `-ProjectPath`
 to select a different existing project directory.
 
 The updater copies all released skill packages under `.agents/skills/`,
@@ -130,7 +130,22 @@ Older tags with a root `min_user_guide.md` install that file at its original
 location. Existing root guides from earlier installations are not deleted.
 Use this updated updater script for the new layout.
 
-It records the installed tag in `AIAugmentation/skill-kit-version.txt` after copying succeeds.
+The updater also creates missing `Requirements/`, `Solution Design/`,
+`Test Preparation/`, and `External Inputs/` folders under
+`AIAugmentation/artifacts/ITER-001/`. Existing folders and their contents
+are preserved; no sample files or placeholders are added. Select another
+iteration with `-IterationId`:
+
+```powershell
+.\update-skill-kit.ps1 -Version v1.2.0 -IterationId ITER-002
+```
+
+Iteration names must start with a letter or digit and contain only letters,
+digits, underscores or hyphens. Only the selected iteration is scaffolded;
+other iterations are untouched. `-WhatIf` reports missing folders to create.
+
+It records the installed tag in `AIAugmentation/skill-kit-version.txt` after
+copying and folder creation succeed.
 
 It also installs `AIAugmentation/project_guides/` from the release, including
 its README and any starter guides. Only missing files are added: existing
@@ -148,7 +163,8 @@ run a representative creation-and-review example, then commit the update.
 The updater never commits, pushes, or executes downloaded scripts. It does
 not delete retired files or replace itself; follow release notes for removals
 or a newer updater. If a copy fails, some shared files may already be updated;
-fix the error and rerun. The version file is written only after all copies succeed.
+fix the error and rerun. The version file is written only after all copies
+and folder creation succeed.
 
 For kit maintainers: commit the intended kit files and publish a version tag
 (for example, `v1.2.0`) with release notes describing changes and any removals.

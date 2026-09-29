@@ -1,6 +1,6 @@
 ---
 name: create-test-cases
-description: Create or revise requirement-linked software test cases with preconditions, data, expected results, and open questions. Use for test design from requirements or acceptance criteria, including corrections requested by a coverage review. Produces the A16 test-design bundle; does not execute tests.
+description: DSK Create or revise requirement-linked software test cases with preconditions, data, expected results, and open questions. Use for test design from requirements or acceptance criteria, including corrections requested by a coverage review. Produces the A16 test-design bundle; does not execute tests.
 ---
 
 # Create test cases

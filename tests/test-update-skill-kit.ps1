@@ -20,8 +20,9 @@ function Invoke-FixtureGit($arguments) {
     if ($LASTEXITCODE -ne 0) { throw "Fixture Git command failed: $arguments" }
 }
 function Snapshot {
-    return ((Get-ChildItem -LiteralPath $target -Recurse -File -Force | Sort-Object FullName | ForEach-Object {
-        $_.FullName + ':' + (Get-FileHash -LiteralPath $_.FullName).Hash
+    return ((Get-ChildItem -LiteralPath $target -Recurse -Force | Sort-Object FullName | ForEach-Object {
+        if ($_.PSIsContainer) { 'DIR:' + $_.FullName }
+        else { $_.FullName + ':' + (Get-FileHash -LiteralPath $_.FullName).Hash }
     }) -join "`n")
 }
 Write-File $source '.agents/skills/create-test-cases/SKILL.md' 'creator v1'
@@ -43,11 +44,48 @@ $protected = @('AGENTS.md', 'AIAugmentation/project_guides/create-test-cases-gui
     'AIAugmentation/artifacts/ITER-001/test.md', '.agents/skills/unrelated/SKILL.md', 'src/app.py')
 foreach ($path in $protected) { Write-File $target $path 'project-owned content' }
 Write-File $target 'README.md' 'previous README'
+Write-File $target 'AIAugmentation/artifacts/ITER-001/Requirements/requirements.md' 'existing requirements'
+Write-File $target 'AIAugmentation/artifacts/ITER-OTHER/keep.md' 'other iteration'
 $updater = Join-Path $kitRoot 'update-skill-kit.ps1'
+$phases = @('Requirements', 'Solution Design', 'Test Preparation', 'External Inputs')
 $before = Snapshot
 & $updater -Version v1.0.0 -Repository $source -ProjectPath $target -WhatIf
 Assert ((Snapshot) -eq $before) 'WhatIf changed project files'
+foreach ($invalid in @('', '../escape', 'ITER/002', 'ITER\002', '-ITER', 'ITER 002', 'ITER.002', "ITER-002`n")) {
+    $failed = $false
+    try { & $updater -Version v1.0.0 -Repository $source -ProjectPath $target -IterationId $invalid } catch { $failed = $true }
+    Assert $failed "invalid iteration accepted: $invalid"
+    Assert ((Snapshot) -eq $before) 'invalid iteration changed project'
+}
+# Check phase and ancestor collisions in isolated destinations before installation.
+$mainTarget = $target
+foreach ($conflict in @('AIAugmentation/artifacts', 'AIAugmentation/artifacts/ITER-001', 'AIAugmentation/artifacts/ITER-001/Test Preparation')) {
+    $target = Join-Path $sandbox ('conflict-' + [guid]::NewGuid().ToString('N'))
+    Write-File $target $conflict 'blocking file'
+    $conflictBefore = Snapshot
+    $failed = $false
+    try { & $updater -Version v1.0.0 -Repository $source -ProjectPath $target } catch { $failed = $true }
+    Assert $failed "directory conflict accepted: $conflict"
+    Assert ((Snapshot) -eq $conflictBefore) "directory conflict changed project: $conflict"
+}
+$target = $mainTarget
 & $updater -Version v1.0.0 -Repository $source -ProjectPath $target
+foreach ($phase in $phases) {
+    Assert (Test-Path -LiteralPath (Join-Path $target "AIAugmentation/artifacts/ITER-001/$phase") -PathType Container) "missing default phase: $phase"
+}
+Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/artifacts/ITER-001/Requirements/requirements.md') -Raw) -eq 'existing requirements') 'existing requirements changed'
+Assert (@(Get-ChildItem -LiteralPath (Join-Path $target 'AIAugmentation/artifacts/ITER-OTHER') -Force).Count -eq 1) 'other iteration changed'
+$before = Snapshot
+& $updater -Version v1.0.0 -Repository $source -ProjectPath $target -IterationId ITER_002 -WhatIf
+Assert ((Snapshot) -eq $before) 'custom iteration WhatIf changed project'
+& $updater -Version v1.0.0 -Repository $source -ProjectPath $target -IterationId ITER_002
+foreach ($phase in $phases) {
+    Assert (Test-Path -LiteralPath (Join-Path $target "AIAugmentation/artifacts/ITER_002/$phase") -PathType Container) "missing custom phase: $phase"
+}
+Assert (@(Get-ChildItem -LiteralPath (Join-Path $target 'AIAugmentation/artifacts/ITER_002') -Recurse -File -Force).Count -eq 0) 'custom iteration contains placeholder files'
+$before = Snapshot
+& $updater -Version v1.0.0 -Repository $source -ProjectPath $target -IterationId ITER_002
+Assert ((Snapshot) -eq $before) 'custom iteration reinstall changed project'
 Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/skill-kit-version.txt') -Raw).Trim() -eq 'v1.0.0') 'initial version'
 Assert ((Get-Content -LiteralPath (Join-Path $target 'README.md') -Raw) -eq 'previous README') 'root README was overwritten'
 Assert ((Get-Content -LiteralPath (Join-Path $target 'AIAugmentation/min_user_guide.md') -Raw) -eq 'quick start v1') 'quick start not installed'
@@ -90,14 +128,14 @@ Assert ((Get-Content -LiteralPath (Join-Path $target 'README.md') -Raw) -eq 'pre
 Assert ((Get-Content -LiteralPath (Join-Path $target 'min_user_guide.md') -Raw) -eq 'quick start v2') 'legacy quick start not installed'
 $before = Snapshot
 $failed = $false
-try { & $updater -Version v9.9.9 -Repository $source -ProjectPath $target } catch { $failed = $true }
+try { & $updater -Version v9.9.9 -Repository $source -ProjectPath $target -IterationId ITER-MISSING } catch { $failed = $true }
 Assert $failed 'missing tag did not fail'
 Assert ((Snapshot) -eq $before) 'missing tag changed project'
 Invoke-FixtureGit @('rm', '--quiet', 'AGENTS.team.md')
 Invoke-FixtureGit @('-c', 'user.name=Updater Test', '-c', 'user.email=updater@example.invalid', 'commit', '--quiet', '-m', 'incomplete fixture')
 Invoke-FixtureGit @('tag', 'v2.0.0')
 $failed = $false
-try { & $updater -Version v2.0.0 -Repository $source -ProjectPath $target } catch { $failed = $true }
+try { & $updater -Version v2.0.0 -Repository $source -ProjectPath $target -IterationId ITER-INCOMPLETE } catch { $failed = $true }
 Assert $failed 'incomplete release did not fail'
 Assert ((Snapshot) -eq $before) 'incomplete release changed project'
-Write-Output "PASS: preview, install, upgrade, new skill, preservation, reinstall, legacy layout, missing tag and incomplete release. Fixtures: $sandbox"
+Write-Output "PASS: preview, default/custom iteration folders, invalid names, directory conflicts, install, upgrade, new skill, preservation, reinstall, legacy layout, missing tag and incomplete release. Fixtures: $sandbox"

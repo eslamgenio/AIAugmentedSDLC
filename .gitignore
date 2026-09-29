@@ -23,3 +23,9 @@ __pycache__/
 
 # Local skill-development instructions
 /AGENTS.md
+
+# Local tests
+/tests/
+
+# Local dummy data
+/AIAugmentation/dummy/

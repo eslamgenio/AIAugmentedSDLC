@@ -14,7 +14,9 @@ param(
     [string]$Version,
     [string]$ProjectPath = (Get-Location).Path,
     [ValidateNotNullOrEmpty()]
-    [string]$Repository = 'https://gitlabce.tools.aws.vodafone.com/central-vois-framework/devskillkit.git'
+    [string]$Repository = 'https://gitlabce.tools.aws.vodafone.com/central-vois-framework/devskillkit.git',
+    [ValidatePattern('\A[A-Za-z0-9][A-Za-z0-9_-]*\z')]
+    [string]$IterationId = 'ITER-001'
 )
 
 Set-StrictMode -Version Latest
@@ -132,13 +134,39 @@ try {
         throw "Expected a file but found a directory: $versionFile"
     }
 
-    if ($PSCmdlet.ShouldProcess($project, "Install skill-kit $Version ($commit), updating $($plan.Count) shared files")) {
+    $missingDirectories = @()
+    foreach ($phase in @('Requirements', 'Solution Design', 'Test Preparation', 'External Inputs')) {
+        $directory = Join-Path $project "AIAugmentation/artifacts/$IterationId/$phase"
+        Assert-RegularPath -Path $directory -Root $project
+        # Check ancestors too: a file at artifacts/ or the iteration root
+        # must fail before any shared files are updated.
+        $cursor = $directory
+        while ($cursor) {
+            if (Test-Path -LiteralPath $cursor -PathType Leaf) {
+                throw "Expected a directory but found a file: $cursor"
+            }
+            $parent = Split-Path -Parent $cursor
+            if ($parent -eq $cursor) { break }
+            $cursor = $parent
+        }
+        if (-not (Test-Path -LiteralPath $directory -PathType Container)) {
+            $missingDirectories += $directory
+        }
+    }
+    $action = "Install skill-kit $Version ($commit), updating $($plan.Count) shared files"
+    if ($missingDirectories.Count -gt 0) {
+        $action += "; create missing artifact directories: " + ($missingDirectories -join ', ')
+    }
+    if ($PSCmdlet.ShouldProcess($project, $action)) {
         foreach ($entry in $plan) {
             $parent = Split-Path -Parent $entry.Destination
             [IO.Directory]::CreateDirectory($parent) | Out-Null
             Copy-Item -LiteralPath $entry.Source -Destination $entry.Destination -Force
         }
-        # Write last: a failed copy must never claim the new version is installed.
+        foreach ($directory in $missingDirectories) {
+            [IO.Directory]::CreateDirectory($directory) | Out-Null
+        }
+        # Write last: a failed copy or directory creation must never claim success.
         [IO.File]::WriteAllText($versionFile, "$Version`n", [Text.UTF8Encoding]::new($false))
         Write-Output "Installed skill-kit $Version (commit $commit). Review the changes and commit them in your project."
         Write-Output 'Existing project guides, artifacts, AGENTS.md and unrelated skills were preserved. The project root README.md was preserved; shared kit guides were updated. No files were deleted.'

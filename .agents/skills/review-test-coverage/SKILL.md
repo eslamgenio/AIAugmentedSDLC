@@ -1,6 +1,6 @@
 ---
 name: review-test-coverage
-description: Review software test cases against requirements and acceptance criteria for coverage, correct expectations, clarity, and duplicates. Produces the A17 traceability and actionable review bundle, including verification of prior corrections. Use to review test design, not to report test execution results.
+description: DSK Review software test cases against requirements and acceptance criteria for coverage, correct expectations, clarity, and duplicates. Produces the A17 traceability and actionable review bundle, including verification of prior corrections. Use to review test design, not to report test execution results.
 ---
 
 # Review test coverage
