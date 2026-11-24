@@ -1,6 +1,18 @@
+---
+artifact_id: A02
+schema_version: null
+artifact_version: null
+producer_or_owner: null
+iteration_id: null
+created_at: null
+source_artifact_versions: []
+status: DRAFT
+evidence_refs: []
+---
+
 # A02 — Scope Definition Outputs
 
-> Template: replace placeholders and remove guidance when creating an artifact. See [template usage](README.md).
+> Template: populate front matter from verified project metadata; the two list fields hold exact references, not prose placeholders. Replace placeholders and remove guidance when creating an artifact. See [template usage](README.md).
 
 - **artifact_id:** A02
 - **artifact_name:** Scope Definition Outputs
@@ -37,6 +49,18 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | --- | --- |
 | [metric] | [target] |
 
+## Child Artifact Register
+
+For an embedded child, use the actual parent version and the exact section anchor below. For a separate child, replace the anchor with the verified relative path from this file and use the child's actual version. If a value is not verified, mark it Unknown; never guess or make an unknown path a link.
+
+| Child ID | Version | Location |
+| --- | --- | --- |
+| A02-01 | [Parent version if embedded; otherwise exact child version or Unknown] | [Scope statement](#a02-01) |
+| A02-02 | [Parent version if embedded; otherwise exact child version or Unknown] | [Business goals and success measures](#a02-02) |
+| A02-03 | [Parent version if embedded; otherwise exact child version or Unknown] | [Constraints, assumptions and agreement checklist](#a02-03) |
+
+<a id="a02-01"></a>
+
 ## A02-01 — Scope statement with inclusions and exclusions
 
 [Provide the following: Scope statement with inclusions and exclusions. Use the required fields above; link their detailed values here instead of duplicating them.]
@@ -45,6 +69,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
 
+<a id="a02-02"></a>
+
 ## A02-02 — Business goals and success measures
 
 [Provide the following: Business goals and success measures. Use the required fields above; link their detailed values here instead of duplicating them.]
@@ -52,6 +78,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | Deliverable item | Content or native file reference | Supporting source / revision | Open issue / limitation |
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
+
+<a id="a02-03"></a>
 
 ## A02-03 — Constraints, assumptions and agreement checklist
 

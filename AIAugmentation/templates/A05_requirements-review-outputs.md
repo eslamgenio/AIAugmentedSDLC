@@ -1,16 +1,22 @@
+---
+artifact_id: A05
+schema_version: null
+artifact_version: null
+producer_or_owner: review-requirements
+iteration_id: null
+created_at: null
+source_artifact_versions: []
+status: DRAFT
+evidence_refs: []
+---
+
 # A05 — Requirements Review Outputs
 
 > Template: replace placeholders and remove guidance when creating an artifact. See [template usage](README.md).
 
-- **artifact_id:** A05
-- **artifact_name:** Requirements Review Outputs
-- **iteration_id:** [ITER-xxx]
-- **artifact_version:** [1.0]
 - **Feature / project:** [Name]
-- **Producer / owner:** review-requirements
-- **Prepared by / date:** [Actual author and date]
-- **Document status:** DRAFT
 - **Scope:** [Included behavior, boundaries and exclusions]
+- **Review gate:** [READY, REVISE, or BLOCKED with rationale; not stakeholder approval]
 - **Output filename:** `A05_requirements-review-outputs_{iteration_id}_v{artifact_version}.md`
 
 ## Source references
@@ -31,6 +37,18 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | `actions` | [Value, evidence or section reference; explicitly identify missing information] |
 | `stakeholder_decision_refs` | [Value, evidence or section reference; explicitly identify missing information] |
 
+## Child Artifact Register
+
+Use the parent artifact version for embedded children and link the exact retained anchor. For a standalone child, record its exact supplied version and a verified path relative to this artifact. If either value is unknown, state which value is unknown; do not invent a target. Replace table guidance when producing the artifact.
+
+| Child ID | Version | Location |
+| --- | --- | --- |
+| A05-01 | [Parent artifact version if embedded] | [Embedded](#a05-01) |
+| A05-02 | [Parent artifact version if embedded] | [Embedded](#a05-02) |
+| A05-03 | [Parent artifact version if embedded] | [Embedded](#a05-03) |
+
+<a id="a05-01"></a>
+
 ## A05-01 — Requirements review findings and actions
 
 [Provide the following: Requirements review findings and actions. Use the required fields above; link their detailed values here instead of duplicating them.]
@@ -39,6 +57,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
 
+<a id="a05-02"></a>
+
 ## A05-02 — Proposed baseline with revision history
 
 Include the complete requirements baseline here (goal, terminology, initial state, requirement IDs and behavior, acceptance criteria, scope and exclusions), or reference an accessible versioned baseline supplied for the task. A separate file with a particular name is not required. Preserve the baseline behavior version separately from this artifact version and record any changes.
@@ -46,6 +66,8 @@ Include the complete requirements baseline here (goal, terminology, initial stat
 | Deliverable item | Content or native file reference | Supporting source / revision | Open issue / limitation |
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
+
+<a id="a05-03"></a>
 
 ## A05-03 — Agreement record with pending decisions
 

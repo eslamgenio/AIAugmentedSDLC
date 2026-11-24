@@ -1,3 +1,15 @@
+---
+artifact_id: A16
+schema_version: "1.0"
+artifact_version: null
+producer_or_owner: create-test-cases
+iteration_id: null
+created_at: null
+source_artifact_versions: []
+status: DRAFT
+evidence_refs: []
+---
+
 # A16 — Test Case Creation Outputs
 
 > Template: replace placeholders and remove guidance when creating an artifact. See [template usage](README.md).
@@ -13,11 +25,23 @@
 - **Scope:** [Included behavior, boundaries and exclusions]
 - **Output filename:** `A16_test-case-creation-outputs_{iteration_id}_v{artifact_version}.md`
 
+## Child artifacts
+
+| Child ID | Version | Embedded anchor or relative path |
+| --- | --- | --- |
+| A16-01 | null | #a16-01 |
+| A16-02 | null | #a16-02 |
+| A16-03 | null | #a16-03 |
+
+Replace each known version; an embedded child can use the parent version when that version is confirmed. Use a relative path for a separately stored versioned Markdown child and verify that it resolves. Keep unknown versions or paths explicitly null; do not invent them. For native evidence, retain its format and link its exact path/revision or checksum.
+
 ## Source references
 
 | Source artifact / document | Exact filename or URI | Version / revision | Relevant section / evidence |
 | --- | --- | --- | --- |
 | [ID or source name] | [Resolvable reference] | [Version or identified snapshot] | [Section or evidence] |
+
+<a id="a16-01"></a>
 
 ## A16-01 — Requirement-linked test cases and scenarios
 
@@ -40,6 +64,8 @@ Repeat this block for each case. Preserve IDs during revisions. Use supplied sou
 
 **expected:** [Final observable result and source; reference a step when sufficient]
 
+<a id="a16-02"></a>
+
 ## A16-02 — Preconditions, data needs and expected results
 
 Summarize setup and data by test ID. Reference A16-01 expectations instead of maintaining a second copy.
@@ -47,6 +73,8 @@ Summarize setup and data by test ID. Reference A16-01 expectations instead of ma
 | Test ID | Setup / environment capabilities | Data / fixtures | Expected result reference |
 | --- | --- | --- | --- |
 | [test_id] | [Required setup] | [Data reference] | [A16-01 case and step] |
+
+<a id="a16-03"></a>
 
 ## A16-03 — Coverage questions and automation candidates
 

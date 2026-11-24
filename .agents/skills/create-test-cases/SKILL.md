@@ -50,12 +50,12 @@ Before delivery, check that IDs are unique, references resolve, steps are execut
 
 ## Output: A16 — Test Case Creation Outputs
 
-When working in this project, read and follow the [A16 template](../../../AIAugmentation/templates/A16_test-case-creation-outputs.md) before writing the output. Fill its applicable sections, replace placeholders, and retain stable child IDs. If the skill is copied elsewhere without the project templates, use the self-contained layout below. A user-supplied format takes precedence.
+When working in this project, read and follow the [A16 template](../../../AIAugmentation/templates/A16_test-case-creation-outputs.md) before writing the output. Fill its applicable sections, replace placeholders, and retain stable child IDs. If the skill is copied elsewhere without the project templates, use the self-contained layout below. The repository template governs the canonical artifact.
 
-Use the user's requested format. Otherwise write one readable Markdown document, named `A16_test-case-creation-outputs_{iteration_id}_v1.0.md` for a first standalone draft. Substitute the source iteration ID; if none is available, start with `ITER-001`. Reuse supplied iteration/version conventions; increment the version for revisions and avoid replacing unrelated existing work. If file writing is unavailable, return the same content in the conversation.
+Write one canonical, readable Markdown document, named `A16_test-case-creation-outputs_{iteration_id}_v1.0.md` for a first standalone draft. Substitute the source iteration ID; if none is available, start with `ITER-001`. Reuse supplied iteration/version conventions; increment the version for revisions and avoid replacing unrelated existing work. If file writing is unavailable, return the same content in the conversation.
 
 
-Resolve the output folder in this order: an explicitly requested location; the prior version's folder when revising this artifact; a location configured by project instructions or the optional guide; otherwise the active `AIAugmentation/artifacts/<iteration_id>/` folder. When phase layout is configured without a specific output override, use `Test Preparation/` beneath the active iteration root for this artifact. Respect a configured artifact root, create only the needed output folder, and do not relocate earlier files. Preserve the Markdown filename pattern and extension; phase organization does not require JSON conversion.
+Resolve the output folder in this order: an explicitly requested location; the prior version's folder when revising this artifact; a location configured by project instructions or the optional guide; otherwise the active `AIAugmentation/artifacts/<iteration_id>/` folder. When phase layout is configured without a specific output override, use `Test Preparation/` beneath the active iteration root for this artifact. Respect a configured artifact root, create only the needed output folder, and do not relocate earlier files. Write an actual, readable Markdown artifact using the canonical filename and extension. Preserve the artifact ID, exact input revisions, evidence links and version metadata; do not emit a JSON payload or parallel JSON manifest. Keep native evidence in its original format and link it.
 
 Include a short header with the feature, A16 version, source filenames/versions or source-text mapping, scope and draft/review status. Then use these stable sections:
 
@@ -63,7 +63,7 @@ Include a short header with the feature, A16 version, source filenames/versions 
 - **A16-02 — Preconditions, data needs and expected results:** a compact setup/data summary by test ID. Reference the detailed expected results in A16-01 rather than maintain conflicting copies. Note required accounts, fixtures or environment capabilities only where relevant.
 - **A16-03 — Coverage questions and automation candidates:** questions with ID, affected cases/requirements and blocking impact; list automation candidate test IDs with reasons. State explicitly when there are none.
 
-This is a human-readable A16 document profile. If the user requests machine-readable output, use their agreed schema and check compatibility before claiming it.
+Use YAML front matter with exactly these nine canonical keys: artifact_id, schema_version, artifact_version, producer_or_owner, iteration_id, created_at, source_artifact_versions, status, evidence_refs. Use null for unknown scalar metadata and empty lists for unavailable source/evidence references, with the reason in the body. Preserve the template child registry A16-01 through A16-03 with each version and an embedded anchor or relative path; use null for an unknown value and verify resolved references. Use the same contract in the standalone layout. An incompatible requested format must not replace the canonical Markdown artifact; explain the mismatch.
 
 ## Revisions and handoff
 

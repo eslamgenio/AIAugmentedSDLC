@@ -1,6 +1,18 @@
+---
+artifact_id: A17
+schema_version: null
+artifact_version: null
+producer_or_owner: review-test-coverage
+iteration_id: null
+created_at: null
+source_artifact_versions: []
+status: DRAFT
+evidence_refs: []
+---
+
 # A17 — Test Coverage Review Outputs
 
-> Template: replace placeholders and remove guidance when creating an artifact. See [template usage](README.md).
+> Template: retain the YAML keys and fill verified values. Quote exact version strings and use arrays for source version pins and evidence links, including the inspected A16 version/path when known. Keep unknowns as `null` or `[]` only where allowed; otherwise leave the artifact a draft. Replace placeholders and remove guidance when creating an artifact. See [template usage](README.md).
 
 - **artifact_id:** A17
 - **artifact_name:** Test Coverage Review Outputs
@@ -29,6 +41,18 @@
 
 READY requires adequate scope coverage without blocking design defects or unresolved expected behavior. REVISE means corrections can use existing requirements. BLOCKED means an essential ambiguity or missing input requires an owner decision. READY does not grant human approval or imply tests passed.
 
+## Child Artifact Register
+
+For an embedded child, substitute the actual parent `artifact_version` and use its section anchor. For a separate child, specify its actual version and exact relative file path. Mark unknown versions or locations explicitly; do not infer them.
+
+| Child ID | Version | Location |
+| --- | --- | --- |
+| A17-01 | [Parent version] | [Embedded section](#a17-01) |
+| A17-02 | [Parent version] | [Embedded section](#a17-02) |
+| A17-03 | [Parent version] | [Embedded section](#a17-03) |
+
+<a id="a17-01"></a>
+
 ## A17-01 — Requirements-to-tests traceability matrix
 
 Use one row per criterion, or requirement when criteria are absent. Inspect actual steps and expectations, not just declared links. Account for every baseline item.
@@ -38,6 +62,8 @@ Use one row per criterion, or requirement when criteria are absent. Inspect actu
 | [REQ-ID] | [AC-ID or Not supplied] | [Required behavior] | [IDs or None] | [FULL / PARTIAL / NONE / BLOCKED / NOT APPLICABLE] | [Case/step evidence; justify exclusions] |
 
 These rows provide the catalog `links` records. FULL requires coverage of all applicable behavior, including applicable criteria.
+
+<a id="a17-02"></a>
 
 ## A17-02 — Coverage gap and duplicate case report
 
@@ -54,6 +80,8 @@ These rows provide the catalog `links` records. FULL requires coverage of all ap
 | [DUP-ID] | [Existing IDs] | [Matching setup, actions and outcomes] | [Differences or None] | [Finding ID] |
 
 State None explicitly when no gaps or duplicates are found.
+
+<a id="a17-03"></a>
 
 ## A17-03 — Test review findings and revision actions
 

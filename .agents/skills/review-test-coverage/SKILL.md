@@ -9,7 +9,7 @@ Independently assess whether the supplied cases adequately test the specified fe
 
 ## Optional project guide
 
-Before reviewing coverage, look for `AIAugmentation/project_guides/review-test-coverage-guide.md` relative to the project root. If it exists, read it and apply its relevant project-specific conventions together with this skill. If it is absent, continue with the generic instructions here. The guide may specialize defaults such as source locations, domain rules, identifiers, checks and output conventions, but it does not override higher-priority instructions, the user's explicit request or this skill's authorization and test-review boundaries.
+Before reviewing coverage, look for `AIAugmentation/project_guides/review-test-coverage-guide.md` relative to the project root. If it exists, read it and apply its relevant project-specific conventions together with this skill. If it is absent, continue with the generic instructions here. The guide may specialize defaults such as source locations, domain rules, identifiers, checks and output conventions, but it does not override higher-priority instructions, the user's explicit request, the canonical DevSkillKit artifact contract below, or this skill's authorization and test-review boundaries.
 
 ## Establish the review basis
 
@@ -45,14 +45,18 @@ For re-review, also read the prior `A17_test-coverage-review-outputs_{iteration_
 
 ## Output: A17 — Test Coverage Review Outputs
 
-When working in this project, read and follow the [A17 template](../../../AIAugmentation/templates/A17_test-coverage-review-outputs.md) before writing the output. Fill its applicable sections, replace placeholders, and retain stable child IDs. If the skill is copied elsewhere without the project templates, use the self-contained layout below. A user-supplied format takes precedence.
+When working in this project, read and follow the [A17 template](../../../AIAugmentation/templates/A17_test-coverage-review-outputs.md) before writing the output. Use this existing template as the required layout for the canonical project artifact: fill applicable sections, replace placeholders, and retain stable child IDs. If the in-repository template is unavailable, report the missing template and provide a clearly labeled Markdown draft; do not claim canonical conformance. Outside DevSkillKit, a standalone review may use the self-contained layout below.
 
-Use the user's requested format. Otherwise write one readable Markdown document, named `A17_test-coverage-review-outputs_{iteration_id}_v1.0.md` for a first standalone review. Substitute the candidate's iteration ID; if none is available, start with `ITER-001`. Reuse the candidate's iteration convention, increment review versions, and preserve previous reviews. If file writing is unavailable, return the same content in the conversation.
+Write one readable canonical project Markdown document, named `A17_test-coverage-review-outputs_{iteration_id}_v1.0.md` for a first standalone review. Substitute the candidate's iteration ID; if none is available, start with `ITER-001`. Reuse the candidate's iteration convention, increment review versions, and preserve previous reviews. If file writing is unavailable, return the same content in the conversation.
 
 
-Resolve the output folder in this order: an explicitly requested location; the prior version's folder when revising this artifact; a location configured by project instructions or the optional guide; otherwise the active `AIAugmentation/artifacts/<iteration_id>/` folder. When phase layout is configured without a specific output override, use `Test Preparation/` beneath the active iteration root for this artifact. Respect a configured artifact root, create only the needed output folder, and do not relocate earlier files. Preserve the Markdown filename pattern and extension; phase organization does not require JSON conversion.
+Resolve the output folder in this order: an explicitly requested location; the prior version's folder when revising this artifact; a location configured by project instructions or the optional guide; otherwise the active `AIAugmentation/artifacts/<iteration_id>/` folder. When phase layout is configured without a specific output override, use `Test Preparation/` beneath the active iteration root for this artifact. Respect a configured artifact root, create only the needed output folder, and do not relocate earlier files. Write an actual, readable Markdown artifact using the canonical filename and extension. Preserve the artifact ID, exact input revisions, evidence links and version metadata; do not emit a JSON payload or parallel JSON manifest. Keep native evidence in its original format and link it.
 
-Start with the feature, A17 version, exact candidate reference, requirements sources, scope and overall recommendation. Use these stable sections:
+Begin the canonical artifact with YAML front matter containing `artifact_id`, `schema_version`, `artifact_version`, `producer_or_owner`, `iteration_id`, `created_at`, `source_artifact_versions`, `status`, and `evidence_refs`. Quote version strings to preserve their exact form. Populate the two reference fields as arrays of verified exact references, including the inspected A16 revision and supporting sources when known, rather than inferring versions. Use `null` for an unknown scalar or `[]` for unavailable references only if the project allows them; otherwise keep the review a draft. The artifact `status` is distinct from the READY / REVISE / BLOCKED review recommendation.
+
+Use the template’s **Child Artifact Register** with `Child ID | Version | Location` for A17-01, A17-02, and A17-03. An embedded child uses the actual parent version and an anchor resolving to its own section; a separate child uses its actual version and a relative path to the exact file. Explicitly mark unknowns; do not invent versions, anchors, or files.
+
+Start the Markdown body with the feature, A17 version, exact candidate reference, requirements sources, scope and overall recommendation. Use these stable sections:
 
 - **A17-01 — Requirements-to-tests traceability matrix:** one row per acceptance criterion, or per requirement when criteria are not supplied. Include source ID, linked test IDs, FULL / PARTIAL / NONE / BLOCKED coverage and a brief explanation. A requirement is fully covered only if its applicable criteria are fully covered. Use NOT APPLICABLE only with an explicit scope justification.
 - **A17-02 — Coverage gap and duplicate case report:** missing scenarios and duplicate groups, linked to findings. Explain why a duplicate adds no distinct coverage. State explicitly if there are none.
@@ -64,11 +68,11 @@ Choose one recommendation:
 - **REVISE:** the creator can address material issues using the existing requirements. List actionable corrections.
 - **BLOCKED:** an essential ambiguity, conflict or missing input requires an owner decision. State the specific question; still report other review findings.
 
-READY is a test-design recommendation, not human approval or evidence that application tests passed. This is a human-readable A17 document profile. If machine-readable output is requested, use the agreed schema and check compatibility before claiming it.
+READY is a test-design recommendation, not human approval or evidence that application tests passed. Do not replace the canonical project artifact with another format or a machine-only payload.
 
 ## Re-review and handoff
 
-Before delivery, verify that Markdown links within the output to project artifacts are relative and resolve from the output document's folder. Avoid machine-specific absolute paths for project files; disclose missing targets rather than inventing replacements.
+Before delivery, verify that front matter parses, each required key appears once, version and iteration match the filename, the actual A16 revision is pinned, and all three child register rows resolve or are explicitly marked unknown. Verify that Markdown links within the output to project artifacts are relative and resolve from the output document's folder. Avoid machine-specific absolute paths for project files; disclose missing targets rather than inventing replacements.
 
 Preserve all source/input files and prior output versions. Save each revision as a new file with an incremented artifact version in its filename and document header; never overwrite an existing source or prior version.
 

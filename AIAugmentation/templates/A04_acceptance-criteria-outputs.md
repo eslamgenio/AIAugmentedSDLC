@@ -1,3 +1,15 @@
+---
+artifact_id: A04
+schema_version: null
+artifact_version: null
+producer_or_owner: define-acceptance-criteria
+iteration_id: null
+created_at: null
+source_artifact_versions: []
+status: DRAFT
+evidence_refs: []
+---
+
 # A04 — Acceptance Criteria Outputs
 
 > Template: replace placeholders and remove guidance when creating an artifact. See [template usage](README.md).
@@ -33,6 +45,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | --- | --- | --- | --- | --- |
 | [ac_id] | [req_id] | [precondition] | [action] | [expected] |
 
+<a id="a04-01"></a>
+
 ## A04-01 — Requirement-linked acceptance criteria
 
 [Provide the following: Requirement-linked acceptance criteria. Use the required fields above; link their detailed values here instead of duplicating them.]
@@ -40,6 +54,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | Deliverable item | Content or native file reference | Supporting source / revision | Open issue / limitation |
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
+
+<a id="a04-02"></a>
 
 ## A04-02 — Given/When/Then scenarios where useful
 
@@ -49,6 +65,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
 
+<a id="a04-03"></a>
+
 ## A04-03 — Unresolved examples and boundary questions
 
 [Provide the following: Unresolved examples and boundary questions. Use the required fields above; link their detailed values here instead of duplicating them.]
@@ -56,6 +74,20 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | Deliverable item | Content or native file reference | Supporting source / revision | Open issue / limitation |
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
+
+## Coverage
+
+| Requirement | Criteria | Status | Gap or reason |
+| --- | --- | --- | --- |
+| [Requirement ID] | [Criterion IDs or None] | [Specified, Partial, Blocked, Excluded, or Deferred] | [Question ID, decision, or scope evidence as applicable] |
+
+## Child Artifact Register
+
+| Child ID | Version | Location |
+| --- | --- | --- |
+| A04-01 | [Parent artifact version if embedded; exact child version if separate; Unknown if unverified] | [`#a04-01` if embedded; actual relative file path if separate; Unknown if unverified] |
+| A04-02 | [Parent artifact version if embedded; exact child version if separate; Unknown if unverified] | [`#a04-02` if embedded; actual relative file path if separate; Unknown if unverified] |
+| A04-03 | [Parent artifact version if embedded; exact child version if separate; Unknown if unverified] | [`#a04-03` if embedded; actual relative file path if separate; Unknown if unverified] |
 
 ## Acceptance and handoff
 
