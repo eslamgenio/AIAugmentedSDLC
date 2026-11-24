@@ -28,13 +28,13 @@ This is the target, not a fully implemented or automatically orchestrated workfl
 
 ## Available today
 
-The current MVP provides two skills: **create-test-cases** (A16) and
-**review-test-coverage** (A17). See [inputs, outputs and example requests](#use-the-two-skills).
+v1.0.8 provides seven skills: five for Requirements (A01–A05) and two for
+Test Preparation (A16/A17). See [inputs, outputs and examples](#use-the-seven-skills).
 
 **Working flow:** Requirements → Create test cases → Review coverage → Revise as needed.
 
-These skills design and review tests; they do not execute tests or grant approval.
-Engineering review remains essential. Skills for other lifecycle activities and
+These skills capture, analyze and review requirements or design and review tests.
+They do not execute tests or grant approval. Skills for other lifecycle activities and
 automated orchestration are not yet implemented. Human owners retain test-exit
 and release decisions.
 
@@ -52,7 +52,7 @@ rather than inventing expected behavior.
 
 - [Install or update the kit](#install-or-update-the-kit)
 - [Configure project context](#complete-the-project-context)
-- [Use the two skills](#use-the-two-skills)
+- [Use the seven skills](#use-the-seven-skills)
 - [Customize individual skills with project guides](project_guides/README.md)
 - [Artifact templates](templates/README.md)
 - [Artifact storage and handoffs](#artifact-folders-and-handoffs)
@@ -99,12 +99,10 @@ your-project/
 
 ### Install or update the kit
 
-Prerequisites: Windows PowerShell 5.1 or PowerShell 7, Git, and read access
-to the team's [GitLab repository](https://gitlabce.tools.aws.vodafone.com/central-vois-framework/devskillkit.git).
-This is the updater's default source. Authenticate Git using your corporate
-GitLab credentials and connect to the corporate network or VPN if required.
-Never put a token in the script or repository URL. Use `-Repository` only
-when intentionally selecting a different source.
+Prerequisites: Windows PowerShell 5.1 or PowerShell 7, Git, and authenticated read
+access to [the private GitHub repository](https://github.com/eslamgenio/AIAugmentedSDLC).
+Always pass `-Repository` explicitly for this repository; the updater's legacy
+default is a different host. Never put a token in the script or repository URL.
 
 Copy the kit's root `update-skill-kit.ps1` into your project's root once.
 The same command supports first-time installation and later upgrades. The
@@ -112,11 +110,11 @@ project directory must exist; kit folders do not need to exist yet.
 From that project root, preview and install an available release tag:
 
 ```powershell
-.\update-skill-kit.ps1 -Version v1.2.0 -WhatIf
-.\update-skill-kit.ps1 -Version v1.2.0
+.\update-skill-kit.ps1 -Repository 'https://github.com/eslamgenio/AIAugmentedSDLC.git' -Version v1.0.8 -WhatIf
+.\update-skill-kit.ps1 -Repository 'https://github.com/eslamgenio/AIAugmentedSDLC.git' -Version v1.0.8
 ```
 
-`v1.2.0` is an example; replace it with a published version. The updater
+`v1.0.8` is a published tag; select another only if it has been published. The updater
 fetches the exact Git tag, not the latest branch. `-WhatIf` downloads and
 validates the tag but does not change project files or directories. Use `-ProjectPath`
 to select a different existing project directory.
@@ -137,7 +135,7 @@ are preserved; no sample files or placeholders are added. Select another
 iteration with `-IterationId`:
 
 ```powershell
-.\update-skill-kit.ps1 -Version v1.2.0 -IterationId ITER-002
+.\update-skill-kit.ps1 -Repository 'https://github.com/eslamgenio/AIAugmentedSDLC.git' -Version v1.0.8 -IterationId ITER-002
 ```
 
 Iteration names must start with a letter or digit and contain only letters,
@@ -205,10 +203,15 @@ architecture documentation rather than duplicating it. Unfilled fields
 are missing information; they need not block work that can proceed using
 the supplied inputs.
 
-## Use the two skills
+## Use the seven skills
 
 | Skill | Inputs | Deliverable |
 | --- | --- | --- |
+| [elicit-requirements](../.agents/skills/elicit-requirements/SKILL.md) | Source material and stakeholder inputs | **A01:** elicitation record and open questions |
+| [define-scope](../.agents/skills/define-scope/SKILL.md) | A01 and applicable constraints or decisions | **A02:** boundaries, exclusions and open scope decisions |
+| [analyze-requirements](../.agents/skills/analyze-requirements/SKILL.md) | A01 and A02, with evidence | **A03:** analyzed requirements, conflicts and gaps |
+| [define-acceptance-criteria](../.agents/skills/define-acceptance-criteria/SKILL.md) | A03 and applicable source records | **A04:** testable acceptance criteria and unresolved rules |
+| [review-requirements](../.agents/skills/review-requirements/SKILL.md) | Exact A01–A04 revisions and relevant evidence | **A05:** reviewed baseline or source pointers, findings and readiness recommendation |
 | [create-test-cases](../.agents/skills/create-test-cases/SKILL.md) | Requirements, acceptance criteria and relevant context; prior cases and feedback for revisions | **A16:** test cases, setup/data summary, questions and automation candidates |
 | [review-test-coverage](../.agents/skills/review-test-coverage/SKILL.md) | The same requirements and candidate cases; prior findings for re-review | **A17:** coverage matrix, gaps, duplicates and actionable findings |
 
@@ -217,6 +220,10 @@ User guides: [Create test cases](../.agents/skills/create-test-cases/README.md) 
 Example requests (run from your project root; replace bracketed placeholders):
 
 ```text
+Use $elicit-requirements with [provided sources] for [iteration]. Keep unknowns open.
+
+Use $review-requirements with [pinned A01–A04 revisions]. Flag blockers and pending approvals.
+
 Use $create-test-cases with [requirements file or folder].
 
 Use $review-test-coverage with [requirements file or folder] and [A16 file].
@@ -235,7 +242,7 @@ unchanged if you download them separately.
 
 The packages live in `.agents/skills/` for this project. If the current session has not picked them up, explicitly ask to read and use the linked `SKILL.md` file. Each package is self-contained and can be copied to another project's `.agents/skills/` folder.
 
-They default to readable Markdown bundles using the matching project template, and adapt to a supplied format. They need no Python setup. Missing behavior becomes a question rather than an invented expected result. These skills design and review tests; they do not execute application tests or grant human approval.
+Use each matching template for the canonical Markdown handoff; alternate views do not replace it. They need no Python setup. Missing behavior becomes a question rather than an invented expected result. These skills design and review tests; they do not execute application tests or grant human approval.
 
 The documents preserve the catalog's A16/A17 names and child IDs. The reviewer may recommend READY with disclosed nonblocking suggestions; unresolved blocking issues require correction or clarification.
 
@@ -308,16 +315,16 @@ folders remain supported; standalone skills default to the flat layout if
 no layout is configured. Explicit output paths take precedence, followed
 by the prior artifact's folder for revisions, then the configured layout.
 Do not move existing artifacts automatically. Preserve `.md` filenames,
-IDs and version conventions; no JSON conversion is needed. Only A16/A17
-skills are currently implemented; the phase map also covers proposed skills.
+IDs and version conventions. The implemented skills are A01–A05 and A16/A17;
+the phase map also covers proposed skills.
 
 ## Artifact templates
 
 The [templates index](templates/README.md) links to a template for every catalog artifact: **45 skill output bundles and 10 external input bundles**, including all **135 child deliverables** as sections. Each includes source references, required content, acceptance checks and revision history.
 
-Skills read the matching template, fill it with sourced content, and save the result under `AIAugmentation/artifacts/<iteration_id>/` using the canonical basename plus iteration and version, with a phase subfolder when configured. The two implemented skills use the A16 and A17 templates automatically in this project. For example, with phase layout the A16 template becomes `AIAugmentation/artifacts/ITER-001/Test Preparation/A16_test-case-creation-outputs_ITER-001_v1.0.md`; without a configured layout, it remains directly in `ITER-001/`.
+Skills read the matching template, fill it with sourced content, and save the result under `AIAugmentation/artifacts/<iteration_id>/` using the canonical basename plus iteration and version, with a phase subfolder when configured. All seven implemented skills use their matching templates. For example, with phase layout the A16 template becomes `AIAugmentation/artifacts/ITER-001/Test Preparation/A16_test-case-creation-outputs_ITER-001_v1.0.md`; without a configured layout, it remains directly in `ITER-001/`.
 
-The templates use Markdown; the workbook's JSON exchange manifests remain proposed. Native deliverables such as code, datasets and build packages are linked from the document. Empty templates do not represent completed work or approvals.
+The canonical handoff uses Markdown with the template's nine YAML front matter keys, stable sections and exact upstream versions. Do not emit a parallel JSON payload or manifest. Native deliverables such as code, datasets and build packages are linked from the document. Empty templates do not represent completed work or approvals.
 
 ## Optional framework reference
 

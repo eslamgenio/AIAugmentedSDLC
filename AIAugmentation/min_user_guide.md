@@ -13,16 +13,20 @@ requirements and acceptance criteria. The skills themselves need no Python setup
 2. **Configure your project.** Follow [project-context setup](README.md#complete-the-project-context)
    to create or merge `AGENTS.md`. Add [optional project guides](project_guides/README.md)
    only when activity-specific conventions are needed.
-3. **Supply your inputs.** Identify your requirements, acceptance criteria, and
-   active iteration. Existing filenames are fine; follow your configured
-   [artifact layout](README.md#artifact-folders-and-handoffs).
-4. **Create test cases.** Use the [creation guide](../.agents/skills/create-test-cases/README.md)
-   for the prompt, required inputs, and expected output.
-5. **Review and refine.** Follow the [coverage review guide](../.agents/skills/review-test-coverage/README.md)
-   with the same requirements and generated cases. Request revisions when needed.
+3. **Start with requirements.** If you do not already have a usable baseline,
+   use [the five Requirements skills](README.md#use-the-seven-skills) in order:
+   elicit requirements (A01), define scope (A02), analyze requirements (A03),
+   define acceptance criteria (A04), then review the exact artifact revisions
+   (A05). Leave unanswered rules open. A draft or review does not grant approval.
+4. **Create test cases.** Bring a usable requirements baseline and acceptance
+   criteria to the [creation guide](../.agents/skills/create-test-cases/README.md).
+   Record pending decisions and restrict work to what the evidence supports.
+5. **Review coverage.** Use the same baseline and the exact A16 revision with
+   the [coverage review guide](../.agents/skills/review-test-coverage/README.md).
+   Revise and re-review on new versions when needed.
 
-Expect a test-case document and a coverage review. These skills do not execute
-tests or grant approval. Review the results before using them.
+Use the matching [Markdown templates](templates/README.md) for handoffs.
+These skills do not execute tests, approve scope, or authorize release.
 
 For later releases, return to [install or update](README.md#install-or-update-the-kit),
 then review and commit the changes in your project.

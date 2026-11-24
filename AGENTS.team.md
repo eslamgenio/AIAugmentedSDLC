@@ -1,4 +1,4 @@
-﻿# SDLC skill usage instructions
+# SDLC skill usage instructions
 
 Use the provided skills to produce and review SDLC artifacts.
 
@@ -89,8 +89,8 @@ requests, authorization boundaries or the selected skill's fixed scope.
   documents and revisions together under its iteration folder.
 - For phase layout, use the phase-to-artifact mapping in
   `AIAugmentation/README.md`, derived from the catalog's Skill Artifact Flow
-  sheet. Save outputs in their producer's phase folder; A16 and A17 belong
-  in `Test Preparation/`. Create folders only when needed.
+  sheet. Save outputs in their producer's phase folder: A01–A05 in
+  `Requirements/` and A16/A17 in `Test Preparation/`. Create folders only when needed.
 - Keep external/human input bundles (E01–E10) in `External Inputs/` within
   the iteration, or reference their explicitly supplied source locations.
 - Find required inputs in the active iteration root and its subfolders,
@@ -103,8 +103,11 @@ requests, authorization boundaries or the selected skill's fixed scope.
 - Keep existing flat iteration folders working and do not relocate prior
   artifacts automatically. For revisions, keep the prior artifact's folder
   unless another output location is explicitly requested.
-- Preserve Markdown (`.md`) artifact filenames, IDs and versions. The
-  catalog's JSON exchange patterns do not require format conversion.
+- Use the matching template for each canonical Markdown (`.md`) handoff.
+  Keep the nine YAML front matter keys, stable sections and IDs, and exact
+  upstream artifact paths and versions. Pin a digest where the skill requires
+  one. Do not emit a parallel JSON artifact or manifest. Keep native evidence
+  in its original format and link to it.
 - Match artifact iteration IDs and filenames to the iteration folder.
 - Preserve source files and previous artifact versions.
 - Save corrections as new versions in the same iteration folder.
