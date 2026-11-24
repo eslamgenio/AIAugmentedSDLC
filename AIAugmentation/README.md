@@ -101,8 +101,9 @@ your-project/
 
 Prerequisites: Windows PowerShell 5.1 or PowerShell 7, Git, and authenticated read
 access to [the private GitHub repository](https://github.com/eslamgenio/AIAugmentedSDLC).
-Always pass `-Repository` explicitly for this repository; the updater's legacy
-default is a different host. Never put a token in the script or repository URL.
+The current updater defaults to this repository. The explicit repository in the
+examples also works with older updater copies. Never put a token in the script
+or repository URL.
 
 Copy the kit's root `update-skill-kit.ps1` into your project's root once.
 The same command supports first-time installation and later upgrades. The

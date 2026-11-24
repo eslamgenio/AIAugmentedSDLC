@@ -14,7 +14,7 @@ param(
     [string]$Version,
     [string]$ProjectPath = (Get-Location).Path,
     [ValidateNotNullOrEmpty()]
-    [string]$Repository = 'https://gitlabce.tools.aws.vodafone.com/central-vois-framework/devskillkit.git',
+    [string]$Repository = 'https://github.com/eslamgenio/AIAugmentedSDLC.git',
     [ValidatePattern('\A[A-Za-z0-9][A-Za-z0-9_-]*\z')]
     [string]$IterationId = 'ITER-001'
 )
