@@ -1,3 +1,15 @@
+---
+artifact_id: A29
+schema_version: "1.0"
+artifact_version: null
+producer_or_owner: execute-functional-tests
+iteration_id: null
+created_at: null
+source_artifact_versions: []
+status: DRAFT
+evidence_refs: []
+---
+
 # A29 — Functional Testing Outputs
 
 > Template: replace placeholders and remove guidance when creating an artifact. See [template usage](README.md).
@@ -12,6 +24,16 @@
 - **Document status:** DRAFT
 - **Scope:** [Included behavior, boundaries and exclusions]
 - **Output filename:** `A29_functional-testing-outputs_{iteration_id}_v{artifact_version}.md`
+
+## Child artifacts
+
+| Child ID | Version | Embedded anchor or relative path |
+| --- | --- | --- |
+| A29-01 | null | #a29-01 |
+| A29-02 | null | #a29-02 |
+| A29-03 | null | #a29-03 |
+
+Replace each known version; an embedded child can use the parent version when that version is confirmed. Use a relative path for a separately stored versioned Markdown child and verify that it resolves. Keep unknown versions or paths explicitly null; do not invent them. For native evidence, retain its format and link its exact path/revision or checksum.
 
 ## Source references
 
@@ -35,6 +57,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | `status` | [Value, evidence or section reference; explicitly identify missing information] |
 | `evidence` | [Value, evidence or section reference; explicitly identify missing information] |
 
+<a id="a29-01"></a>
+
 ## A29-01 — Test execution records with actual results
 
 [Provide the following: Test execution records with actual results. Use the required fields above; link their detailed values here instead of duplicating them.]
@@ -42,6 +66,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | Deliverable item | Content or native file reference | Supporting source / revision | Open issue / limitation |
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
+
+<a id="a29-02"></a>
 
 ## A29-02 — Requirement-linked evidence and failure details
 
@@ -51,6 +77,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
 
+<a id="a29-03"></a>
+
 ## A29-03 — Defect candidates and blocked-test reasons
 
 [Provide the following: Defect candidates and blocked-test reasons. Use the required fields above; link their detailed values here instead of duplicating them.]
@@ -58,6 +86,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | Deliverable item | Content or native file reference | Supporting source / revision | Open issue / limitation |
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
+
+This document records executed functional results against an identified build and environment. Blocked and not-run cases stay separate from executed cases; defect candidates are not triaged defects or human approval.
 
 ## Acceptance and handoff
 
