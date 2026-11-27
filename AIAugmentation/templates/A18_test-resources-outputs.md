@@ -1,3 +1,15 @@
+---
+artifact_id: A18
+schema_version: "1.0"
+artifact_version: null
+producer_or_owner: prepare-test-resources
+iteration_id: null
+created_at: null
+source_artifact_versions: []
+status: DRAFT
+evidence_refs: []
+---
+
 # A18 — Test Resources Outputs
 
 > Template: replace placeholders and remove guidance when creating an artifact. See [template usage](README.md).
@@ -12,6 +24,16 @@
 - **Document status:** DRAFT
 - **Scope:** [Included behavior, boundaries and exclusions]
 - **Output filename:** `A18_test-resources-outputs_{iteration_id}_v{artifact_version}.md`
+
+## Child artifacts
+
+| Child ID | Version | Embedded anchor or relative path |
+| --- | --- | --- |
+| A18-01 | null | #a18-01 |
+| A18-02 | null | #a18-02 |
+| A18-03 | null | #a18-03 |
+
+Replace each known version; an embedded child can use the parent version when that version is confirmed. Use a relative path for a separately stored versioned Markdown child and verify that it resolves. Keep unknown versions or paths explicitly null; do not invent them. For native evidence, retain its format and link its exact path/revision or checksum.
 
 ## Source references
 
@@ -32,6 +54,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | `readiness` | [Value, evidence or section reference; explicitly identify missing information] |
 | `cleanup_steps` | [Value, evidence or section reference; explicitly identify missing information] |
 
+<a id="a18-01"></a>
+
 ## A18-01 — Synthetic or masked test datasets
 
 [Provide the following: Synthetic or masked test datasets. Use the required fields above; link their detailed values here instead of duplicating them.]
@@ -39,6 +63,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | Deliverable item | Content or native file reference | Supporting source / revision | Open issue / limitation |
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
+
+<a id="a18-02"></a>
 
 ## A18-02 — Environment setup scripts or configuration checklist
 
@@ -48,6 +74,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
 
+<a id="a18-03"></a>
+
 ## A18-03 — Resource readiness record and cleanup procedure
 
 [Provide the following: Resource readiness record and cleanup procedure. Use the required fields above; link their detailed values here instead of duplicating them.]
@@ -55,6 +83,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | Deliverable item | Content or native file reference | Supporting source / revision | Open issue / limitation |
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
+
+This document records prepared test data and environment resources with readiness evidence. UNVERIFIED and NOT READY resources stay visible with their reasons; READY resources and this document are not test-entry approval, and no dataset contains real personal data or secrets.
 
 ## Acceptance and handoff
 

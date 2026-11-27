@@ -1,3 +1,15 @@
+---
+artifact_id: A19
+schema_version: "1.0"
+artifact_version: null
+producer_or_owner: build-test-automation
+iteration_id: null
+created_at: null
+source_artifact_versions: []
+status: DRAFT
+evidence_refs: []
+---
+
 # A19 — Test Automation Outputs
 
 > Template: replace placeholders and remove guidance when creating an artifact. See [template usage](README.md).
@@ -12,6 +24,16 @@
 - **Document status:** DRAFT
 - **Scope:** [Included behavior, boundaries and exclusions]
 - **Output filename:** `A19_test-automation-outputs_{iteration_id}_v{artifact_version}.md`
+
+## Child artifacts
+
+| Child ID | Version | Embedded anchor or relative path |
+| --- | --- | --- |
+| A19-01 | null | #a19-01 |
+| A19-02 | null | #a19-02 |
+| A19-03 | null | #a19-03 |
+
+Replace each known version; an embedded child can use the parent version when that version is confirmed. Use a relative path for a separately stored versioned Markdown child and verify that it resolves. Keep unknown versions or paths explicitly null; do not invent them. For native evidence, retain its format and link its exact path/revision or checksum.
 
 ## Source references
 
@@ -33,6 +55,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | `config_refs` | [Value, evidence or section reference; explicitly identify missing information] |
 | `validation_results` | [Value, evidence or section reference; explicitly identify missing information] |
 
+<a id="a19-01"></a>
+
 ## A19-01 — Automated test code and reusable fixtures
 
 [Provide the following: Automated test code and reusable fixtures. Use the required fields above; link their detailed values here instead of duplicating them.]
@@ -40,6 +64,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | Deliverable item | Content or native file reference | Supporting source / revision | Open issue / limitation |
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
+
+<a id="a19-02"></a>
 
 ## A19-02 — Execution configuration and reporting integration
 
@@ -49,6 +75,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
 
+<a id="a19-03"></a>
+
 ## A19-03 — Setup guide and automation validation results
 
 [Provide the following: Setup guide and automation validation results. Use the required fields above; link their detailed values here instead of duplicating them.]
@@ -56,6 +84,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | Deliverable item | Content or native file reference | Supporting source / revision | Open issue / limitation |
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
+
+This document records automated checks and their validation against an identified code revision. Validation runs show that the automation works; they are not executed test results, triaged defects or test-exit approval.
 
 ## Acceptance and handoff
 

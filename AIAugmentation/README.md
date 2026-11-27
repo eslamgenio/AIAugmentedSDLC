@@ -28,15 +28,17 @@ This is the target, not a fully implemented or automatically orchestrated workfl
 
 ## Available today
 
-v1.1.0 provides fourteen skills: five for Requirements (A01–A05), three for
-Test Preparation (A15–A17) and six for Test Execution (A28–A33). See
-[inputs, outputs and examples](#use-the-fourteen-skills).
+v1.2.0 provides sixteen skills: five for Requirements (A01–A05), five for
+Test Preparation (A15–A19) and six for Test Execution (A28–A33). See
+[inputs, outputs and examples](#use-the-sixteen-skills).
 
 **Working flow:** Requirements → Plan testing → Create test cases → Review coverage →
-Execute tests → Report progress → Assess test readiness.
+Prepare test resources → Build test automation → Execute tests → Report progress →
+Assess test readiness.
 
 These skills capture, analyze and review requirements, plan testing, design and review tests,
-execute or record tests, report progress, and assess readiness against exit criteria.
+prepare test data, environments and automation, execute or record tests, report progress,
+and assess readiness against exit criteria.
 The execution skills run tests only when asked, against an identified build and
 environment; none of the skills deploys, fixes defects or grants approval. Skills for
 other lifecycle activities and automated orchestration are not yet implemented. Human
@@ -56,7 +58,7 @@ rather than inventing expected behavior.
 
 - [Install or update the kit](#install-or-update-the-kit)
 - [Configure project context](#complete-the-project-context)
-- [Use the fourteen skills](#use-the-fourteen-skills)
+- [Use the sixteen skills](#use-the-sixteen-skills)
 - [Customize individual skills with project guides](project_guides/README.md)
 - [Artifact templates](templates/README.md)
 - [Artifact storage and handoffs](#artifact-folders-and-handoffs)
@@ -115,11 +117,11 @@ project directory must exist; kit folders do not need to exist yet.
 From that project root, preview and install an available release tag:
 
 ```powershell
-.\update-skill-kit.ps1 -Repository 'https://github.com/eslamgenio/AIAugmentedSDLC.git' -Version v1.1.0 -WhatIf
-.\update-skill-kit.ps1 -Repository 'https://github.com/eslamgenio/AIAugmentedSDLC.git' -Version v1.1.0
+.\update-skill-kit.ps1 -Repository 'https://github.com/eslamgenio/AIAugmentedSDLC.git' -Version v1.2.0 -WhatIf
+.\update-skill-kit.ps1 -Repository 'https://github.com/eslamgenio/AIAugmentedSDLC.git' -Version v1.2.0
 ```
 
-`v1.1.0` must be a published tag; select another only if it has been published. The updater
+`v1.2.0` must be a published tag; select another only if it has been published. The updater
 fetches the exact Git tag, not the latest branch. `-WhatIf` downloads and
 validates the tag but does not change project files or directories. Use `-ProjectPath`
 to select a different existing project directory.
@@ -140,7 +142,7 @@ are preserved; no sample files or placeholders are added. Select another
 iteration with `-IterationId`:
 
 ```powershell
-.\update-skill-kit.ps1 -Repository 'https://github.com/eslamgenio/AIAugmentedSDLC.git' -Version v1.1.0 -IterationId ITER-002
+.\update-skill-kit.ps1 -Repository 'https://github.com/eslamgenio/AIAugmentedSDLC.git' -Version v1.2.0 -IterationId ITER-002
 ```
 
 Iteration names must start with a letter or digit and contain only letters,
@@ -208,7 +210,7 @@ architecture documentation rather than duplicating it. Unfilled fields
 are missing information; they need not block work that can proceed using
 the supplied inputs.
 
-## Use the fourteen skills
+## Use the sixteen skills
 
 | Skill | Inputs | Deliverable |
 | --- | --- | --- |
@@ -220,6 +222,8 @@ the supplied inputs.
 | [plan-testing](../.agents/skills/plan-testing/SKILL.md) | Requirements baseline and acceptance criteria, with available scope, risks, design, schedule, policies and environment records; prior plan and feedback for revisions | **A15:** scoped test strategy, levels, responsibilities, schedule, environment needs and measurable entry, exit and suspension criteria |
 | [create-test-cases](../.agents/skills/create-test-cases/SKILL.md) | Requirements, acceptance criteria, A15 plan when available and relevant context; prior cases and feedback for revisions | **A16:** test cases, setup/data summary, questions and automation candidates |
 | [review-test-coverage](../.agents/skills/review-test-coverage/SKILL.md) | The same requirements and candidate cases; prior findings for re-review | **A17:** coverage matrix, gaps, duplicates and actionable findings |
+| [prepare-test-resources](../.agents/skills/prepare-test-resources/SKILL.md) | Designed cases with data and setup needs, product context, data-handling policies and environment records | **A18:** permitted synthetic or masked datasets, environment setup scripts or checklist, readiness evidence and cleanup procedure |
+| [build-test-automation](../.agents/skills/build-test-automation/SKILL.md) | Selected designed cases and their coverage review, components under test, repository and CI conventions, and A18 resources | **A19:** automated checks and fixtures, run configuration and reporting, setup guide and automation validation results |
 | [execute-integration-tests](../.agents/skills/execute-integration-tests/SKILL.md) | Designed integration cases, interface contracts, an identified build and authorized environment, and test resources | **A28:** integration results with build, environment and contract versions, request/response/event evidence and defect candidates |
 | [execute-functional-tests](../.agents/skills/execute-functional-tests/SKILL.md) | Designed cases with expected results, acceptance criteria, an identified build and authorized environment | **A29:** actual results per case, requirement-linked evidence, failure details, blocked-test reasons and defect candidates |
 | [execute-nonfunctional-tests](../.agents/skills/execute-nonfunctional-tests/SKILL.md) | Sourced quality targets, workloads, policies and risks, an identified build and authorized environment | **A30:** measurements against targets with workload, tools, limitations and findings |
@@ -227,7 +231,7 @@ the supplied inputs.
 | [report-test-progress](../.agents/skills/report-test-progress/SKILL.md) | Execution records (A27–A31, A36), plan, defects, coverage and milestones | **A32:** reconciled planned/executed and status counts per build, coverage, defects, blockers and forecast |
 | [assess-test-readiness](../.agents/skills/assess-test-readiness/SKILL.md) | A15 exit criteria, execution, coverage, defect and progress evidence, recorded decisions | **A33:** criterion-by-criterion exit assessment, gaps, residual risks and a READY / NOT READY recommendation for the human gate |
 
-User guides: [Plan testing](../.agents/skills/plan-testing/README.md) · [Create test cases](../.agents/skills/create-test-cases/README.md) · [Review test coverage](../.agents/skills/review-test-coverage/README.md) · [Execute integration tests](../.agents/skills/execute-integration-tests/README.md) · [Execute functional tests](../.agents/skills/execute-functional-tests/README.md) · [Execute non-functional tests](../.agents/skills/execute-nonfunctional-tests/README.md) · [Execute regression tests](../.agents/skills/execute-regression-tests/README.md) · [Report test progress](../.agents/skills/report-test-progress/README.md) · [Assess test readiness](../.agents/skills/assess-test-readiness/README.md). Each guide explains inputs, prompts, outputs, statuses and revision handling.
+User guides: [Plan testing](../.agents/skills/plan-testing/README.md) · [Create test cases](../.agents/skills/create-test-cases/README.md) · [Review test coverage](../.agents/skills/review-test-coverage/README.md) · [Prepare test resources](../.agents/skills/prepare-test-resources/README.md) · [Build test automation](../.agents/skills/build-test-automation/README.md) · [Execute integration tests](../.agents/skills/execute-integration-tests/README.md) · [Execute functional tests](../.agents/skills/execute-functional-tests/README.md) · [Execute non-functional tests](../.agents/skills/execute-nonfunctional-tests/README.md) · [Execute regression tests](../.agents/skills/execute-regression-tests/README.md) · [Report test progress](../.agents/skills/report-test-progress/README.md) · [Assess test readiness](../.agents/skills/assess-test-readiness/README.md). Each guide explains inputs, prompts, outputs, statuses and revision handling.
 
 Example requests (run from your project root; replace bracketed placeholders):
 
@@ -243,6 +247,10 @@ Use $create-test-cases with [requirements file or folder].
 Use $review-test-coverage with [requirements file or folder] and [A16 file].
 
 Use $create-test-cases to revise [A16 file] using [A17 file].
+
+Use $prepare-test-resources with [A16 file] for [environment].
+
+Use $build-test-automation with [A16 file] and [A18 file] for the automation candidates.
 
 Use $execute-functional-tests with [A16 file] on build [build ID] in [environment].
 
@@ -262,9 +270,9 @@ unchanged if you download them separately.
 
 The packages live in `.agents/skills/` for this project. If the current session has not picked them up, explicitly ask to read and use the linked `SKILL.md` file. Each package is self-contained and can be copied to another project's `.agents/skills/` folder.
 
-Use each matching template for the canonical Markdown handoff; alternate views do not replace it. They need no Python setup. Missing behavior becomes a question rather than an invented expected result. The planning, design and review skills do not execute application tests. The execution skills (A28–A31) run tests only when your request asks for execution, using the build, environment and commands you or the project instructions identify; otherwise they record a supplied run or mark tests NOT RUN. `report-test-progress` and `assess-test-readiness` work only from existing records. No skill grants human approval or test exit.
+Use each matching template for the canonical Markdown handoff; alternate views do not replace it. They need no Python setup. Missing behavior becomes a question rather than an invented expected result. The planning, design and review skills do not execute application tests. `prepare-test-resources` and `build-test-automation` write datasets, setup scripts and test code as new project files; they run setup or validation only when your request asks for it, never use real personal data and never change application code. The execution skills (A28–A31) run tests only when your request asks for execution, using the build, environment and commands you or the project instructions identify; otherwise they record a supplied run or mark tests NOT RUN. `report-test-progress` and `assess-test-readiness` work only from existing records. No skill grants human approval or test exit.
 
-The documents preserve the catalog's A15–A17 and A28–A33 names and child IDs. The reviewer may recommend READY with disclosed nonblocking suggestions; unresolved blocking issues require correction or clarification. The readiness assessor recommends READY only when every exit criterion is met or waived by a recorded human decision; its recommendation is not test-exit approval.
+The documents preserve the catalog's A15–A19 and A28–A33 names and child IDs. The reviewer may recommend READY with disclosed nonblocking suggestions; unresolved blocking issues require correction or clarification. The readiness assessor recommends READY only when every exit criterion is met or waived by a recorded human decision; its recommendation is not test-exit approval.
 
 ### Optional project-specific guides
 
@@ -306,7 +314,9 @@ AIAugmentation/artifacts/ITER-001/
 ├── Test Preparation/
 │   ├── A15_test-planning-outputs_ITER-001_v1.0.md
 │   ├── A16_test-case-creation-outputs_ITER-001_v1.0.md
-│   └── A17_test-coverage-review-outputs_ITER-001_v1.0.md
+│   ├── A17_test-coverage-review-outputs_ITER-001_v1.0.md
+│   ├── A18_test-resources-outputs_ITER-001_v1.0.md
+│   └── A19_test-automation-outputs_ITER-001_v1.0.md
 ├── Test Execution/
 │   ├── A29_functional-testing-outputs_ITER-001_v1.0.md
 │   ├── A32_test-progress-outputs_ITER-001_v1.0.md
@@ -335,7 +345,10 @@ external inputs; it writes A15 under `Test Preparation/`. `create-test-cases` re
 A06/A09 from `Solution Design/`, A15 from `Test Preparation/`, and relevant
 external inputs; it writes A16 under `Test Preparation/`. `review-test-coverage`
 reads that A16 with the same source baseline and writes A17 in the same phase.
-The execution skills read A16/A17 from `Test Preparation/`, the deployed build
+`prepare-test-resources` reads A16 with E02, E03 and E07 from `External Inputs/` and
+writes A18; `build-test-automation` reads A16/A17 and A18, A09 from `Solution Design/`
+and E05, and writes A19, both under `Test Preparation/`.
+The execution skills read A16/A17 and, where used, A18/A19 from `Test Preparation/`, the deployed build
 from `Build And Integration/` (A26) and relevant external inputs; they write
 A28–A31 under `Test Execution/`. `report-test-progress` and `assess-test-readiness`
 read those results, with defect records from `Defect Resolution/` when available,
@@ -347,14 +360,14 @@ folders remain supported; standalone skills default to the flat layout if
 no layout is configured. Explicit output paths take precedence, followed
 by the prior artifact's folder for revisions, then the configured layout.
 Do not move existing artifacts automatically. Preserve `.md` filenames,
-IDs and version conventions. The implemented skills are A01–A05, A15–A17 and A28–A33;
+IDs and version conventions. The implemented skills are A01–A05, A15–A19 and A28–A33;
 the phase map also covers proposed skills.
 
 ## Artifact templates
 
 The [templates index](templates/README.md) links to a template for every catalog artifact: **45 skill output bundles and 10 external input bundles**, including all **135 child deliverables** as sections. Each includes source references, required content, acceptance checks and revision history.
 
-Skills read the matching template, fill it with sourced content, and save the result under `AIAugmentation/artifacts/<iteration_id>/` using the canonical basename plus iteration and version, with a phase subfolder when configured. All fourteen implemented skills use their matching templates. For example, with phase layout the A16 template becomes `AIAugmentation/artifacts/ITER-001/Test Preparation/A16_test-case-creation-outputs_ITER-001_v1.0.md`; without a configured layout, it remains directly in `ITER-001/`.
+Skills read the matching template, fill it with sourced content, and save the result under `AIAugmentation/artifacts/<iteration_id>/` using the canonical basename plus iteration and version, with a phase subfolder when configured. All sixteen implemented skills use their matching templates. For example, with phase layout the A16 template becomes `AIAugmentation/artifacts/ITER-001/Test Preparation/A16_test-case-creation-outputs_ITER-001_v1.0.md`; without a configured layout, it remains directly in `ITER-001/`.
 
 The canonical handoff uses Markdown with the template's nine YAML front matter keys, stable sections and exact upstream versions. Do not emit a parallel JSON payload or manifest. Native deliverables such as code, datasets and build packages are linked from the document. Empty templates do not represent completed work or approvals.
 

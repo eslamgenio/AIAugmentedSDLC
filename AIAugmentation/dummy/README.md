@@ -43,6 +43,10 @@ Use $review-test-coverage with AIAugmentation/dummy/ITER-001/A05_requirements-re
 
 Use $create-test-cases to revise AIAugmentation/dummy/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md using AIAugmentation/dummy/ITER-001/A17_test-coverage-review-outputs_ITER-001_v1.0.md. Save v1.1 under AIAugmentation/dummy/runs/create-test-cases/ITER-001/.
 
+Use $prepare-test-resources with AIAugmentation/dummy/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md for LOCAL-TEST. Save the output and any datasets under AIAugmentation/dummy/runs/prepare-test-resources/ITER-001/. Do not read the prepared A18.
+
+Use $build-test-automation with AIAugmentation/dummy/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md and AIAugmentation/dummy/ITER-001/A18_test-resources-outputs_ITER-001_v1.0.md for TC-001–TC-003 on SRC-002, validating with `python run_cases.py SRC-002` from AIAugmentation/dummy/ITER-001/native/. Save the output and any test code under AIAugmentation/dummy/runs/build-test-automation/ITER-001/. Do not read the prepared A19.
+
 Use $execute-functional-tests with AIAugmentation/dummy/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md on build B001 in LOCAL-TEST, running `python run_cases.py SRC-001` from AIAugmentation/dummy/ITER-001/native/. Save the results under AIAugmentation/dummy/runs/execute-functional-tests/ITER-001/. Do not read the prepared A29.
 
 Use $report-test-progress with the A29 and A31 files in AIAugmentation/dummy/ITER-001/ for the 2026-09-13 checkpoint. Save the report under AIAugmentation/dummy/runs/report-test-progress/ITER-001/. Do not read the prepared A32.
@@ -52,7 +56,7 @@ Use $assess-test-readiness for candidate RC-002 / B002 with AIAugmentation/dummy
 Read the implemented triage-defects skill and use the A29, E06 and A05 baseline files in AIAugmentation/dummy/ITER-001/. Save the defect report under AIAugmentation/dummy/runs/triage-defects/ITER-001/. Do not read the prepared A34.
 ```
 
-The triage-defects prompt is for after that skill is implemented; creating these files does not implement additional skills. The functional run should reproduce the TC-003 failure on B001, and the readiness assessment should stay NOT READY because F-001 and the E09 decisions remain open.
+The triage-defects prompt is for after that skill is implemented; creating these files does not implement additional skills. The resource preparation should use synthetic single-device data and keep the AC-012/013 multi-device data gap visible, the automation should record that it does not cover AC-012/013, the functional run should reproduce the TC-003 failure on B001, and the readiness assessment should stay NOT READY because F-001 and the E09 decisions remain open.
 
 ## Artifact index
 
