@@ -10,6 +10,7 @@ Name each guide after the skill with `-guide` appended:
 
 Examples for the current skills:
 
+- `plan-testing-guide.md`
 - `create-test-cases-guide.md`
 - `review-test-coverage-guide.md`
 

@@ -37,6 +37,8 @@ The pack supplies useful drafting, failure, correction and blocked-gate cases. I
 Example prompts:
 
 ```text
+Use $plan-testing with AIAugmentation/dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md. Save the plan under AIAugmentation/dummy/runs/plan-testing/ITER-001/. Do not read the prepared A15.
+
 Use $review-test-coverage with AIAugmentation/dummy/ITER-001/A05_requirements-review-outputs_ITER-001_v1.1.md and AIAugmentation/dummy/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md. Save the review under AIAugmentation/dummy/runs/review-test-coverage/ITER-001/. Do not read the prepared A17.
 
 Use $create-test-cases to revise AIAugmentation/dummy/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md using AIAugmentation/dummy/ITER-001/A17_test-coverage-review-outputs_ITER-001_v1.0.md. Save v1.1 under AIAugmentation/dummy/runs/create-test-cases/ITER-001/.

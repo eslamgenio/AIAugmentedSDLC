@@ -28,12 +28,12 @@ This is the target, not a fully implemented or automatically orchestrated workfl
 
 ## Available today
 
-v1.0.8 provides seven skills: five for Requirements (A01–A05) and two for
-Test Preparation (A16/A17). See [inputs, outputs and examples](#use-the-seven-skills).
+v1.0.9 provides eight skills: five for Requirements (A01–A05) and three for
+Test Preparation (A15–A17). See [inputs, outputs and examples](#use-the-eight-skills).
 
-**Working flow:** Requirements → Create test cases → Review coverage → Revise as needed.
+**Working flow:** Requirements → Plan testing → Create test cases → Review coverage → Revise as needed.
 
-These skills capture, analyze and review requirements or design and review tests.
+These skills capture, analyze and review requirements, plan testing, or design and review tests.
 They do not execute tests or grant approval. Skills for other lifecycle activities and
 automated orchestration are not yet implemented. Human owners retain test-exit
 and release decisions.
@@ -52,7 +52,7 @@ rather than inventing expected behavior.
 
 - [Install or update the kit](#install-or-update-the-kit)
 - [Configure project context](#complete-the-project-context)
-- [Use the seven skills](#use-the-seven-skills)
+- [Use the eight skills](#use-the-eight-skills)
 - [Customize individual skills with project guides](project_guides/README.md)
 - [Artifact templates](templates/README.md)
 - [Artifact storage and handoffs](#artifact-folders-and-handoffs)
@@ -111,11 +111,11 @@ project directory must exist; kit folders do not need to exist yet.
 From that project root, preview and install an available release tag:
 
 ```powershell
-.\update-skill-kit.ps1 -Repository 'https://github.com/eslamgenio/AIAugmentedSDLC.git' -Version v1.0.8 -WhatIf
-.\update-skill-kit.ps1 -Repository 'https://github.com/eslamgenio/AIAugmentedSDLC.git' -Version v1.0.8
+.\update-skill-kit.ps1 -Repository 'https://github.com/eslamgenio/AIAugmentedSDLC.git' -Version v1.0.9 -WhatIf
+.\update-skill-kit.ps1 -Repository 'https://github.com/eslamgenio/AIAugmentedSDLC.git' -Version v1.0.9
 ```
 
-`v1.0.8` is a published tag; select another only if it has been published. The updater
+`v1.0.9` must be a published tag; select another only if it has been published. The updater
 fetches the exact Git tag, not the latest branch. `-WhatIf` downloads and
 validates the tag but does not change project files or directories. Use `-ProjectPath`
 to select a different existing project directory.
@@ -136,7 +136,7 @@ are preserved; no sample files or placeholders are added. Select another
 iteration with `-IterationId`:
 
 ```powershell
-.\update-skill-kit.ps1 -Repository 'https://github.com/eslamgenio/AIAugmentedSDLC.git' -Version v1.0.8 -IterationId ITER-002
+.\update-skill-kit.ps1 -Repository 'https://github.com/eslamgenio/AIAugmentedSDLC.git' -Version v1.0.9 -IterationId ITER-002
 ```
 
 Iteration names must start with a letter or digit and contain only letters,
@@ -204,7 +204,7 @@ architecture documentation rather than duplicating it. Unfilled fields
 are missing information; they need not block work that can proceed using
 the supplied inputs.
 
-## Use the seven skills
+## Use the eight skills
 
 | Skill | Inputs | Deliverable |
 | --- | --- | --- |
@@ -213,10 +213,11 @@ the supplied inputs.
 | [analyze-requirements](../.agents/skills/analyze-requirements/SKILL.md) | A01 and A02, with evidence | **A03:** analyzed requirements, conflicts and gaps |
 | [define-acceptance-criteria](../.agents/skills/define-acceptance-criteria/SKILL.md) | A03 and applicable source records | **A04:** testable acceptance criteria and unresolved rules |
 | [review-requirements](../.agents/skills/review-requirements/SKILL.md) | Exact A01–A04 revisions and relevant evidence | **A05:** reviewed baseline or source pointers, findings and readiness recommendation |
-| [create-test-cases](../.agents/skills/create-test-cases/SKILL.md) | Requirements, acceptance criteria and relevant context; prior cases and feedback for revisions | **A16:** test cases, setup/data summary, questions and automation candidates |
+| [plan-testing](../.agents/skills/plan-testing/SKILL.md) | Requirements baseline and acceptance criteria, with available scope, risks, design, schedule, policies and environment records; prior plan and feedback for revisions | **A15:** scoped test strategy, levels, responsibilities, schedule, environment needs and measurable entry, exit and suspension criteria |
+| [create-test-cases](../.agents/skills/create-test-cases/SKILL.md) | Requirements, acceptance criteria, A15 plan when available and relevant context; prior cases and feedback for revisions | **A16:** test cases, setup/data summary, questions and automation candidates |
 | [review-test-coverage](../.agents/skills/review-test-coverage/SKILL.md) | The same requirements and candidate cases; prior findings for re-review | **A17:** coverage matrix, gaps, duplicates and actionable findings |
 
-User guides: [Create test cases](../.agents/skills/create-test-cases/README.md) · [Review test coverage](../.agents/skills/review-test-coverage/README.md). Each guide explains inputs, prompts, outputs, statuses and revision handling.
+User guides: [Plan testing](../.agents/skills/plan-testing/README.md) · [Create test cases](../.agents/skills/create-test-cases/README.md) · [Review test coverage](../.agents/skills/review-test-coverage/README.md). Each guide explains inputs, prompts, outputs, statuses and revision handling.
 
 Example requests (run from your project root; replace bracketed placeholders):
 
@@ -224,6 +225,8 @@ Example requests (run from your project root; replace bracketed placeholders):
 Use $elicit-requirements with [provided sources] for [iteration]. Keep unknowns open.
 
 Use $review-requirements with [pinned A01–A04 revisions]. Flag blockers and pending approvals.
+
+Use $plan-testing with [requirements file or folder].
 
 Use $create-test-cases with [requirements file or folder].
 
@@ -245,7 +248,7 @@ The packages live in `.agents/skills/` for this project. If the current session 
 
 Use each matching template for the canonical Markdown handoff; alternate views do not replace it. They need no Python setup. Missing behavior becomes a question rather than an invented expected result. These skills design and review tests; they do not execute application tests or grant human approval.
 
-The documents preserve the catalog's A16/A17 names and child IDs. The reviewer may recommend READY with disclosed nonblocking suggestions; unresolved blocking issues require correction or clarification.
+The documents preserve the catalog's A15–A17 names and child IDs. The reviewer may recommend READY with disclosed nonblocking suggestions; unresolved blocking issues require correction or clarification.
 
 ### Optional project-specific guides
 
@@ -285,6 +288,7 @@ AIAugmentation/artifacts/ITER-001/
 │   └── A06_feasibility-assessment-outputs_ITER-001_v1.0.md
 ├── Delivery Planning/
 ├── Test Preparation/
+│   ├── A15_test-planning-outputs_ITER-001_v1.0.md
 │   ├── A16_test-case-creation-outputs_ITER-001_v1.0.md
 │   └── A17_test-coverage-review-outputs_ITER-001_v1.0.md
 └── External Inputs/
@@ -305,7 +309,9 @@ Flag duplicate artifact/version candidates and conflicting baselines rather
 than choosing silently. Use another iteration only through an explicit input
 or baseline reference.
 
-For example, `create-test-cases` reads A04/A05 from `Requirements/`, available
+For example, `plan-testing` reads A02/A04/A05 from `Requirements/`, available
+A06/A09 from `Solution Design/`, A14 from `Delivery Planning/`, and relevant
+external inputs; it writes A15 under `Test Preparation/`. `create-test-cases` reads A04/A05 from `Requirements/`, available
 A06/A09 from `Solution Design/`, A15 from `Test Preparation/`, and relevant
 external inputs; it writes A16 under `Test Preparation/`. `review-test-coverage`
 reads that A16 with the same source baseline and writes A17 in the same phase.
@@ -316,14 +322,14 @@ folders remain supported; standalone skills default to the flat layout if
 no layout is configured. Explicit output paths take precedence, followed
 by the prior artifact's folder for revisions, then the configured layout.
 Do not move existing artifacts automatically. Preserve `.md` filenames,
-IDs and version conventions. The implemented skills are A01–A05 and A16/A17;
+IDs and version conventions. The implemented skills are A01–A05 and A15–A17;
 the phase map also covers proposed skills.
 
 ## Artifact templates
 
 The [templates index](templates/README.md) links to a template for every catalog artifact: **45 skill output bundles and 10 external input bundles**, including all **135 child deliverables** as sections. Each includes source references, required content, acceptance checks and revision history.
 
-Skills read the matching template, fill it with sourced content, and save the result under `AIAugmentation/artifacts/<iteration_id>/` using the canonical basename plus iteration and version, with a phase subfolder when configured. All seven implemented skills use their matching templates. For example, with phase layout the A16 template becomes `AIAugmentation/artifacts/ITER-001/Test Preparation/A16_test-case-creation-outputs_ITER-001_v1.0.md`; without a configured layout, it remains directly in `ITER-001/`.
+Skills read the matching template, fill it with sourced content, and save the result under `AIAugmentation/artifacts/<iteration_id>/` using the canonical basename plus iteration and version, with a phase subfolder when configured. All eight implemented skills use their matching templates. For example, with phase layout the A16 template becomes `AIAugmentation/artifacts/ITER-001/Test Preparation/A16_test-case-creation-outputs_ITER-001_v1.0.md`; without a configured layout, it remains directly in `ITER-001/`.
 
 The canonical handoff uses Markdown with the template's nine YAML front matter keys, stable sections and exact upstream versions. Do not emit a parallel JSON payload or manifest. Native deliverables such as code, datasets and build packages are linked from the document. Empty templates do not represent completed work or approvals.
 
