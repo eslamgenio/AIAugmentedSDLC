@@ -90,7 +90,7 @@ requests, authorization boundaries or the selected skill's fixed scope.
 - For phase layout, use the phase-to-artifact mapping in
   `AIAugmentation/README.md`, derived from the catalog's Skill Artifact Flow
   sheet. Save outputs in their producer's phase folder: A01–A05 in
-  `Requirements/` and A16/A17 in `Test Preparation/`. Create folders only when needed.
+  `Requirements/` and A15–A17 in `Test Preparation/`. Create folders only when needed.
 - Keep external/human input bundles (E01–E10) in `External Inputs/` within
   the iteration, or reference their explicitly supplied source locations.
 - Find required inputs in the active iteration root and its subfolders,

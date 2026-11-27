@@ -12,7 +12,7 @@ Keep relevant supporting inputs together in the selected iteration folder. The s
 | --- | --- | --- |
 | A05 | `A05_requirements-review-outputs` | Requirements baseline, embedded or referenced |
 | A04 | `A04_acceptance-criteria-outputs` | Acceptance criteria |
-| A15 | `A15_test-planning-outputs` | Test scope and strategy |
+| A15 | `A15_test-planning-outputs` | Test scope and strategy, produced by [plan-testing](../plan-testing/README.md) |
 | A06 | `A06_feasibility-assessment-outputs` | Risks and feasibility |
 | A09 | `A09_system-component-design-outputs` | Design and logical interfaces |
 | E06 | `E06_test-and-defect-baselines` | Case format and coverage rules |

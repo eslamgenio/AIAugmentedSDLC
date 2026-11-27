@@ -14,19 +14,23 @@ requirements and acceptance criteria. The skills themselves need no Python setup
    to create or merge `AGENTS.md`. Add [optional project guides](project_guides/README.md)
    only when activity-specific conventions are needed.
 3. **Start with requirements.** If you do not already have a usable baseline,
-   use [the five Requirements skills](README.md#use-the-seven-skills) in order:
+   use [the five Requirements skills](README.md#use-the-eight-skills) in order:
    elicit requirements (A01), define scope (A02), analyze requirements (A03),
    define acceptance criteria (A04), then review the exact artifact revisions
    (A05). Leave unanswered rules open. A draft or review does not grant approval.
-4. **Create test cases.** Bring a usable requirements baseline and acceptance
-   criteria to the [creation guide](../.agents/skills/create-test-cases/README.md).
+4. **Plan testing.** Bring the reviewed baseline and acceptance criteria to the
+   [test planning guide](../.agents/skills/plan-testing/README.md) to produce
+   A15: scope, risk priorities, levels, responsibilities, environment needs and
+   measurable entry, exit and suspension criteria. Missing owners or dates stay open.
+5. **Create test cases.** Bring a usable requirements baseline, acceptance
+   criteria and the A15 plan when available to the [creation guide](../.agents/skills/create-test-cases/README.md).
    Record pending decisions and restrict work to what the evidence supports.
-5. **Review coverage.** Use the same baseline and the exact A16 revision with
+6. **Review coverage.** Use the same baseline and the exact A16 revision with
    the [coverage review guide](../.agents/skills/review-test-coverage/README.md).
    Revise and re-review on new versions when needed.
 
 Use the matching [Markdown templates](templates/README.md) for handoffs.
-These skills do not execute tests, approve scope, or authorize release.
+These skills do not execute tests, approve scope or test plans, or authorize release.
 
 For later releases, return to [install or update](README.md#install-or-update-the-kit),
 then review and commit the changes in your project.
