@@ -13,6 +13,8 @@ Examples for the current skills:
 - `plan-testing-guide.md`
 - `create-test-cases-guide.md`
 - `review-test-coverage-guide.md`
+- `prepare-test-resources-guide.md`
+- `build-test-automation-guide.md`
 - `execute-integration-tests-guide.md`
 - `execute-functional-tests-guide.md`
 - `execute-nonfunctional-tests-guide.md`
