@@ -1,6 +1,7 @@
 # Generated workbooks, previews, reports and temporary build evidence
 /outputs/
 /AIAugmentation/outputs/
+/presentations/
 
 # Local dependency directories and junctions; never commit the bundled runtime
 node_modules/
