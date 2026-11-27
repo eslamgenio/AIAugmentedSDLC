@@ -1,3 +1,15 @@
+---
+artifact_id: A30
+schema_version: "1.0"
+artifact_version: null
+producer_or_owner: execute-nonfunctional-tests
+iteration_id: null
+created_at: null
+source_artifact_versions: []
+status: DRAFT
+evidence_refs: []
+---
+
 # A30 — Nonfunctional Testing Outputs
 
 > Template: replace placeholders and remove guidance when creating an artifact. See [template usage](README.md).
@@ -12,6 +24,16 @@
 - **Document status:** DRAFT
 - **Scope:** [Included behavior, boundaries and exclusions]
 - **Output filename:** `A30_nonfunctional-testing-outputs_{iteration_id}_v{artifact_version}.md`
+
+## Child artifacts
+
+| Child ID | Version | Embedded anchor or relative path |
+| --- | --- | --- |
+| A30-01 | null | #a30-01 |
+| A30-02 | null | #a30-02 |
+| A30-03 | null | #a30-03 |
+
+Replace each known version; an embedded child can use the parent version when that version is confirmed. Use a relative path for a separately stored versioned Markdown child and verify that it resolves. Keep unknown versions or paths explicitly null; do not invent them. For native evidence, retain its format and link its exact path/revision or checksum.
 
 ## Source references
 
@@ -35,6 +57,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | `limitations` | [Value, evidence or section reference; explicitly identify missing information] |
 | `findings` | [Value, evidence or section reference; explicitly identify missing information] |
 
+<a id="a30-01"></a>
+
 ## A30-01 — Measurements and comparison with quality targets
 
 [Provide the following: Measurements and comparison with quality targets. Use the required fields above; link their detailed values here instead of duplicating them.]
@@ -42,6 +66,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | Deliverable item | Content or native file reference | Supporting source / revision | Open issue / limitation |
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
+
+<a id="a30-02"></a>
 
 ## A30-02 — Run configuration, observations and limitations
 
@@ -51,6 +77,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
 
+<a id="a30-03"></a>
+
 ## A30-03 — Quality risks, findings and tuning recommendations
 
 [Provide the following: Quality risks, findings and tuning recommendations. Use the required fields above; link their detailed values here instead of duplicating them.]
@@ -58,6 +86,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | Deliverable item | Content or native file reference | Supporting source / revision | Open issue / limitation |
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
+
+This document records non-functional measurements against sourced targets and an identified workload, build and environment. An unmeasured category is NOT RUN or NOT APPLICABLE with a reason, never PASSED; findings are not human approval.
 
 ## Acceptance and handoff
 

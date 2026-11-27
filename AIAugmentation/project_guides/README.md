@@ -13,6 +13,12 @@ Examples for the current skills:
 - `plan-testing-guide.md`
 - `create-test-cases-guide.md`
 - `review-test-coverage-guide.md`
+- `execute-integration-tests-guide.md`
+- `execute-functional-tests-guide.md`
+- `execute-nonfunctional-tests-guide.md`
+- `execute-regression-tests-guide.md`
+- `report-test-progress-guide.md`
+- `assess-test-readiness-guide.md`
 
 Each skill checks for its matching guide before performing its work. If the file is absent, the skill continues with its generic instructions.
 

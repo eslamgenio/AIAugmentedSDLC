@@ -1,3 +1,15 @@
+---
+artifact_id: A31
+schema_version: "1.0"
+artifact_version: null
+producer_or_owner: execute-regression-tests
+iteration_id: null
+created_at: null
+source_artifact_versions: []
+status: DRAFT
+evidence_refs: []
+---
+
 # A31 — Regression Testing Outputs
 
 > Template: replace placeholders and remove guidance when creating an artifact. See [template usage](README.md).
@@ -12,6 +24,16 @@
 - **Document status:** DRAFT
 - **Scope:** [Included behavior, boundaries and exclusions]
 - **Output filename:** `A31_regression-testing-outputs_{iteration_id}_v{artifact_version}.md`
+
+## Child artifacts
+
+| Child ID | Version | Embedded anchor or relative path |
+| --- | --- | --- |
+| A31-01 | null | #a31-01 |
+| A31-02 | null | #a31-02 |
+| A31-03 | null | #a31-03 |
+
+Replace each known version; an embedded child can use the parent version when that version is confirmed. Use a relative path for a separately stored versioned Markdown child and verify that it resolves. Keep unknown versions or paths explicitly null; do not invent them. For native evidence, retain its format and link its exact path/revision or checksum.
 
 ## Source references
 
@@ -33,6 +55,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | `exclusions` | [Value, evidence or section reference; explicitly identify missing information] |
 | `residual_risks` | [Value, evidence or section reference; explicitly identify missing information] |
 
+<a id="a31-01"></a>
+
 ## A31-01 — Selected regression scope and selection rationale
 
 [Provide the following: Selected regression scope and selection rationale. Use the required fields above; link their detailed values here instead of duplicating them.]
@@ -40,6 +64,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | Deliverable item | Content or native file reference | Supporting source / revision | Open issue / limitation |
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
+
+<a id="a31-02"></a>
 
 ## A31-02 — Regression results with evidence and build ID
 
@@ -49,6 +75,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
 
+<a id="a31-03"></a>
+
 ## A31-03 — New failures, excluded coverage and residual risks
 
 [Provide the following: New failures, excluded coverage and residual risks. Use the required fields above; link their detailed values here instead of duplicating them.]
@@ -56,6 +84,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | Deliverable item | Content or native file reference | Supporting source / revision | Open issue / limitation |
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
+
+This document records the selected regression scope and its executed results against an identified build. Excluded coverage stays visible as residual risk; results are not human approval or test exit.
 
 ## Acceptance and handoff
 

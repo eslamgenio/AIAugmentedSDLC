@@ -1,3 +1,15 @@
+---
+artifact_id: A32
+schema_version: "1.0"
+artifact_version: null
+producer_or_owner: report-test-progress
+iteration_id: null
+created_at: null
+source_artifact_versions: []
+status: DRAFT
+evidence_refs: []
+---
+
 # A32 — Test Progress Outputs
 
 > Template: replace placeholders and remove guidance when creating an artifact. See [template usage](README.md).
@@ -12,6 +24,16 @@
 - **Document status:** DRAFT
 - **Scope:** [Included behavior, boundaries and exclusions]
 - **Output filename:** `A32_test-progress-outputs_{iteration_id}_v{artifact_version}.md`
+
+## Child artifacts
+
+| Child ID | Version | Embedded anchor or relative path |
+| --- | --- | --- |
+| A32-01 | null | #a32-01 |
+| A32-02 | null | #a32-02 |
+| A32-03 | null | #a32-03 |
+
+Replace each known version; an embedded child can use the parent version when that version is confirmed. Use a relative path for a separately stored versioned Markdown child and verify that it resolves. Keep unknown versions or paths explicitly null; do not invent them. For native evidence, retain its format and link its exact path/revision or checksum.
 
 ## Source references
 
@@ -33,6 +55,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | `blockers` | [Value, evidence or section reference; explicitly identify missing information] |
 | `forecast` | [Value, evidence or section reference; explicitly identify missing information] |
 
+<a id="a32-01"></a>
+
 ## A32-01 — Test progress report with defined status counts
 
 [Provide the following: Test progress report with defined status counts. Use the required fields above; link their detailed values here instead of duplicating them.]
@@ -40,6 +64,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | Deliverable item | Content or native file reference | Supporting source / revision | Open issue / limitation |
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
+
+<a id="a32-02"></a>
 
 ## A32-02 — Coverage, defect and blocker summary
 
@@ -49,6 +75,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
 
+<a id="a32-03"></a>
+
 ## A32-03 — Forecast risks and recommended next actions
 
 [Provide the following: Forecast risks and recommended next actions. Use the required fields above; link their detailed values here instead of duplicating them.]
@@ -56,6 +84,8 @@ Keep these catalog fields identifiable. Values may reference a detailed child se
 | Deliverable item | Content or native file reference | Supporting source / revision | Open issue / limitation |
 | --- | --- | --- | --- |
 | [Stable item ID or name] | [Specific content or resolvable file] | [Evidence and version] | [Issue or None] |
+
+This document reports progress from existing execution records. Counts are reconciled to those records by build and reporting period; the report does not execute tests or grant approval.
 
 ## Acceptance and handoff
 

@@ -32,7 +32,7 @@ Earlier v1.0 inputs are preserved. The prepared A16/A17 v1.0 snapshots still rec
 3. Ask for outputs under `AIAugmentation/dummy/runs/<skill-name>/ITER-001/` so the reference files remain unchanged. Increment versions for revisions and link the exact input versions.
 4. Compare the generated artifact with its template and evidence. Check reasoning and traceability, not identical wording. Passing three cases must not become full coverage or release approval.
 
-The pack supplies useful drafting, failure, correction and blocked-gate cases. It does not provide successful real deployments, external account access, every branch of every skill, or a complete approved workflow. For future execution/deployment skills, these files support input assessment and planning; a real execution still needs the appropriate environment and authorization.
+The pack supplies useful drafting, failure, correction and blocked-gate cases. It does not provide successful real deployments, external account access, every branch of every skill, or a complete approved workflow. For execution skills, these files support input assessment, planning and recording the supplied runs; a real execution still needs the appropriate environment and authorization. The local runner in `ITER-001/native/` is the only executable target in the pack.
 
 Example prompts:
 
@@ -43,10 +43,16 @@ Use $review-test-coverage with AIAugmentation/dummy/ITER-001/A05_requirements-re
 
 Use $create-test-cases to revise AIAugmentation/dummy/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md using AIAugmentation/dummy/ITER-001/A17_test-coverage-review-outputs_ITER-001_v1.0.md. Save v1.1 under AIAugmentation/dummy/runs/create-test-cases/ITER-001/.
 
+Use $execute-functional-tests with AIAugmentation/dummy/ITER-001/A16_test-case-creation-outputs_ITER-001_v1.0.md on build B001 in LOCAL-TEST, running `python run_cases.py SRC-001` from AIAugmentation/dummy/ITER-001/native/. Save the results under AIAugmentation/dummy/runs/execute-functional-tests/ITER-001/. Do not read the prepared A29.
+
+Use $report-test-progress with the A29 and A31 files in AIAugmentation/dummy/ITER-001/ for the 2026-09-13 checkpoint. Save the report under AIAugmentation/dummy/runs/report-test-progress/ITER-001/. Do not read the prepared A32.
+
+Use $assess-test-readiness for candidate RC-002 / B002 with AIAugmentation/dummy/ITER-001/A15_test-planning-outputs_ITER-001_v1.1.md and the evidence in AIAugmentation/dummy/ITER-001/. Save the assessment under AIAugmentation/dummy/runs/assess-test-readiness/ITER-001/. Do not read the prepared A33.
+
 Read the implemented triage-defects skill and use the A29, E06 and A05 baseline files in AIAugmentation/dummy/ITER-001/. Save the defect report under AIAugmentation/dummy/runs/triage-defects/ITER-001/. Do not read the prepared A34.
 ```
 
-The third prompt is for after that skill is implemented; creating these files does not implement additional skills.
+The triage-defects prompt is for after that skill is implemented; creating these files does not implement additional skills. The functional run should reproduce the TC-003 failure on B001, and the readiness assessment should stay NOT READY because F-001 and the E09 decisions remain open.
 
 ## Artifact index
 
