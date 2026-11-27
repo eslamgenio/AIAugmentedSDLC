@@ -33,6 +33,7 @@ In the selected input/iteration folder, read the following named artifacts when 
 - `A06_feasibility-assessment-outputs_{iteration_id}_v{artifact_version}.md`
 - `A09_system-component-design-outputs_{iteration_id}_v{artifact_version}.md`
 - `A14_iteration-planning-outputs_{iteration_id}_v{artifact_version}.md`
+- `E04_delivery-planning-records_{iteration_id}_v{artifact_version}.md`
 - `E06_test-and-defect-baselines_{iteration_id}_v{artifact_version}.md`
 - `E03_engineering-and-governance-policies_{iteration_id}_v{artifact_version}.md`
 - `E07_environment-and-access-records_{iteration_id}_v{artifact_version}.md`
@@ -67,7 +68,7 @@ Include a short header with the feature, A15 version, source filenames/versions 
 - **A15-02 — Test levels, responsibilities and schedule:** levels and types with the requirement IDs they cover, activity/role/owner rows, sequence and any supplied dates or milestones, and environment and data needs with their readiness evidence.
 - **A15-03 — Entry, exit and suspension criteria:** criteria with stable IDs (for example `EN-###`, `EX-###`, `SU-###`), the measurable condition, the evidence source and current status (Met / Not met / Pending) where known. Include resumption conditions for each suspension criterion.
 
-Record open questions with an ID, affected requirements or plan items and planning impact in the **Acceptance and handoff** section, or state that there are none.
+Record open questions in the template's **Open questions** table with an ID, affected requirements or plan items, the decision or information needed and its planning impact, or state that there are none. Summarize missing information and open decisions in **Acceptance and handoff**.
 
 Use YAML front matter with exactly these nine canonical keys: artifact_id, schema_version, artifact_version, producer_or_owner, iteration_id, created_at, source_artifact_versions, status, evidence_refs. Use null for unknown scalar metadata and empty lists for unavailable source/evidence references, with the reason in the body. Preserve the template child registry A15-01 through A15-03 with each version and an embedded anchor or relative path; use null for an unknown value and verify resolved references. Use the same contract in the standalone layout. The artifact `status` is not human approval of the plan. An incompatible requested format must not replace the canonical Markdown artifact; explain the mismatch.
 

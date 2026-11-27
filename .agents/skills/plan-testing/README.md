@@ -17,6 +17,7 @@ Keep relevant supporting inputs together in the selected iteration folder. The s
 | A06 | `A06_feasibility-assessment-outputs` | Risk register |
 | A09 | `A09_system-component-design-outputs` | Design and logical interfaces that shape test levels |
 | A14 | `A14_iteration-planning-outputs` | Milestones and dates |
+| E04 | `E04_delivery-planning-records` | Delivery milestones, owners and dates |
 | E06 | `E06_test-and-defect-baselines` | Test policy, coverage rules and defect thresholds |
 | E03 | `E03_engineering-and-governance-policies` | Quality and governance policies |
 | E07 | `E07_environment-and-access-records` | Environment and access availability |
